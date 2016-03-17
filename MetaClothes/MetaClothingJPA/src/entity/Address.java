@@ -90,7 +90,7 @@ public class Address {
 	{
 		this.user = user;
 	}
-	public boolean isBilling( )
+	public boolean isBilling()
 	{
 		return isBilling;
 	}
