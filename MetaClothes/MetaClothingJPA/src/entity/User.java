@@ -30,6 +30,10 @@ public class User {
 	@Column(name = "isemployee")
 	private boolean isEmployee;
 	
+	private List<Cart> carts;
+	
+	private List<Sale> sales;
+	
 	public User() {
 		
 	}
@@ -86,6 +90,36 @@ public class User {
 	public void setEmployee(boolean isEmployee)
 	{
 		this.isEmployee = isEmployee;
+	}
+
+	public List<Address> getAddresses()
+	{
+		return addresses;
+	}
+
+	public void setAddresses(List<Address> addresses)
+	{
+		this.addresses = addresses;
+	}
+
+	public List<Cart> getCarts()
+	{
+		return carts;
+	}
+
+	public void setCarts(List<Cart> carts)
+	{
+		this.carts = carts;
+	}
+
+	public List<Sale> getSales()
+	{
+		return sales;
+	}
+
+	public void setSales(List<Sale> sales)
+	{
+		this.sales = sales;
 	}
 
 }
