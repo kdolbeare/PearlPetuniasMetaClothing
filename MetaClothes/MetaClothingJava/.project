@@ -3,6 +3,7 @@
 	<name>MetaClothingJava</name>
 	<comment></comment>
 	<projects>
+		<project>MetaClothingJPA</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
