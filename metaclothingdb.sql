@@ -19,22 +19,24 @@ CREATE TABLE metaclothingdb.`user` (
 	CONSTRAINT pk_user PRIMARY KEY ( id )
  ) engine=InnoDB;
 
-CREATE TABLE metaclothingdb.billingaddress ( 
+CREATE TABLE metaclothingdb.address ( 
 	id                   int  NOT NULL  AUTO_INCREMENT,
 	streetaddress        varchar(100)  NOT NULL  ,
 	city                 varchar(20)  NOT NULL  ,
 	stateabbrev          varchar(2)  NOT NULL  ,
 	zip                  int  NOT NULL  ,
 	userid               int  NOT NULL  ,
+	isbilling            bool    ,
 	CONSTRAINT pk_billingaddress PRIMARY KEY ( id )
  ) engine=InnoDB;
 
-CREATE INDEX idx_billingaddress ON metaclothingdb.billingaddress ( userid );
+CREATE INDEX idx_billingaddress ON metaclothingdb.address ( userid );
 
 CREATE TABLE metaclothingdb.cart ( 
 	id                   int  NOT NULL  AUTO_INCREMENT,
 	userid               int  NOT NULL  ,
 	itemid               int  NOT NULL  ,
+	quantity             int  NOT NULL  ,
 	CONSTRAINT pk_cart PRIMARY KEY ( id )
  ) engine=InnoDB;
 
@@ -52,25 +54,11 @@ CREATE TABLE metaclothingdb.invoice (
 
 CREATE INDEX idx_invoice ON metaclothingdb.invoice ( cartid );
 
-CREATE TABLE metaclothingdb.shippingaddress ( 
-	id                   int  NOT NULL  AUTO_INCREMENT,
-	streetaddress        varchar(50)  NOT NULL  ,
-	city                 varchar(20)  NOT NULL  ,
-	stateabbrev          varchar(2)  NOT NULL  ,
-	zip                  int  NOT NULL  ,
-	userid               int  NOT NULL  ,
-	CONSTRAINT pk_shippingaddress PRIMARY KEY ( id )
- ) engine=InnoDB;
-
-CREATE INDEX idx_shippingaddress ON metaclothingdb.shippingaddress ( userid );
-
-ALTER TABLE metaclothingdb.billingaddress ADD CONSTRAINT fk_billingaddress FOREIGN KEY ( userid ) REFERENCES metaclothingdb.`user`( id ) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE metaclothingdb.address ADD CONSTRAINT fk_billingaddress FOREIGN KEY ( userid ) REFERENCES metaclothingdb.`user`( id ) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE metaclothingdb.cart ADD CONSTRAINT fk_cart FOREIGN KEY ( userid ) REFERENCES metaclothingdb.`user`( id ) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE metaclothingdb.cart ADD CONSTRAINT fk_cart_0 FOREIGN KEY ( itemid ) REFERENCES metaclothingdb.item( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE metaclothingdb.invoice ADD CONSTRAINT fk_invoice FOREIGN KEY ( cartid ) REFERENCES metaclothingdb.cart( id ) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-ALTER TABLE metaclothingdb.shippingaddress ADD CONSTRAINT fk_shippingaddress FOREIGN KEY ( userid ) REFERENCES metaclothingdb.`user`( id ) ON DELETE CASCADE ON UPDATE CASCADE;
 
