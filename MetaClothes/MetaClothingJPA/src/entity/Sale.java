@@ -20,7 +20,6 @@ public class Sale {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Date date;
-	private String orderid;
 	private int price;
 	@OneToMany(mappedBy="cart")
 	private List<SaleItem> items;
@@ -33,11 +32,10 @@ public class Sale {
 
 	}
 
-	public Sale( Date date, String orderid, int price, List<SaleItem> items, int quantity, User user)
+	public Sale( Date date, int price, List<SaleItem> items, int quantity, User user)
 	{
 		super();
 		this.date = date;
-		this.orderid = orderid;
 		this.price = price;
 		this.items = items;
 		this.user = user;
@@ -56,16 +54,6 @@ public class Sale {
 	public void setDate(Date date)
 	{
 		this.date = date;
-	}
-
-	public String getOrderid()
-	{
-		return orderid;
-	}
-
-	public void setOrderid(String orderid)
-	{
-		this.orderid = orderid;
 	}
 
 	public int getPrice()
