@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,13 +31,14 @@ public class User {
 	
 	@Column(name = "isemployee")
 	private boolean isEmployee;
-	
-	private List<Cart> carts;
-	
+	@OneToOne(mappedBy="user")
+	private Cart cart;
+	@OneToMany(mappedBy="userid")
 	private List<Sale> sales;
 	
 	public User() {
-		
+		addresses = new ArrayList<Address>();
+		sales = new ArrayList<Sale>();
 	}
 
 	public User(String name, String email, String password, boolean isEmployee)
@@ -45,6 +48,8 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.isEmployee = isEmployee;
+		addresses = new ArrayList<Address>();
+		sales = new ArrayList<Sale>();
 	}
 
 	public int getId()
@@ -102,14 +107,14 @@ public class User {
 		this.addresses = addresses;
 	}
 
-	public List<Cart> getCarts()
+	public Cart getCarts()
 	{
-		return carts;
+		return cart;
 	}
 
-	public void setCarts(List<Cart> carts)
+	public void setCart(Cart cart)
 	{
-		this.carts = carts;
+		this.cart = cart;
 	}
 
 	public List<Sale> getSales()

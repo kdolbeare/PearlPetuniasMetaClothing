@@ -2,99 +2,74 @@ package entity;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "cart")
 public class Cart
 {	
-	@Column(name = "orderid")
-	private String orderId;
-	
-	@Column(name = "userid")
-	private int userId;
-	
-	@Column(name = "itemid")
-	private int itemId;
-	private int quantity;
-	
-	private List<Item> items;
-	
-	private List<User> users;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	@OneToMany(mappedBy="item")
+	private List<CartItem> items;
+	@OneToOne
+	@JoinColumn(name="userid")
+	private User user;
 	
 	public Cart() {
 		
 	}
 	
-	public Cart(String orderId, int userId, int itemId, int quantity)
+	
+	
+	public Cart(int id, List<CartItem> items, User user)
 	{
-		super();
-		this.orderId = orderId;
-		this.userId = userId;
-		this.itemId = itemId;
-		this.quantity = quantity;
+		this.id = id;
+		this.items = items;
+		this.user = user;
 	}
 
-	public String getOrderId()
+
+
+	public int getId()
 	{
-		return orderId;
+		return id;
 	}
 
-	public void setOrderId(String orderId)
+	public void setId(int id)
 	{
-		this.orderId = orderId;
+		this.id = id;
 	}
 
-	public int getUserId()
-	{
-		return userId;
-	}
-
-	public void setUserId(int userId)
-	{
-		this.userId = userId;
-	}
-
-	public int getItemId()
-	{
-		return itemId;
-	}
-
-	public void setItemId(int itemId)
-	{
-		this.itemId = itemId;
-	}
-
-	public int getQuantity()
-	{
-		return quantity;
-	}
-
-	public void setQuantity(int quantity)
-	{
-		this.quantity = quantity;
-	}
-
-	public List<User> getUsers()
-	{
-		return users;
-	}
-
-	public void setUsers(List<User> users)
-	{
-		this.users = users;
-	}
-
-	public List<Item> getItems()
+	public List<CartItem> getItems()
 	{
 		return items;
 	}
 
-	public void setItems(List<Item> items)
+	public void setItems(List<CartItem> items)
 	{
 		this.items = items;
 	}
+
+	public User getUser()
+	{
+		return user;
+	}
+
+	public void setUser(User user)
+	{
+		this.user = user;
+	}
+	
+	
 	
 }
