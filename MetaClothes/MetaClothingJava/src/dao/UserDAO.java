@@ -24,4 +24,22 @@ public class UserDAO {
 		System.out.println(temp);
 		return temp;
 	}
+	
+	public String createUser(String name, String email, String password, boolean isEmployee) {
+		User temp;
+		try {
+			temp = (User)em.createNamedQuery("user.getUserByName").setParameter("name", name).getSingleResult();
+		} catch (Exception e) {
+			System.out.println("error in createUser" + e);
+			temp = null;
+		}
+		if(temp!=null) {
+			return "User already exists";
+		} else {
+			User user = new User(name, email, password, isEmployee);
+			System.out.println(user);
+			em.persist(user);
+			return "User created";
+		}
+	}
 }

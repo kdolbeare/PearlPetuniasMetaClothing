@@ -11,6 +11,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 <context:component-scan base-package="controller" />
 	<mvc:annotation-driven/>
+	<bean id="dao" class="dao.UserDAO"/>
 	<bean id="myEntityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceUnitName" value="metaPU"></property>
