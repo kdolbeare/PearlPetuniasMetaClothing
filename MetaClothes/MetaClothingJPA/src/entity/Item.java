@@ -27,11 +27,12 @@ public class Item
 	private int price;
 	private String brand;
 	private int rating;
+	private String category;
 	
 	public Item() {
 		
 	}
-	public Item(int id, String name, String description, int price, String brand, int rating) {
+	public Item(int id, String name, String description, int price, String brand, int rating, String category) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -73,6 +74,14 @@ public class Item
 	}
 	public void setRating(int rating) {
 		this.rating = rating;
+	}
+	public String getCategory()
+	{
+		return category;
+	}
+	public void setCategory(String category)
+	{
+		this.category = category;
 	}
 
 }

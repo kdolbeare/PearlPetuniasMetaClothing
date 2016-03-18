@@ -19,7 +19,7 @@ public class Cart
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	@OneToMany(mappedBy="item")
+	@OneToMany(mappedBy="cart")
 	private List<CartItem> items;
 	@OneToOne
 	@JoinColumn(name="userid")

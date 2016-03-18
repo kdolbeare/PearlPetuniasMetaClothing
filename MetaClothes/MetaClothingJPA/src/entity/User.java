@@ -16,7 +16,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
-@NamedQueries ({@NamedQuery(name="user.getUserByEmail", query="SELECT u FROM User u WHERE u.email = :email")}) 
+@NamedQueries ({@NamedQuery(name="user.getUserByEmail", query="SELECT u FROM User u WHERE u.email = :email"),
+	@NamedQuery(name="user.getUserByName", query="SELECT u FROM User u WHERE u.name = :name")}) 
 public class User {
 	
 	@Id
@@ -128,6 +129,13 @@ public class User {
 	public void setSales(List<Sale> sales)
 	{
 		this.sales = sales;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", addresses="
+				+ addresses + ", isEmployee=" + isEmployee + ", cart=" + cart + ", sales=" + sales + "]";
 	}
 
 }
