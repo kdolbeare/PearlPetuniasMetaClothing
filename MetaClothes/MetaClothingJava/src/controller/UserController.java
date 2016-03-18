@@ -22,6 +22,7 @@ public class UserController
 		return "pong";
 	}
 
+	@ResponseBody
 	@RequestMapping("user")
 	public User getUser()
 	{
@@ -30,8 +31,8 @@ public class UserController
 	}
 	
 	@ResponseBody
-	@RequestMapping(path="testCreate", method= RequestMethod.POST)
-	public void createUser() {
-		userDAO.createUser("adam", "indarys@gmail.com", "hello", false);
+	@RequestMapping(path="testCreate")
+	public String createUser() {
+		return (userDAO.createUser("david", "silverfox@gmail.com", "hello", true));
 	}
 }
