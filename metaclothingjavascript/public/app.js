@@ -17,6 +17,31 @@ function getData(url, callback){
 	xhr.send(null);
 }
 
+function verbData(method, url, callback, obj){
+	var xhr = new XMLHttpRequest();
+
+	xhr.open(method, url);
+
+	if(obj){
+		xhr.setRequestHeader('Content-type', 'application/json');
+	}
+	xhr.onreadystatechange = function(){
+		if(xhr.status < 400 && xhr.readyState == 4){
+			if(callback){
+				callback(JSON.parse(xhr.responseText));
+			}
+		}
+	};
+
+	if(obj){
+		xhr.send(JSON.stringify(obj));
+	}else{
+		xhr.send(null);
+	}
+
+}
+
 function listUsers(data){
 	console.log(data);
 }
+
