@@ -25,6 +25,17 @@ public class UserDAO {
 		return temp;
 	}
 	
+	public User getUser(String email, String password) {
+		User temp;
+		try {
+			temp = (User)em.createNamedQuery("user.getUser").setParameter("email", email).setParameter("password", password).getSingleResult();
+		}catch (Exception e) {
+			System.out.println("error in getUser" + e);
+			temp = null;
+		}
+		System.out.println(temp);
+		return temp;
+	}
 	public String createUser(String name, String email, String password, boolean isEmployee) {
 		User temp;
 		try {

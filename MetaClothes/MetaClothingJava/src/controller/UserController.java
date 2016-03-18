@@ -26,8 +26,9 @@ public class UserController
 	@RequestMapping("user")
 	public User getUser()
 	{
-		System.out.println(userDAO.getUserByEmail("kris@dolbeare.com"));	
-		return (userDAO.getUserByEmail("kris@dolbeare.com"));	
+		User loggedin = userDAO.getUser("silverfox@gmail.com", "hello");
+		System.out.println(loggedin.getName());
+		return loggedin;
 	}
 	
 	@ResponseBody
