@@ -32,8 +32,7 @@ public class Address {
 		
 	}
 	
-	public Address(int id, String street, String city, String state, int zip, User user, boolean billing){
-		this.id = id;
+	public Address( String street, String city, String state, int zip, User user, boolean billing){ 
 		this.streetAddress = street;
 		this.city = city;
 		this.stateAbbrev = state;

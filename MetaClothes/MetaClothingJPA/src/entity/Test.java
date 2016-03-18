@@ -11,11 +11,13 @@ public class Test {
 		EntityManager em = emf.createEntityManager();
 		
 		em.getTransaction().begin();
-		User user = (User)em.createNamedQuery("user.getUserByEmail").setParameter("email", "indarys@gmail.com").getSingleResult();
+		User user = em.createNamedQuery("user.getUserByEmail", User.class).setParameter("email", "indarys@gmail.com").getSingleResult();
+		Address address = new Address("1234 Suckit Ln.", "Centennial", "NE", 82106, user, true);
 		
-		System.out.println(user);
+		
 		//System.out.println(em.contains(user));
-		
+		em.persist(address);
+		System.out.println(em.contains(address));
 		
 		
 		em.getTransaction().commit();
