@@ -22,9 +22,10 @@ public class UserController
 	}
 	@ResponseBody
 	@RequestMapping("user")
-	public void getUser()
+	public User getUser()
 	{
 		System.out.println(userDAO.getUserByEmail("kris@dolbeare.com"));	
+		return (userDAO.getUserByEmail("kris@dolbeare.com"));	
 	}
 	
 	@ResponseBody

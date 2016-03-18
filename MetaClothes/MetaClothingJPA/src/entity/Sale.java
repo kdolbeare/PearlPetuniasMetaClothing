@@ -20,7 +20,6 @@ public class Sale {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Date date;
-	private int price;
 	@OneToMany(mappedBy="sale")
 	private List<SaleItem> items;
 	@ManyToOne
@@ -32,11 +31,10 @@ public class Sale {
 
 	}
 
-	public Sale( Date date, int price, List<SaleItem> items, int quantity, User user)
+	public Sale( Date date, List<SaleItem> items, User user)
 	{
 		super();
 		this.date = date;
-		this.price = price;
 		this.items = items;
 		this.user = user;
 	}
@@ -56,16 +54,6 @@ public class Sale {
 		this.date = date;
 	}
 
-	public int getPrice()
-	{
-		return price;
-	}
-
-	public void setPrice(int price)
-	{
-		this.price = price;
-	}
-	
 	public List<SaleItem> getItems(){
 		return items;
 	}
