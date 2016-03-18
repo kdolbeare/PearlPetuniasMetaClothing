@@ -24,11 +24,16 @@ public class UserController
 
 	@ResponseBody
 	@RequestMapping("user")
-	public User getUser()
+	public String getUser()
 	{
 		User loggedin = userDAO.getUser("silverfox@gmail.com", "hello");
-		System.out.println(loggedin.getName());
-		return loggedin;
+		User exists = userDAO.getUserByEmail("silverfox@gmail.com");
+		if (exists == null) {
+			return "User not Found";
+		} else if (exists.equals(loggedin)) {
+			return "User Found";
+					}
+		else return "User Password Incorrect";
 	}
 	
 	@ResponseBody
