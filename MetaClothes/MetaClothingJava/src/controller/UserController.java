@@ -3,6 +3,7 @@ package controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.UserDAO;
@@ -20,7 +21,7 @@ public class UserController
 	{
 		return "pong";
 	}
-	@ResponseBody
+
 	@RequestMapping("user")
 	public User getUser()
 	{
@@ -29,7 +30,7 @@ public class UserController
 	}
 	
 	@ResponseBody
-	@RequestMapping("testCreate")
+	@RequestMapping(path="testCreate", method= RequestMethod.POST)
 	public void createUser() {
 		userDAO.createUser("adam", "indarys@gmail.com", "hello", false);
 	}
