@@ -26,4 +26,30 @@ public class ShopController
 		System.out.println(selectedItems.get(selectedItems.size()-1));
 		return selectedItems;
 	}
+	
+	@ResponseBody
+	@RequestMapping("itemBrand")
+	public List<Item> getItemByBrand()
+	{
+		List<Item> selectedItems  = shopDAO.getItemByBrand("Tyke");
+		System.out.println(selectedItems.get(selectedItems.size()-1));
+		return selectedItems;
+	}
+	
+	@ResponseBody
+	@RequestMapping("itemBrandPrice")
+	public List<Item> showItemByBrandAndPrice()
+	{
+		List<Item> selectedItems  = shopDAO.sortItemByPriceAndBrand("Tyke");
+		System.out.println(selectedItems.get(selectedItems.size()-1));
+		return selectedItems;
+	}
+	@ResponseBody
+	@RequestMapping("itemCatPrice")
+	public List<Item> showItemByCatAndPrice()
+	{
+		List<Item> selectedItems  = shopDAO.sortItemByPriceAndCat("Child Male");
+		System.out.println(selectedItems.get(selectedItems.size()-1));
+		return selectedItems;
+	}
 }

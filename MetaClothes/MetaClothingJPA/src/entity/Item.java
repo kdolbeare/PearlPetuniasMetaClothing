@@ -14,7 +14,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "item")
-@NamedQueries ({@NamedQuery(name="item.getItemByCat", query="SELECT i from Item i WHERE i.category = :category")})
+@NamedQueries ({@NamedQuery(name="item.getItemByCat", query="SELECT i from Item i WHERE i.category = :category"), 
+	@NamedQuery(name="item.getItemByBrand", query="SELECT i from Item i WHERE i.brand = :brand"),
+	@NamedQuery(name="item.sortItemByBrandAndPriceLow", query="SELECT i from Item i WHERE i.brand = :brand ORDER BY i.price DESC"),
+	@NamedQuery(name="item.sortItemByCatAndPriceLow", query="SELECT i from Item i WHERE i.category = :category ORDER BY i.price DESC")})
 public class Item
 {
 	@Id
