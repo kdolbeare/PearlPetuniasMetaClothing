@@ -37,7 +37,6 @@ public class User {
 	private boolean isEmployee;
 	@OneToOne(mappedBy="user")
 	private Cart cart;
-	
 	@OneToMany(mappedBy="user")
 	private List<Sale> sales;
 	
