@@ -33,7 +33,6 @@ public class Sale {
 
 	public Sale( Date date, List<SaleItem> items, User user)
 	{
-		super();
 		this.date = date;
 		this.items = items;
 		this.user = user;
@@ -71,5 +70,11 @@ public class Sale {
 	public void setUserid(User user)
 	{
 		this.user = user;
+	}
+	public void addItems(SaleItem item){
+		items.add(item);
+	}
+	public void removeItems(SaleItem item){
+		items.remove(items.indexOf(item));
 	}
 }
