@@ -33,6 +33,6 @@ public class UserController
 	@ResponseBody
 	@RequestMapping(path="testCreate")
 	public String createUser() {
-		return (userDAO.createUser("david", "silverfox@gmail.com", "hello", true));
+		return (userDAO.createUser("davids", "silverfox@gmail.com", "hello", true));
 	}
 }
