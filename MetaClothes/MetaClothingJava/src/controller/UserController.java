@@ -21,13 +21,12 @@ public class UserController
 	{
 		return "pong";
 	}
-	@ResponseBody
-	@RequestMapping(path="user", method= RequestMethod.GET)
+
+	@RequestMapping("user")
 	public User getUser()
 	{
-		
-		//System.out.println(userDAO.getUserByEmail("kris@dolbeare.com"));
-		return userDAO.getUserByEmail("indarys@gmail.com");
+		System.out.println(userDAO.getUserByEmail("kris@dolbeare.com"));	
+		return (userDAO.getUserByEmail("kris@dolbeare.com"));	
 	}
 	
 	@ResponseBody

@@ -18,7 +18,7 @@ public class SaleItem {
 	@JoinColumn(name="itemid")
 	private Item item;
 	@ManyToOne
-	@JoinColumn(name="cartid")
+	@JoinColumn(name="saleid")
 	private Sale sale;
 	private int quantity;
 	
