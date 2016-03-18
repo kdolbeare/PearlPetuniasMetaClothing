@@ -21,7 +21,7 @@ public class Sale {
 	private int id;
 	private Date date;
 	private int price;
-	@OneToMany(mappedBy="cart")
+	@OneToMany(mappedBy="sale")
 	private List<SaleItem> items;
 	@ManyToOne
 	@JoinColumn(name="userid")
