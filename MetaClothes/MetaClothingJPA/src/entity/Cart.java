@@ -14,7 +14,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cart")
-
 public class Cart
 {	
 	@Id
@@ -30,15 +29,11 @@ public class Cart
 		items = new ArrayList<CartItem>();
 	}
 	
-	
-	
 	public Cart(List<CartItem> items, User user)
 	{
 		this.items = items;
 		this.user = user;
 	}
-
-
 
 	public int getId()
 	{
