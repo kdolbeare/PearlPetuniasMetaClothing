@@ -44,4 +44,3 @@ function verbData(method, url, callback, obj){
 function listUsers(data){
 	console.log(data);
 }
-

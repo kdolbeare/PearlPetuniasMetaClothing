@@ -19,7 +19,7 @@ public class ShopController
 	private ShopDAO shopDAO;
 	
 	@ResponseBody
-	@RequestMapping("itemCat")
+	@RequestMapping("itemCart")
 	public List<Item> getItemByCat()
 	{
 		List<Item> selectedItems  = shopDAO.getItemByCat("Child Male");
