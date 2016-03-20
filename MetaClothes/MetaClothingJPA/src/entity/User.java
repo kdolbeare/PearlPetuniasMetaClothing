@@ -16,33 +16,37 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
-@NamedQueries ({@NamedQuery(name="user.getUserByEmail", query="SELECT u FROM User u WHERE u.email = :email"),
-	@NamedQuery(name="user.getUserByName", query="SELECT u FROM User u WHERE u.name = :name"), @NamedQuery(name="user.getUser", query="SELECT u FROM User u WHERE u.email = :email AND u.password = :password")})
+@NamedQueries({ @NamedQuery(name = "user.getUserByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
+		@NamedQuery(name = "user.getUserByName", query = "SELECT u FROM User u WHERE u.name = :name"),
+		@NamedQuery(name = "user.getUser", query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password"),
+		@NamedQuery(name = "user.getUserById", query = "SELECT u FROM User u WHERE u.id = :id") })
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String name;
-	
+
 	private String email;
-	
+
 	private String password;
-	
+
 	@OneToMany(mappedBy = "user")
 	private List<Address> addresses;
-	
+
 	@Column(name = "isemployee")
 	private boolean isEmployee;
-	@OneToOne(mappedBy="user")
+	@OneToOne(mappedBy = "user")
 	private Cart cart;
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy = "user")
 	private List<Sale> sales;
-	
-	public User() {
+
+	public User()
+	{
 		addresses = new ArrayList<Address>();
 		sales = new ArrayList<Sale>();
+		cart = new Cart();
 	}
 
 	public User(String name, String email, String password, boolean isEmployee)
@@ -54,6 +58,7 @@ public class User {
 		this.isEmployee = isEmployee;
 		addresses = new ArrayList<Address>();
 		sales = new ArrayList<Sale>();
+		cart = new Cart();
 	}
 
 	public int getId()
@@ -111,7 +116,7 @@ public class User {
 		this.addresses = addresses;
 	}
 
-	public Cart getCarts()
+	public Cart getCart()
 	{
 		return cart;
 	}
