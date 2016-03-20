@@ -4,13 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.ShopDAO;
 import entity.Item;
-import entity.User;
 
 @Controller
 public class ShopController
@@ -18,13 +17,23 @@ public class ShopController
 	@Autowired
 	private ShopDAO shopDAO;
 	
+//	@ResponseBody
+//	@RequestMapping("itemCat")
+//	public List<Item> getItemByCat()
+//	{
+//		List<Item> selectedItems  = shopDAO.getItemByCat("Child Male");
+//		System.out.println(selectedItems.get(selectedItems.size()-1));
+//		return selectedItems;
+//	}
 	@ResponseBody
-	@RequestMapping("itemCat")
-	public List<Item> getItemByCat()
-	{
-		List<Item> selectedItems  = shopDAO.getItemByCat("Child Male");
-		System.out.println(selectedItems.get(selectedItems.size()-1));
-		return selectedItems;
+	@RequestMapping(path="itemCat/{category}")
+	public List<Item> getItemByCat(@PathVariable("category") String category){
+		return shopDAO.getItemByCat(category);
+	}
+	@ResponseBody
+	@RequestMapping(path="itemBrand/{brand}")
+	public List<Item> getItemByBrand(@PathVariable("brand") String brand){
+		return shopDAO.getItemByBrand(brand);
 	}
 	
 	@ResponseBody
@@ -44,6 +53,13 @@ public class ShopController
 		System.out.println(selectedItems.get(selectedItems.size()-1));
 		return selectedItems;
 	}
+	
+	@ResponseBody
+	@RequestMapping(path="itemBrandandPrice/{brand}")
+	public List<Item> getItemByBrandAndPrice(@PathVariable("brand") String brand){
+		return shopDAO.sortItemByPriceAndBrand(brand);
+	}
+	
 	@ResponseBody
 	@RequestMapping("itemCatPrice")
 	public List<Item> showItemByCatAndPrice()
@@ -51,5 +67,11 @@ public class ShopController
 		List<Item> selectedItems  = shopDAO.sortItemByPriceAndCat("Child Male");
 		System.out.println(selectedItems.get(selectedItems.size()-1));
 		return selectedItems;
+	}
+	
+	@ResponseBody
+	@RequestMapping(path="itemCatPrice/{category}")
+	public List<Item> getItemByCatAndPrice(@PathVariable("category") String category){
+		return shopDAO.sortItemByPriceAndCat(category);
 	}
 }
