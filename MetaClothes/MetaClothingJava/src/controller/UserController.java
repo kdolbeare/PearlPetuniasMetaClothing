@@ -55,4 +55,9 @@ public class UserController
 	public String createUser() {
 		return (userDAO.createUser("davids", "silverfox@gmail.com", "hello", true));
 	}
+	@ResponseBody
+	@RequestMapping(path="createUser")
+	public String createUser(@RequestBody User user){
+		return userDAO.createUser(user);
+	}
 }
