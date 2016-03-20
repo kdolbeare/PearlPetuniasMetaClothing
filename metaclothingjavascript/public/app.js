@@ -1,6 +1,6 @@
-window.onload = function(){
-	getData('http://localhost:8080/MetaClothingJava/rest/userTest', listUsers);
-};
+// window.onload = function(){
+	// getData('http://localhost:8080/MetaClothingJava/rest/userTest', listUsers);
+// };
 
 
 function getData(url, callback){
