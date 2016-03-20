@@ -1,5 +1,5 @@
 window.onload = function(){
-	getData('http://localhost:8080/MetaClothingJava/rest/user', listUsers);
+	getData('http://localhost:8080/MetaClothingJava/rest/userTest', listUsers);
 };
 
 
@@ -44,4 +44,3 @@ function verbData(method, url, callback, obj){
 function listUsers(data){
 	console.log(data);
 }
-
