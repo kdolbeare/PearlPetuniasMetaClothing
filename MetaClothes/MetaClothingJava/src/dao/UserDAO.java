@@ -36,6 +36,13 @@ public class UserDAO {
 		System.out.println(temp);
 		return temp;
 	}
+	
+	public User getUserById(int id){
+		User user = em.createNamedQuery("user.getUserById", User.class).setParameter("id", id).getSingleResult();
+		
+		return user;
+	}
+	
 	public String createUser(String name, String email, String password, boolean isEmployee) {
 		User temp;
 		try {
@@ -50,6 +57,8 @@ public class UserDAO {
 			User user = new User(name, email, password, isEmployee);
 			System.out.println(user);
 			em.persist(user);
+			user.getCart().setUser(user);
+			em.persist(user.getCart());
 			return "User created";
 		}
 	}
