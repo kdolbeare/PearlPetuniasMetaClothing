@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -7,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -27,14 +27,13 @@ public class Cart
 	private User user;
 	
 	public Cart() {
-		
+		items = new ArrayList<CartItem>();
 	}
 	
 	
 	
-	public Cart(int id, List<CartItem> items, User user)
+	public Cart(List<CartItem> items, User user)
 	{
-		this.id = id;
 		this.items = items;
 		this.user = user;
 	}
@@ -71,6 +70,13 @@ public class Cart
 		this.user = user;
 	}
 	
+	public void addItems(CartItem item){
+		items.add(item);
+	}
+	
+	public void clearItems(){
+		items.clear();
+	}
 	
 	
 }
