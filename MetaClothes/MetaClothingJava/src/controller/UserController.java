@@ -21,6 +21,14 @@ public class UserController
 	{
 		return "pong";
 	}
+	
+	@ResponseBody
+	@RequestMapping("userTest")
+	public User getTestUser()
+	{
+		User loggedin = userDAO.getUser("silverfox@gmail.com", "hello");
+		return loggedin;
+	}
 
 	@ResponseBody
 	@RequestMapping("user")
