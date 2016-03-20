@@ -2,8 +2,9 @@ package controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.UserDAO;
@@ -30,18 +31,23 @@ public class UserController
 		return loggedin;
 	}
 
+//	@ResponseBody
+//	@RequestMapping("user")
+//	public String getUser()
+//	{
+//		User loggedin = userDAO.getUser("silverfox@gmail.com", "hello");
+//		User exists = userDAO.getUserByEmail("silverfox@gmail.com");
+//		if (exists == null) {
+//			return "User not Found";
+//		} else if (exists.equals(loggedin)) {
+//			return "User Found";
+//					}
+//		else return "User Password Incorrect";
+//	}
 	@ResponseBody
-	@RequestMapping("user")
-	public String getUser()
-	{
-		User loggedin = userDAO.getUser("silverfox@gmail.com", "hello");
-		User exists = userDAO.getUserByEmail("silverfox@gmail.com");
-		if (exists == null) {
-			return "User not Found";
-		} else if (exists.equals(loggedin)) {
-			return "User Found";
-					}
-		else return "User Password Incorrect";
+	@RequestMapping(path="user/{username}/{password}")
+	public User getUser(@PathVariable("username") String username, @PathVariable("password") String password){
+		return userDAO.getUser(username, password);
 	}
 	
 	@ResponseBody
