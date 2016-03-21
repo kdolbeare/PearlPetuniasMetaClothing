@@ -27,6 +27,56 @@ app.use(express.static(__dirname + '/public'));
 //handlebars stuff
 var aboutLib = require('./lib/about.js');
 var loginLib = require('./lib/login.js');
+var storeLib = require('./lib/store.js');
+
+var credentials = require('./public/credentials.js');
+var cookieParser = require('cookie-parser');
+app.use(cookieParser(credentials().secret));
+
+app.get('/setCookie',function(req,res){
+  if(!req.signedCookies.cart){
+    console.log("there is not a cart Master!");
+  res.cookie('cart',[], {signed : true});
+  }else{
+    console.log("there is a cart Master!");
+    console.log(req.signedCookies.cart.length);
+  }
+  res.send(true);//change me to whatever is needed
+});
+
+app.post('/addToCart',function(req,res){
+  
+  var item = req.body.item;
+  var price = Number(req.body.price);
+  var quant = Number(req.body.quant);
+  var total = function(quant,price){return quant*price;};
+  console.log("start \n");
+  /*check the cart length, if there is nothing just push in the new item.
+    if there is something, compare new item til we find a match, increment the quant of the match
+  */
+  var int = -1;
+  if(req.signedCookies.cart.length>0){
+    for(var i=0;i<req.signedCookies.cart.length;i++){
+      console.log("in loop..."+i);
+      if(req.signedCookies.cart[i].item===item){
+        int = i;break;
+      }
+    }
+    if(int!==-1){
+      req.signedCookies.cart[int].quant = req.signedCookies.cart[int].quant+quant;
+      req.signedCookies.cart[int].total = total(req.signedCookies.cart[int].quant,req.signedCookies.cart[int].price);
+    }else{
+      req.signedCookies.cart.push({item:item,price:price,quant:quant,total:total(quant,price)});
+    }
+  }else{
+    console.log("cart was empty, pushing in...");
+    req.signedCookies.cart.push({item:item,price:price,quant:quant,total:total(quant,price)});
+  }
+  console.log("cart: ");
+  console.log(req.signedCookies.cart);
+  res.cookie("cart", req.signedCookies.cart, {signed : true});
+  res.send(true);
+});
 
 app.get('/', function(req,res) {
 	console.log("index");
@@ -54,6 +104,11 @@ app.post('/userLogin', function(req,res) {
 //test method
 app.get('/hello', function(req, res){
 	res.send('HOLA HELLO META Clothing');
+});
+
+app.get('/store', function(req,res) {
+	console.log("store");
+	res.render('store', {page : storeLib.getStore()});
 });
 
 app.listen(3000, function(){
