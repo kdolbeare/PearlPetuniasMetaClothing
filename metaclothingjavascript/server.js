@@ -97,7 +97,7 @@ app.post('/userLogin', function(req,res) {
 	req.session.user = req.body.id;
 	console.log(req.body.id + " in app.get userLogin");
 	//ask Kris K about this:
-	res.render('index');
+	res.send(req.body);
 });
 
 //test method
