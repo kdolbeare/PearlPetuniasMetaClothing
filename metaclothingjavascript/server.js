@@ -3,7 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 var session = require('express-session');
-var credentials = require('./public/credentials.js')
+var credentials = require('./public/credentials.js');
 app.use(session({
 	resave: false,
 	saveUnitialized: false,
@@ -29,9 +29,8 @@ var aboutLib = require('./lib/about.js');
 var loginLib = require('./lib/login.js');
 var storeLib = require('./lib/store.js');
 
-var credentials = require('./public/credentials.js');
 var cookieParser = require('cookie-parser');
-app.use(cookieParser(credentials().secret));
+app.use(cookieParser(credentials.cookieSecret));
 
 app.get('/setCookie',function(req,res){
   if(!req.signedCookies.cart){

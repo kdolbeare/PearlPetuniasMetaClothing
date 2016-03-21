@@ -1,19 +1,10 @@
-<script>onload=function(){
-	var xhr = new XMLHttpRequest();
-  xhr.open('GET','/setCookie');
-  xhr.onreadystatechange=function(){
-    console.log("This is in setCookie route, after the readystatechange, Master: "+xhr.responseText);
-  };
-
-  xhr.send(null);
-
-};</script>
-
 <h1>{{page.header}}</h1>
 <div class="contentContainer">
-	<div>{{page.store}}</div>
+	<div>{{page}}</div>
 	<div>
-		{{page.store.description}}<br>
+		{{page.description}}<br>
 		
 	</div>
+	<div id = "tyke">Get Items</div>
 </div>
+{{{page.script}}}
