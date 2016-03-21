@@ -3,7 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 var session = require('express-session');
-var credentials = require('./public/credentials.js')
+var credentials = require('./public/credentials.js');
 app.use(session({
 	resave: false,
 	saveUnitialized: false,
