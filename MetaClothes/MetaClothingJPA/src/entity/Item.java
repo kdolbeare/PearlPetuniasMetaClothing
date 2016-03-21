@@ -12,6 +12,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "item")
 @NamedQueries ({@NamedQuery(name="item.getItemByCat", query="SELECT i from Item i WHERE i.category = :category"), 
@@ -30,8 +32,10 @@ public class Item
 	private int rating;
 	private String category;
 	@OneToMany(mappedBy = "item")
+	@JsonBackReference
 	private List<CartItem> cartItems;
 	@OneToMany(mappedBy = "item")
+	@JsonBackReference
 	private List<SaleItem> saleItems;
 	
 	public Item() {

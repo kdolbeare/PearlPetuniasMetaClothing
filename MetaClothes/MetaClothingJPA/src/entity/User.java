@@ -16,6 +16,8 @@ import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "user")
 @NamedQueries({ @NamedQuery(name = "user.getUserByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
@@ -40,6 +42,8 @@ public class User {
 	@Column(name = "isemployee")
 	private boolean isEmployee;
 	@OneToOne(mappedBy = "user")
+	@JsonIgnore
+	@JsonBackReference
 	private Cart cart;
 	@OneToMany(mappedBy = "user")
 	private List<Sale> sales;
