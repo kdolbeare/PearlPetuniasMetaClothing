@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name ="address")
 public class Address {
@@ -24,6 +26,7 @@ public class Address {
 	private int zipcode;
 	@ManyToOne
 	@JoinColumn(name="userid")
+	@JsonIgnore
 	private User user;
 	@Column(name="isbilling")
 	private boolean isBilling;
