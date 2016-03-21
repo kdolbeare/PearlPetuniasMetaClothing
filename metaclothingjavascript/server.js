@@ -19,6 +19,7 @@ app.use(express.static(__dirname + '/public'));
 
 var aboutLib = require('./lib/about.js');
 var loginLib = require('./lib/login.js');
+var storeLib = require('./lib/store.js');
 
 app.get('/', function(req,res) {
 	console.log("index");
@@ -37,6 +38,11 @@ app.get('/login', function(req,res) {
 
 app.get('/hello', function(req, res){
 	res.send('HOLA HELLO META Clothing');
+});
+
+app.get('/store', function(req,res) {
+	console.log("store");
+	res.render('store', {page : storeLib.getStore()});
 });
 
 app.listen(3000, function(){
