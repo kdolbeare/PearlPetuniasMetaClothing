@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name = "user")
 @NamedQueries({ @NamedQuery(name = "user.getUserByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
@@ -140,7 +142,7 @@ public class User {
 	public String toString()
 	{
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", addresses="
-				+ addresses + ", isEmployee=" + isEmployee + ", cart=" + cart + ", sales=" + sales + "]";
+				+ addresses + ", isEmployee=" + isEmployee + ", sales=" + sales + "]";
 	}
 
 }

@@ -15,9 +15,9 @@ public class CartDAO {
 	@PersistenceContext
 	private EntityManager em;
 	
-	public Cart getUserCart(User user){
-		return user.getCart();
-	}
+//	public Cart getUserCart(User user){
+//		return user.getCart();
+//	}
 	
 	public String addCartItem(Cart cart, CartItem item){
 		List<CartItem> cartItems = cart.getItems();
