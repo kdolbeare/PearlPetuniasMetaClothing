@@ -16,5 +16,25 @@ onload = function() {
 
 function createSession(data) {
   console.log(data.email + "in CreateSession");
-  verbData('POST', '/userLogin', null, data);
+  loginData('POST', '/userLogin', data);
+}
+
+function loginData(method,url,object) {
+  var xhr = new XMLHttpRequest();
+  xhr.open(method, url);
+
+  if (object) {
+    xhr.setRequestHeader('Content-Type', 'application/json');
+  }
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status < 400) {
+      var user = JSON.parse(xhr.responseText);
+      console.log(user);
+      if (user.email) {
+        window.location.href = '/';
+      }
+    }
+  };
+  xhr.send(JSON.stringify(object)); 
 }

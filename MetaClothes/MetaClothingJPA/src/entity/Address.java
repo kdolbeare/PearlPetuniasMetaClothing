@@ -26,10 +26,9 @@ public class Address {
 	private int zipcode;
 	@ManyToOne
 	@JoinColumn(name="userid")
-	@JsonIgnore
 	private User user;
 	@Column(name="isbilling")
-	private boolean isBilling;
+	private boolean sameAsBilling;
 	//constructors
 	public Address(){
 		
@@ -41,7 +40,7 @@ public class Address {
 		this.stateAbbrev = state;
 		this.zipcode = zip;
 		this.user = user;
-		this.isBilling = billing;
+		this.sameAsBilling = billing;
 	}
 	//getters and setters
 	public int getId()
@@ -92,13 +91,13 @@ public class Address {
 	{
 		this.user = user;
 	}
-	public boolean isBilling()
+	public boolean sameAsBilling()
 	{
-		return isBilling;
+		return sameAsBilling;
 	}
 	public void setBilling(boolean isBilling)
 	{
-		this.isBilling = isBilling;
+		this.sameAsBilling = isBilling;
 	}
 	
 }
