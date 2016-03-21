@@ -20,10 +20,12 @@ getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Tyke', displayIte
 function displayItems(itemList) {
    var body = document.querySelector("body");
    var ul = document.createElement("ul");
+   var addCart = document.createElement("p");
+   addCart.innerHTML= ">add to cart<";
    ul.id = "items";
    for (var i = 0; i < itemList.length; i++) {
      var li = document.createElement("li");
-     li.innerHTML = itemList[i];
+     li.innerHTML = itemList[i].name + " $" + itemList[i].price + addCart;
      ul.appendChild(li);
    }
    body.appendChild(ul);
