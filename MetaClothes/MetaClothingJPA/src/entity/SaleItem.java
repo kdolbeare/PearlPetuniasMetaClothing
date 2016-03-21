@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="saleitem")
 public class SaleItem {
@@ -16,9 +18,11 @@ public class SaleItem {
 	private int id;
 	@ManyToOne
 	@JoinColumn(name="itemid")
+	@JsonManagedReference
 	private Item item;
 	@ManyToOne
 	@JoinColumn(name="saleid")
+	@JsonManagedReference
 	private Sale sale;
 	private int quantity;
 	

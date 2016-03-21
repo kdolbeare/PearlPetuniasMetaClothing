@@ -12,7 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "cart")
@@ -22,10 +23,11 @@ public class Cart
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@OneToMany(mappedBy="cart")
+	@JsonBackReference
 	private List<CartItem> items;
 	@OneToOne
 	@JoinColumn(name="userid")
-	@JsonIgnore
+	@JsonManagedReference
 	private User user;
 	
 	public Cart() {
