@@ -9,9 +9,8 @@ onload = function() {
       password : document.loginForm.password.value;
     };
     console.log(obj);
+    var url = 'http://localhost:8080/MetaClothingJava/rest/user/' + obj.email +'/' + obj.password;
     // getData('http://localhost:8080/MetaClothingJava/rest/userTest', listUsers);
-    var address = 'http://localhost:8080/MetaClothingJava/rest/user/' + obj.email +'/'+obj.password;
-    console.log(address);
-    getData(address);
+    getData(url, listUsers);
   });
 }
