@@ -34,7 +34,7 @@ function verbData(method, url, callback, obj){
 	};
 
 	if(obj){
-		console.log(JSON.stringify(obj) + "in app.js");
+		console.log(JSON.stringify(obj) + "in verbData");
 		xhr.send(JSON.stringify(obj));
 	}else{
 		xhr.send(null);
@@ -43,6 +43,6 @@ function verbData(method, url, callback, obj){
 }
 
 function listUsers(data){
-	console.log(data);
+	console.log(data + "in listUsers");
 
 }
