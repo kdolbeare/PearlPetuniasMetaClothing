@@ -7,7 +7,8 @@ onload = function() {
       password : document.loginForm.password.value
     };
     console.log(obj);
+    var url = 'http://localhost:8080/MetaClothingJava/rest/user/' + obj.email +'/' + obj.password;
     // getData('http://localhost:8080/MetaClothingJava/rest/userTest', listUsers);
-    verbData('PUT','http://localhost:8080/MetaClothingJava/rest/user', listUsers, obj);
+    getData(url, listUsers);
   });
 }

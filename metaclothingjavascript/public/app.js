@@ -34,6 +34,7 @@ function verbData(method, url, callback, obj){
 	};
 
 	if(obj){
+		console.log(JSON.stringify(obj) + "in app.js");
 		xhr.send(JSON.stringify(obj));
 	}else{
 		xhr.send(null);
