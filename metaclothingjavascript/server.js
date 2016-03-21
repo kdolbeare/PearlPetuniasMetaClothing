@@ -28,6 +28,7 @@ app.use(express.static(__dirname + '/public'));
 var aboutLib = require('./lib/about.js');
 var loginLib = require('./lib/login.js');
 var storeLib = require('./lib/store.js');
+var signupLib = require('./lib/signup.js');
 
 var cookieParser = require('cookie-parser');
 app.use(cookieParser(credentials.cookieSecret));
@@ -44,7 +45,7 @@ app.get('/setCookie',function(req,res){
 });
 
 app.post('/addToCart',function(req,res){
-  
+
   var item = req.body.item;
   var price = Number(req.body.price);
   var quant = Number(req.body.quant);
@@ -90,6 +91,11 @@ app.get('/about', function(req,res) {
 app.get('/login', function(req,res) {
 	console.log("login in server.js");
 	res.render('login', {page : loginLib.getLogin()});
+});
+
+app.get('/signup', function(req,res) {
+	console.log("signup in server.js");
+	res.render('signup', {page : signupLib.getSignup()});
 });
 
 //api connections
