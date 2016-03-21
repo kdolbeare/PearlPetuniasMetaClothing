@@ -25,6 +25,7 @@ onload = function() {
           isEmployee: isEmployee,
           address: address
         };
+              console.log(user);
       });
-      console.log(user);
+
     }
