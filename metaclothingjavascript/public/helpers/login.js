@@ -8,7 +8,11 @@ onload = function() {
     };
     console.log(obj);
     var url = 'http://localhost:8080/MetaClothingJava/rest/user/' + obj.email +'/' + obj.password;
-    // getData('http://localhost:8080/MetaClothingJava/rest/userTest', listUsers);
-    getData(url, listUsers);
+    getData(url, createSession);
   });
+}
+
+function createSession(data) {
+  console.log(data.email + "in CreateSession");
+  verbData('POST', '/userLogin', null, data);
 }

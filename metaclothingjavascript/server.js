@@ -2,6 +2,13 @@ var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
+var session = require('express-session');
+var credentials = require('./public/credentials.js')
+app.use(session({
+	resave: false,
+	saveUnitialized: false,
+	secret: credentials.cookieSecret
+}));
 
 var handlebars = require('express-handlebars')
 	.create({defaultLayout: 'application'});
@@ -17,6 +24,7 @@ app.use(express.static(__dirname + '/public'));
 // 	res.render('test');
 // });
 
+//handlebars stuff
 var aboutLib = require('./lib/about.js');
 var loginLib = require('./lib/login.js');
 
@@ -35,6 +43,15 @@ app.get('/login', function(req,res) {
 	res.render('login', {page : loginLib.getLogin()});
 });
 
+//api connections
+app.post('/userLogin', function(req,res) {
+	req.session.user = req.body.id;
+	console.log(req.body.id + " in app.get userLogin");
+	//ask Kris K about this:
+	res.render('index');
+});
+
+//test method
 app.get('/hello', function(req, res){
 	res.send('HOLA HELLO META Clothing');
 });
