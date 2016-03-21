@@ -31,7 +31,7 @@ var storeLib = require('./lib/store.js');
 
 var credentials = require('./public/credentials.js');
 var cookieParser = require('cookie-parser');
-app.use(cookieParser(credentials().secret));
+app.use(cookieParser(credentials.cookieSecret));
 
 app.get('/setCookie',function(req,res){
   if(!req.signedCookies.cart){
