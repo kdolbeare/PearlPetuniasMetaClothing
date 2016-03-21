@@ -1,6 +1,6 @@
-window.onload = function(){
-	getData('http://localhost:8080/MetaClothingJava/rest/userTest', listUsers);
-};
+// window.onload = function(){
+	// getData('http://localhost:8080/MetaClothingJava/rest/userTest', listUsers);
+// };
 
 
 function getData(url, callback){
@@ -34,6 +34,7 @@ function verbData(method, url, callback, obj){
 	};
 
 	if(obj){
+		console.log(JSON.stringify(obj) + "in app.js");
 		xhr.send(JSON.stringify(obj));
 	}else{
 		xhr.send(null);

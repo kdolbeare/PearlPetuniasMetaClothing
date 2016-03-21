@@ -17,7 +17,8 @@ app.use(express.static(__dirname + '/public'));
 // 	res.render('test');
 // });
 
-var about = require('./lib/about.js');
+var aboutLib = require('./lib/about.js');
+var loginLib = require('./lib/login.js');
 
 app.get('/', function(req,res) {
 	console.log("index");
@@ -26,7 +27,12 @@ app.get('/', function(req,res) {
 
 app.get('/about', function(req,res) {
 	console.log("about");
-	res.render('about', {page : about.getAbout()});
+	res.render('about', {page : aboutLib.getAbout()});
+});
+
+app.get('/login', function(req,res) {
+	console.log("login in server.js");
+	res.render('login', {page : loginLib.getLogin()});
 });
 
 app.get('/hello', function(req, res){
