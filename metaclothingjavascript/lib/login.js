@@ -1,6 +1,6 @@
 var login = {
 	title : "Login",
-	script : "<script src='helpers/login.js'></script>"
+	script : "<script src='../public/helpers/login.js'></script>"
 };
 
 module.exports.getLogin = function() {

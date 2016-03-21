@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name = "cart")
 public class Cart
@@ -23,6 +25,7 @@ public class Cart
 	private List<CartItem> items;
 	@OneToOne
 	@JoinColumn(name="userid")
+	@JsonIgnore
 	private User user;
 	
 	public Cart() {
@@ -32,7 +35,7 @@ public class Cart
 	public Cart(List<CartItem> items, User user)
 	{
 		this.items = items;
-		this.user = user;
+		//this.user = user;
 	}
 
 	public int getId()

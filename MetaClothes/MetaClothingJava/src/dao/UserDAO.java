@@ -57,8 +57,8 @@ public class UserDAO {
 			User user = new User(name, email, password, isEmployee);
 			System.out.println(user);
 			em.persist(user);
-			user.getCart().setUser(user);
-			em.persist(user.getCart());
+			//user.getCart().setUser(user);
+			//em.persist(user.getCart());
 			return "User created";
 		}
 	}
