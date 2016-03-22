@@ -4,7 +4,7 @@ onload = function() {
     var isBilling = document.getElementById("isBilling").checked;
     var billing = document.getElementById('isBilling');
     var isShipping = true;
-    
+
     billing.addEventListener('click', function(e){
      // e.preventDefault();
         billingDOM();
@@ -12,18 +12,16 @@ onload = function() {
         isBilling = false;
     });
 
-        
+
     document.getElementById("submit").addEventListener('click', function(e) {
         e.preventDefault();
-
-
         var address = {
           streetAddress: document.signupForm.streetAddress.value,
           city: document.signupForm.city.value,
           stateAbbrev: document.signupForm.stateAbbrev.value,
           zipcode: document.signupForm.zipcode.value,
           isBilling: isBilling,
-          isShipping: isShipping
+          isShipping: true
         };
         var user = {
           name: document.signupForm.name.value,

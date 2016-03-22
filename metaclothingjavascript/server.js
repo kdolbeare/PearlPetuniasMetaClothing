@@ -30,6 +30,7 @@ var loginLib = require('./lib/login.js');
 var storeLib = require('./lib/store.js');
 var signupLib = require('./lib/signup.js');
 
+
 var cookieParser = require('cookie-parser');
 app.use(cookieParser(credentials.cookieSecret));
 
@@ -80,12 +81,13 @@ app.post('/addToCart',function(req,res){
 
 app.get('/', function(req,res) {
 	console.log("index");
-	res.render('index');
+	console.log(req.session.user);
+	res.render('index', {session: req.session.user});
 });
 
 app.get('/about', function(req,res) {
 	console.log("about");
-	res.render('about', {page : aboutLib.getAbout()});
+	res.render('about', {page : aboutLib.getAbout(), session: req.session.user});
 });
 
 app.get('/login', function(req,res) {
@@ -102,7 +104,6 @@ app.get('/signup', function(req,res) {
 app.post('/userLogin', function(req,res) {
 	req.session.user = req.body.id;
 	console.log(req.body.id + " in app.get userLogin");
-	//ask Kris K about this:
 	res.send(req.body);
 });
 
@@ -113,7 +114,7 @@ app.get('/hello', function(req, res){
 
 app.get('/store', function(req,res) {
 	console.log("store");
-	res.render('store', {page : storeLib.getStore()});
+	res.render('store', {page : storeLib.getStore(), session: req.session.user});
 });
 
 app.listen(3000, function(){

@@ -23,8 +23,12 @@
       <li><a href="/contact">Contact</a></li>
       <li><a href="/store">Store</a></li>
       <!-- if page.session show the logout else.. -->
+      {{#if session}}
+      <li><a href="/logout">Logout</a></li>
+      {{else}}
       <li><a href="/login">Login</a></li>
       <li><a href="/signup">Create New Account</a></li>
+      {{/if}}
     </ul>
     </div>
   </header>
