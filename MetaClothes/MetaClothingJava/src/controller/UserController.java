@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.UserDAO;
@@ -57,8 +58,11 @@ public class UserController
 		return (userDAO.createUser("davids", "silverfox@gmail.com", "hello", true));
 	}
 	@ResponseBody
-	@RequestMapping(path="createUser")
+	@RequestMapping(path="createUser", method=RequestMethod.POST)
 	public String createUser(@RequestBody User user){
-		return userDAO.createUser(user);
+		System.out.println(user);
+		System.out.println(userDAO.createUser(user));
+//		return userDAO.createUser(user);
+		return "yes";
 	}
 }

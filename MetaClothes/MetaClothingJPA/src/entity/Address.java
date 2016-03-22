@@ -28,7 +28,9 @@ public class Address {
 	@JoinColumn(name="userid")
 	private User user;
 	@Column(name="isbilling")
-	private boolean sameAsBilling;
+	private boolean isBilling;
+	@Column(name="isshipping")
+	private boolean isShipping;
 	//constructors
 	public Address(){
 		
@@ -40,7 +42,7 @@ public class Address {
 		this.stateAbbrev = state;
 		this.zipcode = zip;
 		this.user = user;
-		this.sameAsBilling = billing;
+		this.isBilling = billing;
 	}
 	//getters and setters
 	public int getId()
@@ -91,13 +93,21 @@ public class Address {
 	{
 		this.user = user;
 	}
-	public boolean sameAsBilling()
+	public boolean isBilling()
 	{
-		return sameAsBilling;
+		return isBilling;
 	}
 	public void setBilling(boolean isBilling)
 	{
-		this.sameAsBilling = isBilling;
+		this.isBilling = isBilling;
+	}
+	public boolean isShipping()
+	{
+		return isShipping;
+	}
+	public void setShipping(boolean isShipping)
+	{
+		this.isShipping = isShipping;
 	}
 	
 }

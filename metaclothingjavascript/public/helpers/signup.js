@@ -13,17 +13,18 @@ onload = function() {
           city: document.signupForm.city.value,
           stateAbbrev: document.signupForm.stateAbbrev.value,
           zipcode: document.signupForm.zipcode.value,
-          isBilling: isBilling
+          isBilling: isBilling,
+          isShipping: true
         };
         var user = {
           name: document.signupForm.name.value,
           email: document.signupForm.email.value,
           password: document.signupForm.password.value,
           isEmployee: isEmployee,
-          address: address
+          addresses: [address]
         };
-        verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/createUser', createSession, user)
         console.log(user);
-      });
+        verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/createUser', createSession, user)
 
+      });
     }
