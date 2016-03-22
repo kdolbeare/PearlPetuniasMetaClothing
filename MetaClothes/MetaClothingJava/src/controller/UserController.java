@@ -62,15 +62,16 @@ public class UserController
 	}
 	@ResponseBody
 	@RequestMapping(path="createUser", method=RequestMethod.POST)
-	public void createUser(@RequestBody String u){
+	public User createUser(@RequestBody String u){
 		System.out.println(u);
 		ObjectMapper mapper = new ObjectMapper();
-		User user;
+		User user = null;
 		try {
 		user = mapper.readValue(u, User.class);
-		userDAO.createUser(user);
+		user = userDAO.createUser(user);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		return user;
 	}
 }

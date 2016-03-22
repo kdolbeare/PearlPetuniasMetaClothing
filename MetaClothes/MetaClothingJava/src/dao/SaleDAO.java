@@ -33,6 +33,7 @@ public class SaleDAO
 		{
 			test.getItems().add(new SaleItem(item, test, 2));
 		}
+		test.setUserid(cart.getUser());
 		em.persist(test);
 		return test;
 	}

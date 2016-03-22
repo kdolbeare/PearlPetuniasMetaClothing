@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -45,7 +46,7 @@ public class User {
 	@JsonManagedReference (value="usercart")
 	private Cart cart;
 	@OneToMany(mappedBy = "user")
-
+	@JsonManagedReference (value = "sales")
 	private List<Sale> sales;
 
 	public User()
