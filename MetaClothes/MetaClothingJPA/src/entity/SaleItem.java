@@ -18,11 +18,11 @@ public class SaleItem {
 	private int id;
 	@ManyToOne
 	@JoinColumn(name="itemid")
-	@JsonManagedReference
+//	@JsonManagedReference
 	private Item item;
 	@ManyToOne
 	@JoinColumn(name="saleid")
-	@JsonManagedReference
+//	@JsonManagedReference (value = "item")
 	private Sale sale;
 	private int quantity;
 	

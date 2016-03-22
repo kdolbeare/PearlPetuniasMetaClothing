@@ -32,10 +32,10 @@ public class Item
 	private int rating;
 	private String category;
 	@OneToMany(mappedBy = "item")
-	@JsonBackReference
+//	@JsonBackReference
 	private List<CartItem> cartItems;
 	@OneToMany(mappedBy = "item")
-	@JsonBackReference
+//	@JsonBackReference
 	private List<SaleItem> saleItems;
 	
 	public Item() {

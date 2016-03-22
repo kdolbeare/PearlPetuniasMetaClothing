@@ -1,8 +1,6 @@
 package entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,13 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "user")
@@ -36,22 +31,23 @@ public class User {
 
 	private String password;
 
-	@OneToMany(mappedBy = "user")
-	private List<Address> addresses;
+//	@OneToMany(mappedBy = "user")
+//	private List<Address> addresses;
 
 	@Column(name = "isemployee")
 	private boolean isEmployee;
-	@OneToOne(mappedBy = "user")
-	@JsonIgnore
-	@JsonBackReference
+	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
+//	@JsonIgnore
+	@JsonManagedReference (value="usercart")
 	private Cart cart;
-	@OneToMany(mappedBy = "user")
-	private List<Sale> sales;
+//	@OneToMany(mappedBy = "user")
+
+//	private List<Sale> sales;
 
 	public User()
 	{
-		addresses = new ArrayList<Address>();
-		sales = new ArrayList<Sale>();
+//		addresses = new ArrayList<Address>();
+//		sales = new ArrayList<Sale>();
 		cart = new Cart();
 	}
 
@@ -62,8 +58,8 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.isEmployee = isEmployee;
-		addresses = new ArrayList<Address>();
-		sales = new ArrayList<Sale>();
+//		addresses = new ArrayList<Address>();
+//		sales = new ArrayList<Sale>();
 		cart = new Cart();
 	}
 
@@ -112,16 +108,16 @@ public class User {
 		this.isEmployee = isEmployee;
 	}
 
-	public List<Address> getAddresses()
-	{
-		return addresses;
-	}
-
-	public void setAddresses(List<Address> addresses)
-	{
-		this.addresses = addresses;
-	}
-
+//	public List<Address> getAddresses()
+//	{
+//		return addresses;
+//	}
+//
+//	public void setAddresses(List<Address> addresses)
+//	{
+//		this.addresses = addresses;
+//	}
+//
 	public Cart getCart()
 	{
 		return cart;
@@ -131,22 +127,22 @@ public class User {
 	{
 		this.cart = cart;
 	}
-
-	public List<Sale> getSales()
-	{
-		return sales;
-	}
-
-	public void setSales(List<Sale> sales)
-	{
-		this.sales = sales;
-	}
-
-	@Override
-	public String toString()
-	{
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", addresses="
-				+ addresses + ", isEmployee=" + isEmployee + ", sales=" + sales + "]";
-	}
+//
+//	public List<Sale> getSales()
+//	{
+//		return sales;
+//	}
+//
+//	public void setSales(List<Sale> sales)
+//	{
+//		this.sales = sales;
+//	}
+//
+//	@Override
+//	public String toString()
+//	{
+//		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", addresses="
+//				+ addresses + ", isEmployee=" + isEmployee + ", sales=" + sales + "]";
+//	}
 
 }

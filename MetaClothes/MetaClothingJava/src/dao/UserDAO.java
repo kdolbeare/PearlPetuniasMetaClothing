@@ -65,18 +65,26 @@ public class UserDAO {
 	
 	public String createUser(User user){
 		User temp;
-		try {
-			temp = (User)em.createNamedQuery("user.getUserByName").setParameter("name", user.getName()).getSingleResult();
-		} catch (Exception e) {
-			System.out.println("error in createUser" + e);
-			temp = null;
+		user.getCart().setUser(user);
+		em.persist(user);
+		
+		if(em.contains(user)){
+			return "in database";
+		}else {
+			return "user not created";
 		}
-		if(temp!=null) {
-			return "User already exists";
-		} else {
-			System.out.println(user);
-			em.persist(user);
-			return "User created";
-		}
+//		try {
+//			temp = (User)em.createNamedQuery("user.getUserByName").setParameter("name", user.getName()).getSingleResult();
+//		} catch (Exception e) {
+//			System.out.println("error in createUser" + e);
+//			temp = null;
+//		}
+//		if(temp!=null) {
+//			return "User already exists";
+//		} else {
+//			System.out.println(user);
+//			em.persist(user);
+//			return "User created";
+//		}
 	}
 }

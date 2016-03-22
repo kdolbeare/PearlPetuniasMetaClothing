@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -18,10 +19,11 @@ public class CartItem {
 	private int id;
 	@ManyToOne
 	@JoinColumn(name="itemid")
+//	@JsonManagedReference
 	private Item item;
 	@ManyToOne
 	@JoinColumn(name="cartid")
-	@JsonManagedReference
+	@JsonBackReference(value = "cartItem")
 	private Cart cart;
 	private int quantity;
 	
