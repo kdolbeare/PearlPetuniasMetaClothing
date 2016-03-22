@@ -57,7 +57,7 @@ CREATE INDEX idx_cartitem_0 ON metaclothingdb.cartitem ( cartid );
 
 CREATE TABLE metaclothingdb.sale ( 
 	id                   int  NOT NULL  AUTO_INCREMENT,
-	`date`               timestamp   DEFAULT NOW(),
+	`date`               timestamp NOT NULL  DEFAULT NOW(),
 	userid               int  NOT NULL  ,
 	CONSTRAINT pk_invoice PRIMARY KEY ( id )
  ) engine=InnoDB;
