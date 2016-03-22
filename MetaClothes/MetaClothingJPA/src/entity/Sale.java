@@ -1,8 +1,10 @@
 package entity;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,16 +25,17 @@ public class Sale {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Date date;
-	@OneToMany(mappedBy="sale")
-//	@JsonBackReference (value="item")
+	@OneToMany(mappedBy="sale", cascade = CascadeType.PERSIST)
+	@JsonManagedReference (value="saleItem")
 	private List<SaleItem> items;
 	@ManyToOne
-	@JoinColumn(name="userid")
-//	@JsonManagedReference (value="sale")
+	@JoinColumn(name="userid", nullable = false)
+	@JsonBackReference (value = "sales")
 	private User user;
 
 	public Sale()
 	{
+	 items = new ArrayList<SaleItem>();
 
 	}
 

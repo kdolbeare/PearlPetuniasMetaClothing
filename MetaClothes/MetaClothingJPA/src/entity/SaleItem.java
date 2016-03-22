@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="saleitem")
@@ -21,7 +21,7 @@ public class SaleItem {
 	private Item item;
 	@ManyToOne
 	@JoinColumn(name="saleid")
-//	@JsonManagedReference (value = "item")
+	@JsonBackReference (value = "saleItem")
 	private Sale sale;
 	private int quantity;
 	
@@ -71,7 +71,7 @@ public class SaleItem {
 	@Override
 	public String toString()
 	{
-		return "SaleItem [id=" + id + ", item=" + item + ", sale=" + sale + ", quantity=" + quantity + "]";
+		return "SaleItem [id=" + id + ", item=" + item + ", quantity=" + quantity + "]";
 	}
 
 }

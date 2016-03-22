@@ -1,3 +1,4 @@
+DROP SCHEMA IF EXISTS metaclothingdb;
 CREATE SCHEMA metaclothingdb;
 
 CREATE TABLE metaclothingdb.item ( 
@@ -56,7 +57,7 @@ CREATE INDEX idx_cartitem_0 ON metaclothingdb.cartitem ( cartid );
 
 CREATE TABLE metaclothingdb.sale ( 
 	id                   int  NOT NULL  AUTO_INCREMENT,
-	`date`               date  NOT NULL  ,
+	`date`               timestamp   DEFAULT NOW(),
 	userid               int  NOT NULL  ,
 	CONSTRAINT pk_invoice PRIMARY KEY ( id )
  ) engine=InnoDB;

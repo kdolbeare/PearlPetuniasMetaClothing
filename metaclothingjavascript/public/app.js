@@ -44,7 +44,7 @@ function listUsers(data) {
 }
 
 function createSession(data) {
-  console.log(data.email + "in CreateSession");
+  console.log(data.id + " " + data.email + " in CreateSession");
   loginData('POST', '/userLogin', data);
 }
 
