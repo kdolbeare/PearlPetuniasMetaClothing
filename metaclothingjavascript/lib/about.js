@@ -8,6 +8,7 @@ var about = {
     state: "CO",
     zip: "80220"
   },
+  
   employees:[{name:'Cole Frock',
               bio:'A one liner goes here.',
               fullBio:'A multiple paragraph blurb can go here. It can outline the basic full bio found on websites, about employess and they\'re credentials',
@@ -55,6 +56,8 @@ var about = {
               position:'',
               imgPath:''}]
 };
+
+
 
 exports.getAbout = function() {
   return about;
