@@ -20,8 +20,8 @@ onload = function() {
           name: document.signupForm.name.value,
           email: document.signupForm.email.value,
           password: document.signupForm.password.value,
-          isEmployee: isEmployee,
-          addresses: [address]
+          isEmployee: isEmployee
+
         };
         console.log(user);
         verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/createUser', createSession, user)

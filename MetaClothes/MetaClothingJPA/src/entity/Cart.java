@@ -23,7 +23,7 @@ public class Cart
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@OneToMany(mappedBy="cart")
-//	@JsonBackReference
+	@JsonBackReference
 	private List<CartItem> items;
 	@OneToOne
 	@JoinColumn(name="userid")
