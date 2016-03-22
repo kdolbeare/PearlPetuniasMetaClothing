@@ -1,18 +1,17 @@
 
 <div class="contentContainer">
-<h1>{{page.header}}</h1>
-	<div>{{page.about}}</div>
-	<div>
-	<ul>
+<div id="headerDiv"><h1>{{page.header}}</h1></div>
+	
+	<div id="employeeList">
+	<ul id="aboutUl">
 	{{#each page.employees}}
-		<li>{{this.name}}</li>
-		
+		<li>{{#if imgPath}}<img height="45" widht="45" id="bioPic" src="{{imgPath}}"/>{{else}}<img height="45" widht="45" id="bioPic" src="img/batman_placeholder.jpg"/>{{/if}}&nbsp;{{name}}&nbsp;|&nbsp;{{position}}<br></li><li>&nbsp;</li>
+
 		{{/each}}
 		</ul>
-		<!--{{page.location.street}}<br>
+	</div>
 
-		{{page.location.city}}, {{page.location.state}} {{page.location.zip}}-->
-
-		<IMG 
+	<div id="fullBio">
+	{{page.about}}
 	</div>
 </div>
