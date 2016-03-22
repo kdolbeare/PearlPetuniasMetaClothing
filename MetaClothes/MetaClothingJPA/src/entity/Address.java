@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity
 @Table(name ="address")
@@ -25,23 +27,25 @@ public class Address {
 	private int zipcode;
 	@ManyToOne
 	@JoinColumn(name="userid")
+	@JsonBackReference (value = "userAddress")
 	private User user;
 	@Column(name="isbilling")
-	private boolean isBilling;
+	private Boolean isBilling;
 	@Column(name="isshipping")
-	private boolean isShipping;
+	private Boolean isShipping;
 	//constructors
 	public Address(){
 		
 	}
 	
-	public Address( String street, String city, String state, int zip, User user, boolean billing){ 
+	public Address( String street, String city, String state, int zip, User user, Boolean billing, Boolean shipping){ 
 		this.streetAddress = street;
 		this.city = city;
 		this.stateAbbrev = state;
 		this.zipcode = zip;
 		this.user = user;
 		this.isBilling = billing;
+		this.isShipping = shipping;
 	}
 	//getters and setters
 	public int getId()
@@ -92,21 +96,29 @@ public class Address {
 	{
 		this.user = user;
 	}
-	public boolean isBilling()
+	public Boolean isBilling()
 	{
 		return isBilling;
 	}
-	public void setBilling(boolean isBilling)
+	public void setIsBilling(Boolean isBilling)
 	{
 		this.isBilling = isBilling;
 	}
-	public boolean isShipping()
+	public Boolean isShipping()
 	{
 		return isShipping;
 	}
-	public void setShipping(boolean isShipping)
+	public void setIsShipping(Boolean isShipping)
 	{
 		this.isShipping = isShipping;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Address [id=" + id + ", streetAddress=" + streetAddress + ", city=" + city + ", stateAbbrev="
+				+ stateAbbrev + ", zipcode=" + zipcode + ", isBilling=" + isBilling + ", isShipping="
+				+ isShipping + "]";
 	}
 	
 }

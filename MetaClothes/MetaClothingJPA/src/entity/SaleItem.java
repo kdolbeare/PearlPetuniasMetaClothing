@@ -18,7 +18,6 @@ public class SaleItem {
 	private int id;
 	@ManyToOne
 	@JoinColumn(name="itemid")
-//	@JsonManagedReference
 	private Item item;
 	@ManyToOne
 	@JoinColumn(name="saleid")
@@ -67,6 +66,12 @@ public class SaleItem {
 	public void setQuantity(int quantity)
 	{
 		this.quantity = quantity;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "SaleItem [id=" + id + ", item=" + item + ", sale=" + sale + ", quantity=" + quantity + "]";
 	}
 
 }

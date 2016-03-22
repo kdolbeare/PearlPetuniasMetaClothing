@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -31,13 +34,13 @@ public class User {
 
 	private String password;
 
-//	@OneToMany(mappedBy = "user")
-//	private List<Address> addresses;
+	@OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST )
+	@JsonManagedReference (value="userAddress")
+	private List<Address> addresses;
 
 	@Column(name = "isemployee")
-	private boolean isEmployee;
+	private Boolean isEmployee;
 	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
-//	@JsonIgnore
 	@JsonManagedReference (value="usercart")
 	private Cart cart;
 //	@OneToMany(mappedBy = "user")
@@ -51,7 +54,7 @@ public class User {
 		cart = new Cart();
 	}
 
-	public User(String name, String email, String password, boolean isEmployee)
+	public User(String name, String email, String password, Boolean isEmployee)
 	{
 		super();
 		this.name = name;
@@ -98,12 +101,12 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isEmployee()
+	public Boolean isEmployee()
 	{
 		return isEmployee;
 	}
 
-	public void setEmployee(boolean isEmployee)
+	public void setIsEmployee(Boolean isEmployee)
 	{
 		this.isEmployee = isEmployee;
 	}
@@ -138,11 +141,11 @@ public class User {
 //		this.sales = sales;
 //	}
 //
-//	@Override
-//	public String toString()
-//	{
-//		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", addresses="
-//				+ addresses + ", isEmployee=" + isEmployee + ", sales=" + sales + "]";
-//	}
+	@Override
+	public String toString()
+	{
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", addresses="
+				+ addresses + ", isEmployee=" + isEmployee + ", sales=" + "]";
+	}
 
 }
