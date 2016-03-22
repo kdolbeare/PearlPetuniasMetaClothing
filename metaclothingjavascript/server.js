@@ -29,6 +29,7 @@ var aboutLib = require('./lib/about.js');
 var loginLib = require('./lib/login.js');
 var storeLib = require('./lib/store.js');
 var signupLib = require('./lib/signup.js');
+var logoutLib = require('./lib/logout.js');
 
 
 var cookieParser = require('cookie-parser');
@@ -93,6 +94,12 @@ app.get('/about', function(req,res) {
 app.get('/login', function(req,res) {
 	console.log("login in server.js");
 	res.render('login', {page : loginLib.getLogin()});
+});
+
+app.get('/logout', function(req,res) {
+	console.log("logout in server.js");
+	req.session.user=null;
+	res.render('index', {session: req.session.user});
 });
 
 app.get('/signup', function(req,res) {
