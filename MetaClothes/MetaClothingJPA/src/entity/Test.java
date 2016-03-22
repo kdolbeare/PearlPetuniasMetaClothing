@@ -12,7 +12,7 @@ public class Test {
 		
 		em.getTransaction().begin();
 		User user = em.createNamedQuery("user.getUserByEmail", User.class).setParameter("email", "indarys@gmail.com").getSingleResult();
-		Address address = new Address("1234 Suckit Ln.", "Centennial", "NE", 82106, user, true);
+		Address address = new Address("1234 Suckit Ln.", "Centennial", "NE", 82106, user, true, true);
 		
 		
 		//System.out.println(em.contains(user));
