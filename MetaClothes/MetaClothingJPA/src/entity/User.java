@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -43,14 +44,14 @@ public class User {
 	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
 	@JsonManagedReference (value="usercart")
 	private Cart cart;
-//	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user")
 
-//	private List<Sale> sales;
+	private List<Sale> sales;
 
 	public User()
 	{
-//		addresses = new ArrayList<Address>();
-//		sales = new ArrayList<Sale>();
+		addresses = new ArrayList<Address>();
+		sales = new ArrayList<Sale>();
 		cart = new Cart();
 	}
 
@@ -61,8 +62,8 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.isEmployee = isEmployee;
-//		addresses = new ArrayList<Address>();
-//		sales = new ArrayList<Sale>();
+		addresses = new ArrayList<Address>();
+		sales = new ArrayList<Sale>();
 		cart = new Cart();
 	}
 
@@ -111,16 +112,16 @@ public class User {
 		this.isEmployee = isEmployee;
 	}
 
-//	public List<Address> getAddresses()
-//	{
-//		return addresses;
-//	}
-//
-//	public void setAddresses(List<Address> addresses)
-//	{
-//		this.addresses = addresses;
-//	}
-//
+	public List<Address> getAddresses()
+	{
+		return addresses;
+	}
+
+	public void setAddresses(List<Address> addresses)
+	{
+		this.addresses = addresses;
+	}
+
 	public Cart getCart()
 	{
 		return cart;
@@ -130,22 +131,22 @@ public class User {
 	{
 		this.cart = cart;
 	}
-//
-//	public List<Sale> getSales()
-//	{
-//		return sales;
-//	}
-//
-//	public void setSales(List<Sale> sales)
-//	{
-//		this.sales = sales;
-//	}
-//
+
+	public List<Sale> getSales()
+	{
+		return sales;
+	}
+
+	public void setSales(List<Sale> sales)
+	{
+		this.sales = sales;
+	}
+
 	@Override
 	public String toString()
 	{
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", addresses="
-				+ addresses + ", isEmployee=" + isEmployee + ", sales=" + "]";
+				+ addresses + ", isEmployee=" + isEmployee + "]";
 	}
 
 }

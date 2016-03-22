@@ -1,5 +1,6 @@
 package entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,7 @@ public class SaleItem {
 	private Item item;
 	@ManyToOne
 	@JoinColumn(name="saleid")
-//	@JsonManagedReference (value = "item")
+	@JsonManagedReference (value = "saleItem")
 	private Sale sale;
 	private int quantity;
 	
@@ -71,7 +72,7 @@ public class SaleItem {
 	@Override
 	public String toString()
 	{
-		return "SaleItem [id=" + id + ", item=" + item + ", sale=" + sale + ", quantity=" + quantity + "]";
+		return "SaleItem [id=" + id + ", item=" + item + ", quantity=" + quantity + "]";
 	}
 
 }
