@@ -3,6 +3,7 @@ package entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,21 +14,24 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@Entity
+@Entity 
+@JsonIdentityInfo (generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
 @Table(name = "cart")
 public class Cart
 {	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	@OneToMany(mappedBy="cart")
-	@JsonBackReference
+	@OneToMany(mappedBy="cart", cascade=CascadeType.PERSIST)
+	@JsonManagedReference (value = "cartItem")
 	private List<CartItem> items;
-	@OneToOne
-	@JoinColumn(name="userid")
-	@JsonManagedReference
+	@OneToOne 
+	@JoinColumn(name="userid", nullable = false)
+	@JsonBackReference(value = "usercart")
 	private User user;
 	
 	public Cart() {
@@ -77,6 +81,11 @@ public class Cart
 	public void clearItems(){
 		items.clear();
 	}
-	
+
+	@Override
+	public String toString()
+	{
+		return "Cart [id=" + id + ", items=" + items + ", user=" + user + "]";
+	}	
 	
 }

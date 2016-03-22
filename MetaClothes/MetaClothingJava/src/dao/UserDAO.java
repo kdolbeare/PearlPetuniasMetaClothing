@@ -65,7 +65,9 @@ public class UserDAO {
 	
 	public String createUser(User user){
 		User temp;
+		user.getCart().setUser(user);
 		em.persist(user);
+		
 		if(em.contains(user)){
 			return "in database";
 		}else {

@@ -24,11 +24,11 @@ public class Sale {
 	private int id;
 	private Date date;
 	@OneToMany(mappedBy="sale")
-	@JsonBackReference
+//	@JsonBackReference (value="item")
 	private List<SaleItem> items;
 	@ManyToOne
 	@JoinColumn(name="userid")
-	@JsonManagedReference
+//	@JsonManagedReference (value="sale")
 	private User user;
 
 	public Sale()
