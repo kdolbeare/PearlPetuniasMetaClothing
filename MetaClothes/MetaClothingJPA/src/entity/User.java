@@ -52,7 +52,7 @@ public class User {
 	{
 		addresses = new ArrayList<Address>();
 		sales = new ArrayList<Sale>();
-		cart = new Cart();
+//		cart = new Cart();
 	}
 
 	public User(String name, String email, String password, boolean isEmployee)

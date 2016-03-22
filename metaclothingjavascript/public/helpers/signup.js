@@ -3,29 +3,28 @@ onload = function() {
 
     document.getElementById("submit").addEventListener('click', function(e) {
         e.preventDefault();
-        var isEmployee = false;
-        if (isEmployee.checked){
-          isEmployee = true;
-        }
-        var isBilling = true;
-        if (!isBilling.checked){
-          isBilling = false;
-        }
+        var isEmployee = document.getElementById("isEmployee").checked;
+        var isBilling = document.getElementById("isBilling").checked;
+
+        console.log(isBilling);
+
         var address = {
           streetAddress: document.signupForm.streetAddress.value,
           city: document.signupForm.city.value,
           stateAbbrev: document.signupForm.stateAbbrev.value,
           zipcode: document.signupForm.zipcode.value,
-          isBilling: isBilling
+          isBilling: isBilling,
+          isShipping: true
         };
         var user = {
           name: document.signupForm.name.value,
           email: document.signupForm.email.value,
           password: document.signupForm.password.value,
-          isEmployee: isEmployee,
-          address: address
-        };
-              console.log(user);
-      });
+          isEmployee: isEmployee
 
+        };
+        console.log(user);
+        verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/createUser', createSession, user)
+
+      });
     }
