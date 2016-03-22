@@ -63,15 +63,15 @@ public class UserDAO {
 		}
 	}
 	
-	public String createUser(User user){
+	public User createUser(User user){
 		User temp;
 		user.getCart().setUser(user);
 		em.persist(user);
 		
 		if(em.contains(user)){
-			return "in database";
+			return user;
 		}else {
-			return "user not created";
+			return null;
 		}
 //		try {
 //			temp = (User)em.createNamedQuery("user.getUserByName").setParameter("name", user.getName()).getSingleResult();

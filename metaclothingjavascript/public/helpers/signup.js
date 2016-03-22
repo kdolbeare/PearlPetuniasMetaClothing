@@ -5,6 +5,7 @@ onload = function() {
         e.preventDefault();
         var isEmployee = document.getElementById("isEmployee").checked;
         var isBilling = document.getElementById("isBilling").checked;
+        var isShipping = document.getElementById("isShipping").checked;
 
         console.log(isBilling);
 
@@ -14,7 +15,7 @@ onload = function() {
           stateAbbrev: document.signupForm.stateAbbrev.value,
           zipcode: document.signupForm.zipcode.value,
           isBilling: isBilling,
-          isShipping: "true"
+          isShipping: isShipping
         };
         var user = {
           name: document.signupForm.name.value,
