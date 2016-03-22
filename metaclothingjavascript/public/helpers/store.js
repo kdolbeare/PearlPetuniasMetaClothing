@@ -52,11 +52,12 @@ function displayItems(itemList) {
      clearList(existingList);
    }
    var ul = document.createElement("ul");
-   var addCart = document.createElement("div");
-   addCart.innerHTML= ">add to cart<";
    ul.id = "items";
    for (var i = 0; i < itemList.length; i++) {
+     var addCart = document.createElement("div");
      var li = document.createElement("li");
+     addCart.innerHTML= ">add to cart<";
+     addCart.id=itemList[i].id;
      li.innerHTML = itemList[i].name + " $" + itemList[i].price;
      li.appendChild(addCart);
      ul.appendChild(li);
