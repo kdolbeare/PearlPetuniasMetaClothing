@@ -29,6 +29,8 @@ var aboutLib = require('./lib/about.js');
 var loginLib = require('./lib/login.js');
 var storeLib = require('./lib/store.js');
 var signupLib = require('./lib/signup.js');
+var logoutLib = require('./lib/logout.js');
+
 
 var cookieParser = require('cookie-parser');
 app.use(cookieParser(credentials.cookieSecret));
@@ -80,17 +82,24 @@ app.post('/addToCart',function(req,res){
 
 app.get('/', function(req,res) {
 	console.log("index");
-	res.render('index');
+	console.log(req.session.user);
+	res.render('index', {session: req.session.user});
 });
 
 app.get('/about', function(req,res) {
 	console.log("about");
-	res.render('about', {page : aboutLib.getAbout()});
+	res.render('about', {page : aboutLib.getAbout(), session: req.session.user});
 });
 
 app.get('/login', function(req,res) {
 	console.log("login in server.js");
 	res.render('login', {page : loginLib.getLogin()});
+});
+
+app.get('/logout', function(req,res) {
+	console.log("logout in server.js");
+	req.session.user=null;
+	res.render('index', {session: req.session.user});
 });
 
 app.get('/signup', function(req,res) {
@@ -102,7 +111,6 @@ app.get('/signup', function(req,res) {
 app.post('/userLogin', function(req,res) {
 	req.session.user = req.body.id;
 	console.log(req.body.id + " in app.get userLogin");
-	//ask Kris K about this:
 	res.send(req.body);
 });
 
@@ -113,7 +121,7 @@ app.get('/hello', function(req, res){
 
 app.get('/store', function(req,res) {
 	console.log("store");
-	res.render('store', {page : storeLib.getStore()});
+	res.render('store', {page : storeLib.getStore(), session: req.session.user});
 });
 
 app.listen(3000, function(){
