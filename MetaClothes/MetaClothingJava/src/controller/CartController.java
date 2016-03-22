@@ -12,6 +12,7 @@ import dao.CartDAO;
 import dao.UserDAO;
 import entity.Cart;
 import entity.CartItem;
+import entity.Item;
 import entity.User;
 
 @Controller
@@ -32,5 +33,13 @@ public class CartController {
 	public String addCartItem(@RequestBody CartItem cartItem, @PathVariable("id") int id){
 		Cart cart = cartDao.getCartById(id);
 		return cartDao.addCartItem(cart, cartItem);
+	}
+	
+	@ResponseBody
+	@RequestMapping("cartTest")
+	public Cart cartTest() {
+		Cart cart = new Cart();
+		return cartDao.test();
+
 	}
 }

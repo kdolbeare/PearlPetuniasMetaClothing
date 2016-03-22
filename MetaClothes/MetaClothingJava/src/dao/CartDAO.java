@@ -5,11 +5,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import entity.Cart;
 import entity.CartItem;
 import entity.Item;
-import entity.User;
-
+@Transactional
 public class CartDAO {
 
 	@PersistenceContext
@@ -18,6 +19,15 @@ public class CartDAO {
 //	public Cart getUserCart(User user){
 //		return user.getCart();
 //	}
+	
+	public Cart test() {
+		Cart cart = em.find(Cart.class, 5);
+		CartItem ci = new CartItem(em.find(Item.class, 1), cart, 4);
+		cart.addItems(ci);
+		em.persist(cart);
+		System.out.println(cart);
+		return cart;
+	}
 	
 	public String addCartItem(Cart cart, CartItem item){
 		List<CartItem> cartItems = cart.getItems();
