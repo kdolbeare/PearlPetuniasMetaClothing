@@ -19,7 +19,6 @@ public class CartItem {
 	private int id;
 	@ManyToOne
 	@JoinColumn(name="itemid")
-//	@JsonManagedReference
 	private Item item;
 	@ManyToOne
 	@JoinColumn(name="cartid")
@@ -72,6 +71,12 @@ public class CartItem {
 	
 	public void addQuantity(int more){
 		quantity += more;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "CartItem [id=" + id + ", item=" + item + ", cart=" + cart + ", quantity=" + quantity + "]";
 	}
 
 }

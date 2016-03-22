@@ -14,13 +14,14 @@ onload = function() {
           stateAbbrev: document.signupForm.stateAbbrev.value,
           zipcode: document.signupForm.zipcode.value,
           isBilling: isBilling,
-          isShipping: true
+          isShipping: "true"
         };
         var user = {
           name: document.signupForm.name.value,
           email: document.signupForm.email.value,
           password: document.signupForm.password.value,
-          isEmployee: isEmployee
+          isEmployee: isEmployee,
+          addresses: [address]
 
         };
         console.log(user);

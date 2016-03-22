@@ -31,12 +31,12 @@ public class Item
 	private String brand;
 	private int rating;
 	private String category;
-	@OneToMany(mappedBy = "item")
+//	@OneToMany(mappedBy = "item")
 //	@JsonBackReference
-	private List<CartItem> cartItems;
-	@OneToMany(mappedBy = "item")
+//	private List<CartItem> cartItems;
+//	@OneToMany(mappedBy = "item")
 //	@JsonBackReference
-	private List<SaleItem> saleItems;
+//	private List<SaleItem> saleItems;
 	
 	public Item() {
 		
@@ -91,6 +91,12 @@ public class Item
 	public void setCategory(String category)
 	{
 		this.category = category;
+	}
+	@Override
+	public String toString()
+	{
+		return "Item [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", brand="
+				+ brand + ", rating=" + rating + ", category=" + category + "]";
 	}
 	
 	

@@ -82,4 +82,10 @@ public class Sale {
 	public void removeItems(SaleItem item){
 		items.remove(items.indexOf(item));
 	}
+
+	@Override
+	public String toString()
+	{
+		return "Sale [id=" + id + ", date=" + date + ", items=" + items + ", user=" + user + "]";
+	}
 }

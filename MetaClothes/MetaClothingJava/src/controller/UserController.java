@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import dao.UserDAO;
 import entity.User;
 
@@ -59,10 +62,15 @@ public class UserController
 	}
 	@ResponseBody
 	@RequestMapping(path="createUser", method=RequestMethod.POST)
-	public String createUser(@RequestBody User user){
-		System.out.println(user);
-		System.out.println(userDAO.createUser(user));
-//		return userDAO.createUser(user);
-		return "yes";
+	public void createUser(@RequestBody String u){
+		System.out.println(u);
+		ObjectMapper mapper = new ObjectMapper();
+		User user;
+		try {
+		user = mapper.readValue(u, User.class);
+		userDAO.createUser(user);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
