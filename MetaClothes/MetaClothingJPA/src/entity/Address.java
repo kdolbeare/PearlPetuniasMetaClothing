@@ -30,15 +30,15 @@ public class Address {
 	@JsonBackReference (value = "userAddress")
 	private User user;
 	@Column(name="isbilling")
-	private Boolean isBilling;
+	private boolean isBilling;
 	@Column(name="isshipping")
-	private Boolean isShipping;
+	private boolean isShipping;
 	//constructors
 	public Address(){
 		
 	}
 	
-	public Address( String street, String city, String state, int zip, User user, Boolean billing, Boolean shipping){ 
+	public Address( String street, String city, String state, int zip, User user, boolean billing, boolean shipping){ 
 		this.streetAddress = street;
 		this.city = city;
 		this.stateAbbrev = state;
@@ -96,19 +96,19 @@ public class Address {
 	{
 		this.user = user;
 	}
-	public Boolean isBilling()
+	public boolean isBilling()
 	{
 		return isBilling;
 	}
-	public void setIsBilling(Boolean isBilling)
+	public void setIsBilling(boolean isBilling)
 	{
 		this.isBilling = isBilling;
 	}
-	public Boolean isShipping()
+	public boolean isShipping()
 	{
 		return isShipping;
 	}
-	public void setIsShipping(Boolean isShipping)
+	public void setIsShipping(boolean isShipping)
 	{
 		this.isShipping = isShipping;
 	}
