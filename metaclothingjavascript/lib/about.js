@@ -7,7 +7,12 @@ var about = {
     city: "Denver",
     state: "CO",
     zip: "80220"
-  }
+  },
+  employees:[{name:'Cole Frock',
+              bio:'CEO of MetaClothing is Cole Frock'},
+              
+              {name:'Kris Kane',
+              bio:'CTO of MetaClothing'}]
 };
 
 exports.getAbout = function() {
