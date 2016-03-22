@@ -3,7 +3,16 @@
 <h1>{{page.header}}</h1>
 	<div>{{page.about}}</div>
 	<div>
-		{{page.location.street}}<br>
-		{{page.location.city}}, {{page.location.state}} {{page.location.zip}}
+	<ul>
+	{{#each page.employees}}
+		<li>{{this.name}}</li>
+		
+		{{/each}}
+		</ul>
+		<!--{{page.location.street}}<br>
+
+		{{page.location.city}}, {{page.location.state}} {{page.location.zip}}-->
+
+		<IMG 
 	</div>
 </div>
