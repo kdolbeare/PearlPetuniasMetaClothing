@@ -18,7 +18,7 @@ function loginValidation(){
   console.log("in login validation");
   var form = document.getElementById("loginForm");
   var login = document.createElement("p");
-  login.setAttribute("id", "invalid");
+  login.setAttribute("class", "invalid");
   login.innerHTML = "invalid username or password try again";
   form.insertBefore(login, document.getElementById("submit"));
 

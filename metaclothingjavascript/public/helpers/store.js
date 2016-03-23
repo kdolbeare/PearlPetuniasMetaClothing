@@ -12,37 +12,71 @@ onload=function(){
 //   //console.log(data.email + "in CreateCookie");
 //   verbData('GET', '/setCookie', null, data);
  document.getElementById("tyke").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Tyke', displayItems)
+getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Tyke', displayItems);
 });
 
 document.getElementById("babyboo").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Baby%20Boo', displayItems)
+getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Baby%20Boo', displayItems);
 });
 
 document.getElementById("bannanademocracy").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Bannana%20Democracy', displayItems)
+getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Bannana%20Democracy', displayItems);
 });
 
 document.getElementById("roughrider").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Rough%20Rider', displayItems)
+getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Rough%20Rider', displayItems);
 });
 
 document.getElementById("carterclothing").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Carter%20Clothing', displayItems)
+getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Carter%20Clothing', displayItems);
 });
 
 document.getElementById("levimouse").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Levi%20Mouse', displayItems)
+getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Levi%20Mouse', displayItems);
 });
 
 document.getElementById("mousesomething").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Mouse%20Something', displayItems)
+getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Mouse%20Something', displayItems);
 });
 
 document.getElementById("straussfrock").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Strauss%20Frock', displayItems)
+getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Strauss%20Frock', displayItems);
 });
-}
+//start the bitchen boss ass CATEGORY buttons
+document.getElementById("Adult Female").addEventListener('click', function(e) {
+getData('http://localhost:8080/MetaClothingJava/rest/itemCat/Adult%20Female', displayItems);
+});
+
+document.getElementById("Jr Female").addEventListener('click', function(e) {
+getData('http://localhost:8080/MetaClothingJava/rest/itemCat/Juvenile%20Female', displayItems);
+});
+
+document.getElementById("Adult Male").addEventListener('click', function(e) {
+getData('http://localhost:8080/MetaClothingJava/rest/itemCat/Adult%20Male', displayItems);
+});
+
+document.getElementById("Jr Male").addEventListener('click', function(e) {
+getData('http://localhost:8080/MetaClothingJava/rest/itemCat/Juvenile%20Male', displayItems);
+});
+
+document.getElementById("Adult FemalePrice").addEventListener('click', function(e) {
+getData('http://localhost:8080/MetaClothingJava/rest/itemCatPrice/Adult%20Female', displayItems);
+});
+
+document.getElementById("Jr FemalePrice").addEventListener('click', function(e) {
+getData('http://localhost:8080/MetaClothingJava/rest/itemCatPrice/Juvenile%20Female', displayItems);
+});
+
+document.getElementById("Adult MalePrice").addEventListener('click', function(e) {
+getData('http://localhost:8080/MetaClothingJava/rest/itemCatPrice/Adult%20Male', displayItems);
+});
+
+document.getElementById("Jr MalePrice").addEventListener('click', function(e) {
+getData('http://localhost:8080/MetaClothingJava/rest/itemCatPrice/Juvenile%20Male', displayItems);
+});
+
+
+};
 
 
 function displayItems(itemList) {

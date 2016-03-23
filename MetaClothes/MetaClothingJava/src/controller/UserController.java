@@ -56,12 +56,12 @@ public class UserController
 	@ResponseBody
 	@RequestMapping(path="createUser", method=RequestMethod.POST)
 	public User createUser(@RequestBody String u){
-		System.out.println(u);
 		ObjectMapper mapper = new ObjectMapper();
 		User user = null;
 		try {
 		user = mapper.readValue(u, User.class);
 		user = userDAO.createUser(user);
+		System.out.println(user);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
