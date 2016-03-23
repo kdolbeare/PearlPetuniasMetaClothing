@@ -30,6 +30,7 @@ var loginLib = require('./lib/login.js');
 var storeLib = require('./lib/store.js');
 var signupLib = require('./lib/signup.js');
 var logoutLib = require('./lib/logout.js');
+var editAddressLib = require('./lib/editAddress.js')
 
 
 var cookieParser = require('cookie-parser');
@@ -107,7 +108,16 @@ app.get('/signup', function(req,res) {
 	res.render('signup', {page : signupLib.getSignup()});
 });
 
-//api connections
+app.get('/editAddress', function(req,res) {
+	console.log("editAddress in server.js");
+	res.render('editAddress', {page : editAddressLib.getEditAddress(), session: req.session.user});
+});
+
+app.get('/getSessionId', function(req, res) {
+	console.log("getSessionId in server.js");
+	res.sendStatus(req.session.user);
+})
+
 app.post('/userLogin', function(req,res) {
 	req.session.user = req.body.id;
 	console.log(req.body.id + " in app.get userLogin");
