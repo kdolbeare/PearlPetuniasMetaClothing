@@ -41,6 +41,14 @@ function editAddress(user) {
   zip.value = user.addresses[0].zipcode;
   form.appendChild(zip);
 
+  console.log(user.addresses.length);
+
+  if(user.addresses.length == 1){
+    var isBilling = document.createElement("input");
+    isBilling.setAttribute("type", "checkbox");
+    form.appendChild(isBilling);
+  }
+
   var submit = document.createElement("button");
   var t = document.createTextNode("Update Address");
   submit.appendChild(t);
@@ -54,5 +62,6 @@ function editAddress(user) {
       stateAbbrev: document.editForm.newState.value,
       zipcode: document.editForm.newZip.value
     };
+    console.log(address);
   });
 };
