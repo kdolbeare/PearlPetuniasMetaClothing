@@ -76,8 +76,6 @@ function loginData(method, url, object) {
 
         if(user){
           window.location.href = '/';
-        }else{
-          emailValidation();
         }
     }
   };
