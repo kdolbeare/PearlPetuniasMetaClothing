@@ -1,7 +1,7 @@
 var about = {
-  title: "About",
+  title: "aboutout",
   header: "About Us",
-  about: "We are a clothing retailer marketing primarily to hipsters and the Pabst Blue Ribbon drinkers of the world. We love to follow trends and appreciate a good scarf almost as much as a full beard.",
+  about: "We are a clothing retailer marketing primarily to hipsters and the Pabst Blue Ribbon drinkers of the world. We love to follow trends and appreciate a good scarf almost as much as a full beard. Lorem ipsum dolor sit amet, nam te nostrud impedit, nam at harum molestiae, vix ei nobis percipit philosophia. Sit assum facilisi ex. Sit nulla putant forensibus ex, vix nulla mnesarchum dissentiunt ei, no eum lucilius praesent partiendo. Delenit dolorum legendos id est. Est ne ridens propriae, est te discere veritus tacimates.",
   location: {
     street: "123 AnyWhere St",
     city: "Denver",
@@ -9,52 +9,48 @@ var about = {
     zip: "80220"
   },
   
-  employees:[{name:'Cole Frock',
+  employees:[
+            {name:'Peter Chestnut',
+              bio:"As CEO Peter is responsible for running all facets of the business.His experience as CEO and CFO of SwiftOlo and WhiteCloud respectively, lend him a proven executive track record.  Peter also served as President of Globex Inc.'s e-commerce division and was recognized by Internet World as one of the Top 25 'Click and Mortar' executives in the country in June of 2000.",
+              fullBio:"As CEO Peter is responsible for running all facets of the business.His experience as CEO and CFO of SwiftOlo and WhiteCloud respectively, lend him a proven executive track record.  Peter also served as President of Globex Inc.'s e-commerce division and was recognized by Internet World as one of the Top 25 'Click and Mortar' executives in the country in June of 2000.",
+              position:'CEO',
+              imgPath:'img/Peter_Chestnut.jpg'},
+
+            {name:'David Silver',
+              bio: "" ,
+              fullBio:"A native of New York, David graduated from Yale University with an honors degree in  economic studies. David is a lifelong entrepreneur, adventurer, and tech aficionado. In 2014 he accepted the award for Most Innovative Startup, by the Inc 500. David is focused on bringing quality products as well as a streamlined experience to his customers. He is an avid traveler and aviation enthusiast, and has lived in Chile   as well as Peru. "   ,
+              position:'Founder',
+              imgPath:'img/David_Silver.jpg'},
+
+            {name:'Erika Miller',
+              bio:'', 
+              fullBio:"Lorem ipsum dolor sit amet, nam te nostrud impedit, nam at harum molestiae, vix ei nobis percipit philosophia. Sit assum facilisi ex. Sit nulla putant forensibus ex, vix nulla mnesarchum dissentiunt ei, no eum lucilius praesent partiendo. Delenit dolorum legendos id est. Est ne ridens propriae, est te discere veritus tacimates." ,
+              position:'CFO',
+              imgPath:'img/Erika_Miller.jpg'},
+
+             {name:'Alexandra Bennett',
+              bio:'',
+              fullBio:"With over 20 years experience in international product sales, and applying a strong expertise in data-driven, long-term strategic planning, Alexandra excels in her role as Marketing director. Previous to this, Alexandra held various positions as Director of International Sales & Marketing, Manager of Business Development, and Trade Sales Manager for St. Anky Beer.",
+              position:'Marketing Director',
+              imgPath:'img/Alexandra_Bennett.jpg'},
+
+             {name:'Michael James',
+              bio:'',
+              fullBio: "After attending the University of Texas, Michael excelled in a sales role for Initech. He then ascended into a managerial role and increasing sales in his division drastically. In 2013 he was given the role of Director of Sales and was nominated for Forbes ‘Top 25 Under 25’.",
+              position:'Director of Sales',
+              imgPath:'img/Michael_James.jpg'
+              }, 
+
+            {name:'Cole Frock',
               bio:'A one liner goes here.',
-              fullBio:'A multiple paragraph blurb can go here. It can outline the basic full bio found on websites, about employess and they\'re credentials',
+              fullBio:'Lorem ipsum dolor sit amet, nam te nostrud impedit, nam at harum molestiae, vix ei nobis percipit philosophia. Sit assum facilisi ex. Sit nulla putant forensibus ex, vix nulla mnesarchum dissentiunt ei, no eum lucilius praesent partiendo. Delenit dolorum legendos id est. Est ne ridens propriae, est te discere veritus tacimates.',
               position:'CEO',
               imgPath:'img/cole.jpeg'},
               
-              {name:'Kris Kane',
+            {name:'Kris Kane',
               bio:'',
-              fullBio:'',
-              position:'CTO'},
-
-              {name:'Alexandra Bennett',
-              bio:'', 
-              fullBio:'',
-              position:'',
-              imgPath:'img/Alexandra_Bennett.jpg'},
-
-              {name:'David Silver',
-              bio:"",
-              fullBio:'',
-              position:'',
-              imgPath:'img/David_Silver.jpg'},
-
-              {name:'Erika Miller',
-              bio:'',
-              fullBio:'',
-              position:'',
-              imgPath:'img/Erika_Miller.jpg'},
-
-              {name:'Peter Chestnut',
-              bio:'',
-              fullBio:'',
-              position:'',
-              imgPath:'img/Peter_Chestnut.jpg'},
-
-              {name:'Michael James',
-              bio:'',
-              fullBio:'',
-              position:'',
-              imgPath:'img/Michael_James.jpg'},
-
-              {name:'Ignatius J Reilly',
-              bio:'',
-              fullBio:'',
-              position:'',
-              imgPath:''}]
+              fullBio:'Lorem ipsum dolor sit amet, nam te nostrud impedit, nam at harum molestiae, vix ei nobis percipit philosophia. Sit assum facilisi ex. Sit nulla putant forensibus ex, vix nulla mnesarchum dissentiunt ei, no eum lucilius praesent partiendo. Delenit dolorum legendos id est. Est ne ridens propriae, est te discere veritus tacimates.',
+              position:'CTO'}]
 };
 
 

@@ -55,7 +55,6 @@ public class User {
 		sales = new ArrayList<Sale>();
 		cart = new Cart();
 	}
-
 	public User(String name, String email, String password, Boolean isEmployee)
 	{
 		super();
