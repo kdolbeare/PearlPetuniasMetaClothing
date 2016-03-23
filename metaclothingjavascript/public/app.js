@@ -17,7 +17,7 @@ function getData(url, callback,validation) {
   xhr.send(null);
 }
 
-function verbData(method, url, callback, obj) {
+function verbData(method, url, callback, obj, validation) {
   var xhr = new XMLHttpRequest();
 
   xhr.open(method, url);
@@ -28,10 +28,14 @@ function verbData(method, url, callback, obj) {
   }
   xhr.onreadystatechange = function() {
     if (xhr.status < 400 && xhr.readyState == 4) {
-      if(JSON.parse(xhr.responseText)){
+      console.log(xhr.responseText);
+      if(xhr.responseText){
         if (callback) {
           callback(JSON.parse(xhr.responseText));
         }
+      }
+      else{
+        validation();
       }
      }
   };
@@ -65,12 +69,16 @@ function loginData(method, url, object) {
   }
 
   xhr.onreadystatechange = function() {
+    console.log(object);
     if (xhr.readyState == 4 && xhr.status < 400) {
-      var user = JSON.parse(xhr.responseText);
-      console.log(user);
-      if (user.email) {
-        window.location.href = '/';
-      }
+         var user = JSON.parse(xhr.responseText);
+          console.log(user);
+
+        if(user){
+          window.location.href = '/';
+        }else{
+          emailValidation();
+        }
     }
   };
   xhr.send(JSON.stringify(object));
