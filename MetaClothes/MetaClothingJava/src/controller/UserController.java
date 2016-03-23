@@ -67,4 +67,12 @@ public class UserController
 		}
 		return user;
 	}
+		
+	@ResponseBody
+	@RequestMapping(path="userId/{id}")
+	public User getUser(@PathVariable("id") String id){
+		System.out.println(id);
+		int userId = Integer.parseInt(id);
+		return userDAO.getUserById(userId);
+	}
 }
