@@ -30,16 +30,31 @@ public class UserDAO {
 		try {
 			temp = (User)em.createNamedQuery("user.getUser").setParameter("email", email).setParameter("password", password).getSingleResult();
 		}catch (Exception e) {
-			System.out.println("error in getUser" + e);
+			System.out.println("error in getUser " + e);
 			temp = null;
+				
 		}
 		System.out.println(temp);
 		return temp;
 	}
-	
+	public String getUserValidation(String email, String password) {
+		User temp;
+		try {
+			temp = (User)em.createNamedQuery("user.getUser").setParameter("email", email).setParameter("password", password).getSingleResult();
+		}catch (Exception e) {
+			System.out.println("error in getUser " + e);
+			temp = null;
+				
+		}
+		if(temp != null){
+			return "" + temp.getId();
+	}
+		System.out.println(temp);
+		return "Incorrect username or password";
+	}
 	public User getUserById(int id){
 		User user = em.createNamedQuery("user.getUserById", User.class).setParameter("id", id).getSingleResult();
-		
+		System.out.println("in");
 		return user;
 	}
 	
@@ -64,27 +79,24 @@ public class UserDAO {
 	}
 	
 	public User createUser(User user){
-		User temp;
-		user.getCart().setUser(user);
-		em.persist(user);
-		
-		if(em.contains(user)){
-			return user;
-		}else {
-			return null;
+		User temp = null;
+		try{
+			System.out.println("in try block");
+			temp = getUserByEmail(user.getEmail());
+			System.out.println(temp.getEmail());
+			System.out.println(user.getEmail());
+			
+			if(temp.getEmail().equals(user.getEmail())){
+				System.out.println("in if block");
+				user = null;
+			}
+		}catch(Exception e){
+			System.out.println("caught an exception " + e);
+			user.getCart().setUser(user);
+			em.persist(user);
+			
 		}
-//		try {
-//			temp = (User)em.createNamedQuery("user.getUserByName").setParameter("name", user.getName()).getSingleResult();
-//		} catch (Exception e) {
-//			System.out.println("error in createUser" + e);
-//			temp = null;
-//		}
-//		if(temp!=null) {
-//			return "User already exists";
-//		} else {
-//			System.out.println(user);
-//			em.persist(user);
-//			return "User created";
-//		}
+		System.out.println(user);
+		return user;
 	}
 }

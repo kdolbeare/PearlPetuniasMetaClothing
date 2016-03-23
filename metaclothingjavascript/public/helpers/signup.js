@@ -46,7 +46,7 @@ onload = function() {
           user.addresses = [address];
         }
         console.log(user);
-        verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/createUser', createSession, user)
+        verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/createUser', createSession, user, emailValidation);
 
       });
     }
@@ -81,3 +81,23 @@ function billingDOM(){
   form.appendChild(zip);
 
 }
+function emailValidation(){
+  console.log("in emailValidation");
+  var form = document.getElementById("signupForm");
+  var email = document.createElement("p");
+  email.setAttribute("class", "invalid");
+  email.innerHTML = "this email already has an account";
+  form.insertBefore(email, document.getElementById("password"));
+
+}
+
+
+
+
+
+
+
+
+
+
+
