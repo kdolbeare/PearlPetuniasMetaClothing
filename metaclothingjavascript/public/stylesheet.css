@@ -48,6 +48,34 @@ div{
  	font-size: 24px;
  	border: 1px black;
  }
+ .about-header{
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    text-align: center;
+    color: #7fc7fd;
+    font-size: 48px;
+    text-shadow: 1px 1px black;
+    background: url(img/about.jpg) no-repeat, center, center;
+    background-size: cover;
+    border-radius: 5px;
+ }
+ .about-header p{
+    margin-left: 5%; 
+    color: #f8f8f8;
+    padding-top: 10px;
+    font-size: 24px;
+    border: 1px black;
+    width: 90%;
+
+ }
+ .about{
+    margin-top: 20px;
+ }
+ .about p{
+    padding-top: 20px;
+    font-size: 30px;
+    border: 1px black;
+ }
 
  /************************ ID's  **********************************************************************************************/
 
@@ -55,25 +83,12 @@ div{
     padding:5%;
  }
  #bioPic{
-   border:1px solid black;
-   width:15%;
-   max-width: 40px;
+   border:1px solid black;  
+    max-height: 100px;
  }
  #aboutUl{
     list-style: none;
  }
- #headerDiv{
-    float:right;
- }
- #fullBio{
-    width:64%;
-    margin-left:35%;
-    margin-top:-35%;
- }
- #employeeList{
-    width:35%;
- }
-
 
 
 
