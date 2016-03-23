@@ -1,3 +1,10 @@
+ /**************** DEFAULTS **** DEBUGS *************************************************/
+div{
+    border:0px solid black;
+}
+
+
+/**************** CLASSES **************************************************************/
  .index{
  	padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
@@ -47,3 +54,49 @@
  #bodyDiv{
     padding:5%;
  }
+ #bioPic{
+   border:1px solid black;
+   width:15%;
+   max-width: 40px;
+ }
+ #aboutUl{
+    list-style: none;
+ }
+ #headerDiv{
+    float:right;
+ }
+ #fullBio{
+    width:64%;
+    margin-left:35%;
+    margin-top:-35%;
+ }
+ #employeeList{
+    width:35%;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
