@@ -59,6 +59,22 @@ document.getElementById("Jr Male").addEventListener('click', function(e) {
 getData('http://localhost:8080/MetaClothingJava/rest/itemCat/Juvenile%20Male', displayItems);
 });
 
+document.getElementById("Adult FemalePrice").addEventListener('click', function(e) {
+getData('http://localhost:8080/MetaClothingJava/rest/itemCatPrice/Adult%20Female', displayItems);
+});
+
+document.getElementById("Jr FemalePrice").addEventListener('click', function(e) {
+getData('http://localhost:8080/MetaClothingJava/rest/itemCatPrice/Juvenile%20Female', displayItems);
+});
+
+document.getElementById("Adult MalePrice").addEventListener('click', function(e) {
+getData('http://localhost:8080/MetaClothingJava/rest/itemCatPrice/Adult%20Male', displayItems);
+});
+
+document.getElementById("Jr MalePrice").addEventListener('click', function(e) {
+getData('http://localhost:8080/MetaClothingJava/rest/itemCatPrice/Juvenile%20Male', displayItems);
+});
+
 
 };
 
