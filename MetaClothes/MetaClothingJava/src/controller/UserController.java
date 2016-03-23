@@ -69,9 +69,10 @@ public class UserController
 	}
 		
 	@ResponseBody
-	@RequestMapping(path="user/{id}")
-	public User getUser(@PathVariable("userId") int userId){
-		System.out.println(userId);
+	@RequestMapping(path="userId/{id}")
+	public User getUser(@PathVariable("id") String id){
+		System.out.println(id);
+		int userId = Integer.parseInt(id);
 		return userDAO.getUserById(userId);
 	}
 }
