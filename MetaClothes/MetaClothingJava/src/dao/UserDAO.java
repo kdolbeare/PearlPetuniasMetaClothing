@@ -79,27 +79,18 @@ public class UserDAO {
 	}
 	
 	public User createUser(User user){
-		User temp;
-		user.getCart().setUser(user);
-		em.persist(user);
-		
-		if(em.contains(user)){
-			return user;
-		}else {
-			return null;
+		User temp = null;
+		try{
+			temp = getUserByEmail(user.getEmail());
+			if(temp.getEmail() == user.getEmail()){
+				user = null;
+			}
+		}catch(Exception e){
+			System.out.println("caught an exception " + e);
+			user.getCart().setUser(user);
+			em.persist(user);
+			
 		}
-//		try {
-//			temp = (User)em.createNamedQuery("user.getUserByName").setParameter("name", user.getName()).getSingleResult();
-//		} catch (Exception e) {
-//			System.out.println("error in createUser" + e);
-//			temp = null;
-//		}
-//		if(temp!=null) {
-//			return "User already exists";
-//		} else {
-//			System.out.println(user);
-//			em.persist(user);
-//			return "User created";
-//		}
+		return user;
 	}
 }
