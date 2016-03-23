@@ -81,8 +81,13 @@ public class UserDAO {
 	public User createUser(User user){
 		User temp = null;
 		try{
+			System.out.println("in try block");
 			temp = getUserByEmail(user.getEmail());
-			if(temp.getEmail() == user.getEmail()){
+			System.out.println(temp.getEmail());
+			System.out.println(user.getEmail());
+			
+			if(temp.getEmail().equals(user.getEmail())){
+				System.out.println("in if block");
 				user = null;
 			}
 		}catch(Exception e){
@@ -91,6 +96,7 @@ public class UserDAO {
 			em.persist(user);
 			
 		}
+		System.out.println(user);
 		return user;
 	}
 }

@@ -28,6 +28,7 @@ function verbData(method, url, callback, obj, validation) {
   }
   xhr.onreadystatechange = function() {
     if (xhr.status < 400 && xhr.readyState == 4) {
+      console.log(xhr.responseText);
       if(xhr.responseText){
         if (callback) {
           callback(JSON.parse(xhr.responseText));
@@ -68,12 +69,15 @@ function loginData(method, url, object) {
   }
 
   xhr.onreadystatechange = function() {
+    console.log(object);
     if (xhr.readyState == 4 && xhr.status < 400) {
          var user = JSON.parse(xhr.responseText);
           console.log(user);
 
         if(user){
           window.location.href = '/';
+        }else{
+          emailValidation();
         }
     }
   };

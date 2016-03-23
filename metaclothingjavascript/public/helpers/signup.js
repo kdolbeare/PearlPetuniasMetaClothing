@@ -82,6 +82,7 @@ function billingDOM(){
 
 }
 function emailValidation(){
+  console.log("in emailValidation");
   var form = document.getElementById("signupForm");
   var email = document.createElement("p");
   email.setAttribute("class", "invalid");
