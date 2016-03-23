@@ -30,16 +30,31 @@ public class UserDAO {
 		try {
 			temp = (User)em.createNamedQuery("user.getUser").setParameter("email", email).setParameter("password", password).getSingleResult();
 		}catch (Exception e) {
-			System.out.println("error in getUser" + e);
+			System.out.println("error in getUser " + e);
 			temp = null;
+				
 		}
 		System.out.println(temp);
 		return temp;
 	}
-	
+	public String getUserValidation(String email, String password) {
+		User temp;
+		try {
+			temp = (User)em.createNamedQuery("user.getUser").setParameter("email", email).setParameter("password", password).getSingleResult();
+		}catch (Exception e) {
+			System.out.println("error in getUser " + e);
+			temp = null;
+				
+		}
+		if(temp != null){
+			return "" + temp.getId();
+	}
+		System.out.println(temp);
+		return "Incorrect username or password";
+	}
 	public User getUserById(int id){
 		User user = em.createNamedQuery("user.getUserById", User.class).setParameter("id", id).getSingleResult();
-		
+		System.out.println("in");
 		return user;
 	}
 	

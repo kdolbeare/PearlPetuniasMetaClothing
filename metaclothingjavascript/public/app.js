@@ -1,11 +1,16 @@
-function getData(url, callback) {
+function getData(url, callback,validation) {
   var xhr = new XMLHttpRequest();
 
   xhr.open('GET', url);
 
   xhr.onreadystatechange = function() {
     if (xhr.status < 400 && xhr.readyState == 4) {
+      console.log(xhr.responseText);
+      if(xhr.responseText){
       callback(JSON.parse(xhr.responseText));
+      }
+    }else{
+      validation();
     }
   };
 
@@ -23,10 +28,12 @@ function verbData(method, url, callback, obj) {
   }
   xhr.onreadystatechange = function() {
     if (xhr.status < 400 && xhr.readyState == 4) {
-      if (callback) {
-        callback(JSON.parse(xhr.responseText));
+      if(JSON.parse(xhr.responseText)){
+        if (callback) {
+          callback(JSON.parse(xhr.responseText));
+        }
       }
-    }
+     }
   };
 
   if (obj) {
@@ -38,13 +45,14 @@ function verbData(method, url, callback, obj) {
 
 }
 
+
 function listUsers(data) {
   console.log(data + "in listUsers");
 
 }
 
 function createSession(data) {
-  console.log(data.id + " " + data.email + " in CreateSession");
+  console.log(data + " in CreateSession");
   loginData('POST', '/userLogin', data);
 }
 
