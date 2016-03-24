@@ -30,8 +30,8 @@ var loginLib = require('./lib/login.js');
 var storeLib = require('./lib/store.js');
 var signupLib = require('./lib/signup.js');
 var logoutLib = require('./lib/logout.js');
-var editAddressLib = require('./lib/editAddress.js')
-
+var editAddressLib = require('./lib/editAddress.js');
+var contactLib = require('./lib/contact.js');
 
 var cookieParser = require('cookie-parser');
 app.use(cookieParser(credentials.cookieSecret));
@@ -85,6 +85,11 @@ app.get('/', function(req,res) {
 	console.log("index");
 	console.log(req.session.user);
 	res.render('index', {session: req.session.user});
+});
+
+app.get('/contact', function(req,res) {
+  console.log("contact");
+  res.render('contact', {page : contactLib.getContact(), session: req.session.user});
 });
 
 app.get('/about', function(req,res) {
