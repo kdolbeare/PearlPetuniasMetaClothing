@@ -10,7 +10,7 @@ function getData(url, callback,validation) {
       callback(JSON.parse(xhr.responseText));
       }
     }else{
-      validation;
+      validation();
     }
   };
 
@@ -35,7 +35,7 @@ function verbData(method, url, callback, obj, validation) {
         }
       }
       else{
-        validation;
+        validation();
       }
      }
   };
