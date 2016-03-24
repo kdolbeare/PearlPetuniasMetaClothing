@@ -1,6 +1,6 @@
 onload=function(){
   getData('/setCookie', setCookie);
-  getAllItems();
+  getData('http://localhost:8080/MetaClothingJava/rest/allItems', displayItems);
   if(document.getElementById('tyke')){
     addBrandEventListeners();
   }else if(document.getElementById('Adult Female')){
@@ -128,7 +128,7 @@ function displayItems(itemList) {
     addCart.setAttribute('class', 'btn btn-info');
     addCart.setAttribute('role', 'button');
     addCart.id=itemList[i].id;
-    addcart.addEventListener('click', function(e) { if (session) {
+    addCart.addEventListener('click', function(e) { if (session) {
      verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + addCart.id + '/' + session) }
      else {
        req.cookie.cart.push(addCart.id);
