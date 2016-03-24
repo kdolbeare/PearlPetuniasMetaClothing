@@ -15,6 +15,7 @@ onload = function() {
       verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + cookie.cart[i] + '/' + session)
     }
     cookie.cart = [];
+    numItemsInCart = verbData('GET', 'http://localhost:8080/MetaClothingJava/rest/cartItems/' + session)
   });
 }
 
