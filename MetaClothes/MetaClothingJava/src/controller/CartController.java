@@ -29,10 +29,10 @@ public class CartController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("addcart/{id}")
-	public String addCartItem(@RequestBody CartItem cartItem, @PathVariable("id") int id){
-		Cart cart = cartDao.getCartById(id);
-		return cartDao.addCartItem(cart, cartItem);
+	@RequestMapping("addCart/{itemid}/{userid}")
+	public String addCartItem(@PathVariable("itemid") int itemId, @PathVariable("userid") int userId){
+		Cart cart = cartDao.getCartByUserId(userId);
+		return cartDao.addItemToCart(cart, itemId);
 	}
 	
 	@ResponseBody
