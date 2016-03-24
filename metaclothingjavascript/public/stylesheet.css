@@ -85,7 +85,7 @@ div{
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
     text-align: center;
-    color: #f8f8f8;
+    color: #7fc7fd;
     text-shadow: 1px 1px grey;
     background: url(img/brand.jpg) no-repeat center center;
     background-size: cover;
@@ -117,12 +117,34 @@ div{
     padding-left: 20px;
     cursor: default;
  }
+ .storenavbar li>a{
+    margin: 0;
+ }
  .storenavbar li:hover{
     color: black;
 }
+.category{
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    text-align: center;
+    color: #7fc7fd;
+    text-shadow: 1px 1px grey;
+    background: url(img/category.jpg) no-repeat center center;
+    background-size: cover;
+    border-radius: 5px;
+}
+.category h1{
+    font-family: cursive;
+    font-size: 72px;
+ }
+ .category p{
+    padding-top: 20px;
+    font-size: 24px;
+    border: 1px black;
+ }
 table{
     width: 100%;
-}
+}   
 td{
     margin-top: 50px;
     margin-bottom: 50px;

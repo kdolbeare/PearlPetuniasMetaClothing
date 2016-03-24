@@ -137,6 +137,11 @@ app.get('/brand', function(req,res){
   console.log("/brand");
   res.render('brand', {page : storeLib.getStore(), session: req.session.user});
 });
+
+app.get('/category', function(req,res){
+  res.render('category', {page : storeLib.getStore(), session: req.session.user});
+})
+
 app.listen(3000, function(){
 	console.log("listening on 3000");
 });
