@@ -38,7 +38,10 @@ function verbData(method, url, callback, obj, validation) {
         }
       }
       else{
-        validation();
+        if(validation){
+          validation();
+        }
+        
       }
      }
   };
