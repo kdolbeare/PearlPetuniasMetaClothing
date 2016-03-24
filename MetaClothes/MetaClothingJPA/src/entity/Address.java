@@ -38,14 +38,14 @@ public class Address {
 		
 	}
 	
-	public Address( String street, String city, String state, int zip, User user, boolean billing, boolean shipping){ 
+	public Address( String street, String city, String state, int zip, User user, boolean isBilling, boolean isShipping){ 
 		this.streetAddress = street;
 		this.city = city;
 		this.stateAbbrev = state;
 		this.zipcode = zip;
 		this.user = user;
-		this.isBilling = billing;
-		this.isShipping = shipping;
+		this.isBilling = isBilling;
+		this.isShipping = isShipping;
 	}
 	//getters and setters
 	public int getId()

@@ -15,8 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "user")
@@ -36,12 +36,13 @@ public class User {
 
 	private String password;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST )
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL )
 	@JsonManagedReference (value="userAddress")
 	private List<Address> addresses;
 
 	@Column(name = "isemployee")
-	private Boolean employee;
+	private boolean employee;
+	
 	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
 	@JsonManagedReference (value="usercart")
 	private Cart cart;
@@ -55,7 +56,7 @@ public class User {
 		sales = new ArrayList<Sale>();
 		cart = new Cart();
 	}
-	public User(String name, String email, String password, Boolean employee)
+	public User(String name, String email, String password, boolean employee)
 	{
 		super();
 		this.name = name;
@@ -102,12 +103,13 @@ public class User {
 		this.password = password;
 	}
 
-	public Boolean isEmployee()
+	public boolean isEmployee()
 	{
 		return employee;
 	}
 
-	public void setIsEmployee(Boolean employee)
+	public void setEmployee(boolean employee)
+
 	{
 		this.employee = employee;
 	}

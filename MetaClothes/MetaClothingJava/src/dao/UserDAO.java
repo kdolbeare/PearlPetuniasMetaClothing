@@ -1,10 +1,14 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import entity.Address;
 import entity.User;
 
 @Transactional
@@ -97,6 +101,18 @@ public class UserDAO {
 			
 		}
 		System.out.println(user);
+		return user;
+	}
+	public User editAddresses(User user) {
+//		List<Address> addresses = user.getAddresses();
+//		for (Address address : addresses)
+//		{
+//			address = em.merge(address);
+//			em.refresh(address);
+//		}
+		user = em.merge(user);
+//		em.refresh(user);
+		System.out.println("in UserDAO: " + user);
 		return user;
 	}
 }
