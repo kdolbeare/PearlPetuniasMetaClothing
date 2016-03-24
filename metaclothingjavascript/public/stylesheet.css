@@ -108,7 +108,7 @@ div{
  }
  .storenavbar ul{
     background-color: #5bc0de;
-    color: grey;
+    color: #f4f4f4;
     width: 100%;
 
  }
@@ -192,7 +192,12 @@ footer{
     margin-top:-11.5%;
 
  }
-
+#metaClothing{
+    font-family: Florence, cursive;
+}
+#cart{
+    height: 16px;
+}
 
 
 
