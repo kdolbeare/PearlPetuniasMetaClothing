@@ -34,6 +34,41 @@ var editAddressLib = require('./lib/editAddress.js');
 var contactLib = require('./lib/contact.js');
 
 var cookieParser = require('cookie-parser');
+
+var mailer = require('express-mailer');
+mailer.extend(app, {
+  from:'no-reply@example.com',
+  host:'smtp.gmail.com',
+  secureConnection:true,
+  port:465,
+  transportMethod:'SMTP',
+  auth:{
+    user:'meta.clothes@gmail.com',
+    pass:'strongbad'
+  }
+
+});
+
+app.post('/sendEmail',function(req,res,next){
+  
+  app.mailer.send('email',{
+    to: 'meta.clothes@gmail.com',
+    from:req.body.name,
+    subject:req.body.subject,
+    body:req.body.message
+  },function(err) {
+    if(err){
+      console.log("ERROR: ");
+      console.log(err);
+      res.send(true);
+      return;
+    }
+    res.send(true);
+  
+  });
+});
+
+
 app.use(cookieParser(credentials.cookieSecret));
 
 app.get('/setCookie',function(req,res){

@@ -4,7 +4,7 @@ var contact = {
   	name: "MetaClothing INC",
   	phone: '(555) 555-5555',
   	pointOfContact: 'some secretary',
-
+  	script : "<script src='helpers/contact.js'></script>",
   	location: {
     	street: "123 AnyWhere St",
     	city: "Denver",
