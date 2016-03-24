@@ -1,4 +1,6 @@
-var numItemsInCart = cookie.cart.length;
+
+
+
 
 function getData(url, callback, validation) {
   var xhr = new XMLHttpRequest();
