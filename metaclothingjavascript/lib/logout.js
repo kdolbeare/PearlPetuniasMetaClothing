@@ -1,5 +1,5 @@
 var logout = {
-  title : "Logout",
+  title : "Index",
   script : "<script src = 'helpers/logout.js'></script>"
 };
 

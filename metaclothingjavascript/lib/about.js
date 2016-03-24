@@ -1,5 +1,5 @@
 var about = {
-  title: "aboutout",
+  title: "About",
   header: "About Us",
   about: "We are a clothing retailer marketing primarily to hipsters and the Pabst Blue Ribbon drinkers of the world. We love to follow trends and appreciate a good scarf almost as much as a full beard. Lorem ipsum dolor sit amet, nam te nostrud impedit, nam at harum molestiae, vix ei nobis percipit philosophia. Sit assum facilisi ex. Sit nulla putant forensibus ex, vix nulla mnesarchum dissentiunt ei, no eum lucilius praesent partiendo. Delenit dolorum legendos id est. Est ne ridens propriae, est te discere veritus tacimates.",
   location: {
