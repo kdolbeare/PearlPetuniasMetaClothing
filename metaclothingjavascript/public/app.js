@@ -1,16 +1,19 @@
-function getData(url, callback,validation) {
+function getData(url, callback, validation) {
   var xhr = new XMLHttpRequest();
 
   xhr.open('GET', url);
 
   xhr.onreadystatechange = function() {
+    console.log(JSON.parse(xhr.responseText));
     if (xhr.status < 400 && xhr.readyState == 4) {
-      console.log(xhr.responseText);
       if(xhr.responseText){
       callback(JSON.parse(xhr.responseText));
       }
     }else{
-      validation();
+      if(validation){
+        validation();
+      }
+      
     }
   };
 
@@ -35,7 +38,10 @@ function verbData(method, url, callback, obj, validation) {
         }
       }
       else{
-        validation();
+        if(validation){
+          validation();
+        }
+        
       }
      }
   };
@@ -76,8 +82,6 @@ function loginData(method, url, object) {
 
         if(user){
           window.location.href = '/';
-        }else{
-          emailValidation();
         }
     }
   };
