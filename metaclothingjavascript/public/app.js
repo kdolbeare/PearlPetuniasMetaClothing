@@ -1,10 +1,11 @@
+
+
 function getData(url, callback, validation) {
   var xhr = new XMLHttpRequest();
 
   xhr.open('GET', url);
 
   xhr.onreadystatechange = function() {
-    console.log(JSON.parse(xhr.responseText));
     if (xhr.status < 400 && xhr.readyState == 4) {
       if(xhr.responseText){
       callback(JSON.parse(xhr.responseText));
@@ -13,7 +14,7 @@ function getData(url, callback, validation) {
       if(validation){
         validation();
       }
-      
+
     }
   };
 
@@ -41,7 +42,7 @@ function verbData(method, url, callback, obj, validation) {
         if(validation){
           validation();
         }
-        
+
       }
      }
   };
@@ -60,7 +61,9 @@ function listUsers(data) {
   console.log(data + "in listUsers");
 
 }
-
+function getSession(data){
+  return data;
+}
 function createSession(data) {
   console.log(data + " in CreateSession");
   loginData('POST', '/userLogin', data);

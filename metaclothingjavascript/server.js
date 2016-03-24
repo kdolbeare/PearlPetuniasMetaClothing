@@ -113,13 +113,13 @@ app.post('/addToCart',function(req,res){
   console.log("cart: ");
   console.log(req.signedCookies.cart);
   res.cookie("cart", req.signedCookies.cart, {signed : true});
-  res.send(true);
+  res.send(res.cookie.cart.length);
 });
 
 app.get('/', function(req,res) {
 	console.log("index");
 	console.log(req.session.user);
-	res.render('index', {session: req.session.user});
+	res.render('index', {session: req.session.user, cart: req.signedCookies.cart.length});
 });
 
 app.get('/contact', function(req,res) {
@@ -129,23 +129,23 @@ app.get('/contact', function(req,res) {
 
 app.get('/about', function(req,res) {
 	console.log("about");
-	res.render('about', {page : aboutLib.getAbout(), session: req.session.user});
+	res.render('about', {page : aboutLib.getAbout(), session: req.session.user, cart: req.signedCookies.cart.length});
 });
 
 app.get('/login', function(req,res) {
 	console.log("login in server.js");
-	res.render('login', {page : loginLib.getLogin()});
+	res.render('login', {page : loginLib.getLogin(), cart: req.signedCookies.cart, session: req.session.user});  
 });
 
 app.get('/logout', function(req,res) {
 	console.log("logout in server.js");
 	req.session.user=null;
-	res.render('index', {session: req.session.user});
+	res.render('index', {session: req.session.user, cart: req.signedCookies.cart.length});
 });
 
 app.get('/signup', function(req,res) {
 	console.log("signup in server.js");
-	res.render('signup', {page : signupLib.getSignup()});
+	res.render('signup', {page : signupLib.getSignup(), cart: req.signedCookies.cart.length});
 });
 
 app.get('/editAddress', function(req,res) {
@@ -171,11 +171,13 @@ app.get('/hello', function(req, res){
 
 app.get('/store', function(req,res) {
 	console.log("store");
-	res.render('store', {page : storeLib.getStore(), session: req.session.user});
+  console.log(req.signedCookies.cart.length.toString());
+	res.render('store', {page : storeLib.getStore(), session: req.session.user, cart: req.signedCookies.cart.length});
 });
+
 app.get('/brand', function(req,res){
   console.log("/brand");
-  res.render('brand', {page : storeLib.getStore(), session: req.session.user});
+  res.render('brand', {page : storeLib.getStore(), session: req.session.user, cart: req.signedCookies.cart.length});
 });
 
 

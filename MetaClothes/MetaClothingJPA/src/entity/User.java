@@ -15,8 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "user")
@@ -36,12 +36,13 @@ public class User {
 
 	private String password;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST )
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL )
 	@JsonManagedReference (value="userAddress")
 	private List<Address> addresses;
 
 	@Column(name = "isemployee")
-	private Boolean isEmployee;
+	private boolean employee;
+	
 	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
 	@JsonManagedReference (value="usercart")
 	private Cart cart;
@@ -55,13 +56,13 @@ public class User {
 		sales = new ArrayList<Sale>();
 		cart = new Cart();
 	}
-	public User(String name, String email, String password, Boolean isEmployee)
+	public User(String name, String email, String password, boolean employee)
 	{
 		super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.isEmployee = isEmployee;
+		this.employee = employee;
 		addresses = new ArrayList<Address>();
 		sales = new ArrayList<Sale>();
 		cart = new Cart();
@@ -102,14 +103,15 @@ public class User {
 		this.password = password;
 	}
 
-	public Boolean isEmployee()
+	public boolean isEmployee()
 	{
-		return isEmployee;
+		return employee;
 	}
 
-	public void setIsEmployee(Boolean isEmployee)
+	public void setEmployee(boolean employee)
+
 	{
-		this.isEmployee = isEmployee;
+		this.employee = employee;
 	}
 
 	public List<Address> getAddresses()
@@ -146,7 +148,7 @@ public class User {
 	public String toString()
 	{
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", addresses="
-				+ addresses + ", isEmployee=" + isEmployee + "]";
+				+ addresses + ", isEmployee=" + employee + "]";
 	}
 
 }

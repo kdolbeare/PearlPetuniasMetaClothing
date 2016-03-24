@@ -1,6 +1,7 @@
 package dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -90,13 +91,18 @@ public class UserDAO {
 				System.out.println("in if block");
 				user = null;
 			}
-		}catch(Exception e){
+		}catch(NoResultException e){
 			System.out.println("caught an exception " + e);
 			user.getCart().setUser(user);
 			em.persist(user);
 			
 		}
 		System.out.println(user);
+		return user;
+	}
+	public User editAddresses(User user) {
+		user = em.merge(user);
+		System.out.println("in UserDAO: " + user);
 		return user;
 	}
 }

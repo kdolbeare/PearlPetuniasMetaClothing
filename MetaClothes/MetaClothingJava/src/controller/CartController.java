@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,22 +26,25 @@ public class CartController {
 	@ResponseBody
 	@RequestMapping(path="cart/{id}", method=RequestMethod.GET)
 	public Cart getUserCart(@PathVariable("id") int id){
-		User user = userDao.getUserById(id);		
-		return cartDao.getCartById(id);
+		Cart cart = cartDao.getCartByUserId(id);		
+		return cart;
 	}
 	
 	@ResponseBody
-	@RequestMapping("addcart/{id}")
-	public String addCartItem(@RequestBody CartItem cartItem, @PathVariable("id") int id){
-		Cart cart = cartDao.getCartById(id);
-		return cartDao.addCartItem(cart, cartItem);
+	@RequestMapping("addCart/{itemid}/{userid}")
+	public String addCartItem(@PathVariable("itemid") int itemId, @PathVariable("userid") int userId){
+		Cart cart = cartDao.getCartByUserId(userId);
+		return cartDao.addItemToCart(cart, itemId);
 	}
 	
 	@ResponseBody
-	@RequestMapping("cartTest")
-	public Cart cartTest() {
-		Cart cart = new Cart();
-		return cartDao.test();
+	@RequestMapping("cartItems/{id)")
+	public int getCartItems(@PathVariable("id") int id) {
+		Cart cart = cartDao.getCartByUserId(id);
+		List<CartItem> listOfItems = cart.getItems();
+		return listOfItems.size();
 
 	}
+	
+	
 }

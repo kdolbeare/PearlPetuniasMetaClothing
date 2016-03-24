@@ -27,7 +27,7 @@ onload = function() {
           name: document.signupForm.name.value,
           email: document.signupForm.email.value,
           password: document.signupForm.password.value,
-          isEmployee: isEmployee,
+          employee: isEmployee,
 
         };
 
@@ -51,34 +51,36 @@ onload = function() {
       });
     }
 function billingDOM(){
+  var billingDiv = document.getElementById("billing");
   var form = document.signupForm;
   var streetAddress = document.createElement("input");
   streetAddress.type = "text";
   streetAddress.name = "billingStreet";
   streetAddress.placeholder = "Billing Address";
 
-  form.appendChild(streetAddress);
+  billingDiv.appendChild(streetAddress);
 
   var city = document.createElement("input");
   city.type = "text";
   city.name = "billingCity";
   city.placeholder = "Billing City";
 
-  form.appendChild(city);
+  billingDiv.appendChild(city);
 
   var state = document.createElement("input");
   state.type = "text";
   state.name = "billingState";
   state.placeholder = "Billing State";
 
-  form.appendChild(state);
+  billingDiv.appendChild(state);
 
   var zip = document.createElement("input");
   zip.type = "text";
   zip.name = "billingZipcode";
   zip.placeholder = "Billing Zipcode";
 
-  form.appendChild(zip);
+  billingDiv.appendChild(zip);
+  form.insertBefore(billingDiv, document.getElementById("submit"));
 
 }
 function emailValidation(){
@@ -90,14 +92,3 @@ function emailValidation(){
   form.insertBefore(email, document.getElementById("password"));
 
 }
-
-
-
-
-
-
-
-
-
-
-

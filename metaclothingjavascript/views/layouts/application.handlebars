@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="stylesheet.css">
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <!---->
@@ -11,12 +11,13 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  <title>Meta Clothing | {{{page.title}}}</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <title>Meta Clothing | {{#if page.title}}{{{page.title}}}{{else}} Home {{/if}}</title>
 </head>
 
 <body>
   <header class="navbar navbar-default navbar-fixed-top topnav">
-    <div class="heading navbar-header"><a class="navbar-brand" href="/">Meta Clothing</a>
+    <div class="heading navbar-header"><a class="navbar-brand" id="metaClothing" href="/">Meta Clothing</a>
     </div>
     <ul class="nav navbar-nav">
       <li><a href="/about">About</a></li>
@@ -30,6 +31,8 @@
       <li><a href="/login">Login</a></li>
       <li><a href="/signup">Create New Account</a></li>
       {{/if}}
+      <li><a href="/checkout"><img src="img/cart.png" id="cart">Cart</a></li>
+      <li><div id="cookieCart">{{cart}}</div></li>
     </ul>
     </div>
   </header>

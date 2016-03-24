@@ -35,7 +35,9 @@ public class CartItem {
 		this.cart = cart;
 		this.quantity = quantity;
 	}
-	
+	public int getItemId() {
+		return item.getId();
+	}
 	public int getId()
 	{
 		return id;

@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dao.UserDAO;
+import entity.Address;
 import entity.User;
 
 @Controller
@@ -74,5 +77,22 @@ public class UserController
 		System.out.println(id);
 		int userId = Integer.parseInt(id);
 		return userDAO.getUserById(userId);
+	}
+	
+	@ResponseBody
+	@RequestMapping(path="address", method=RequestMethod.POST)
+	public User editAddresses(@RequestBody String u) {
+		ObjectMapper mapper = new ObjectMapper();
+		User user = null;
+		try {
+		System.out.println(u);
+		user = mapper.readValue(u, User.class);
+		System.out.println(user);
+		user = userDAO.editAddresses(user);
+		System.out.println(user);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
 	}
 }
