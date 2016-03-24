@@ -128,11 +128,12 @@ function displayItems(itemList) {
     addCart.setAttribute('class', 'btn btn-info');
     addCart.setAttribute('role', 'button');
     addCart.id=itemList[i].id;
-    addCart.addEventListener('click', function(e) { if (session) {
-     verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + addCart.id + '/' + session) }
-     else {
-       req.cookie.cart.push(addCart.id);
-     }
+    addCart.addEventListener('click', function(e) { 
+      if (session) {
+        verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + addCart.id + '/' + session) }
+      else {
+        req.cookie.cart.push(addCart.id);
+      }
     });
     tr.appendChild(addCart);
     div.appendChild(tr);
