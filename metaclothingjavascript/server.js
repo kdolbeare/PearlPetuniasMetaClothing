@@ -133,7 +133,10 @@ app.get('/store', function(req,res) {
 	console.log("store");
 	res.render('store', {page : storeLib.getStore(), session: req.session.user});
 });
-
+app.get('/brand', function(req,res){
+  console.log("/brand");
+  res.render('brand', {page : storeLib.getStore(), session: req.session.user});
+});
 app.listen(3000, function(){
 	console.log("listening on 3000");
 });

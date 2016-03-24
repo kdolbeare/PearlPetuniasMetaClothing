@@ -80,6 +80,56 @@ div{
     border: 1px black;
  }
 
+
+ .brand{
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    text-shadow: 1px 1px grey;
+    background: url(img/brand.jpg) no-repeat center center;
+    background-size: cover;
+    border-radius: 5px;
+ }
+ .brand h1{
+    font-family: cursive;
+    font-size: 72px;
+ }
+
+ .brand p{
+    padding-top: 20px;
+    font-size: 24px;
+    border: 1px black;
+ }
+ .storenavebar{
+    background-color: #5bc0de;
+    width: 100%;
+    color: grey;
+ }
+ .storenavbar ul{
+    /*background-color: #5bc0de;*/
+    color: grey;
+    width: 100%;
+
+ }
+ .storenavbar li{
+    padding-top: 20px;
+    padding-left: 20px;
+    cursor: default;
+ }
+ .storenavbar li:hover{
+    color: black;
+}
+table{
+    width: 100%;
+}
+td{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+footer{
+    position: fixed;
+}
  /************************ ID's  **********************************************************************************************/
 
  #bodyDiv{

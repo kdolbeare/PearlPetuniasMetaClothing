@@ -1,22 +1,18 @@
 onload=function(){
-  console.log("in the store onload");
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET','/setCookie');
-  xhr.onreadystatechange=function(){
-    console.log("This is in setCookie route, after the readystatechange, Master: "+xhr.responseText);
-  };
+  getData('/setCookie', setCookie);
+  addEventListeners();
+}
 
-  xhr.send(null);
+function setCookie(data){
+  console.log("This is in setCookie route, after the readystatechange, Master: " + data);
+}
+function addEventListeners(){
+   document.getElementById("tyke").addEventListener('click', function(e) {
+      getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Tyke', displayItems);
+    });
 
-// function createSession(data) {
-//   //console.log(data.email + "in CreateCookie");
-//   verbData('GET', '/setCookie', null, data);
- document.getElementById("tyke").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Tyke', displayItems);
-});
-
-document.getElementById("babyboo").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Baby%20Boo', displayItems);
+  document.getElementById("babyboo").addEventListener('click', function(e) {
+  getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Baby%20Boo', displayItems);
 });
 
 document.getElementById("bannanademocracy").addEventListener('click', function(e) {
@@ -42,63 +38,58 @@ getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Mouse%20Something
 document.getElementById("straussfrock").addEventListener('click', function(e) {
 getData('http://localhost:8080/MetaClothingJava/rest/itemBrand/Strauss%20Frock', displayItems);
 });
-//start the bitchen boss ass CATEGORY buttons
-document.getElementById("Adult Female").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemCat/Adult%20Female', displayItems);
-});
 
-document.getElementById("Jr Female").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemCat/Juvenile%20Female', displayItems);
-});
-
-document.getElementById("Adult Male").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemCat/Adult%20Male', displayItems);
-});
-
-document.getElementById("Jr Male").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemCat/Juvenile%20Male', displayItems);
-});
-
-document.getElementById("Adult FemalePrice").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemCatPrice/Adult%20Female', displayItems);
-});
-
-document.getElementById("Jr FemalePrice").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemCatPrice/Juvenile%20Female', displayItems);
-});
-
-document.getElementById("Adult MalePrice").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemCatPrice/Adult%20Male', displayItems);
-});
-
-document.getElementById("Jr MalePrice").addEventListener('click', function(e) {
-getData('http://localhost:8080/MetaClothingJava/rest/itemCatPrice/Juvenile%20Male', displayItems);
-});
+}
 
 
-};
 
 
 function displayItems(itemList) {
-   var body = document.querySelector("body");
+  console.log("in displayItems");
+   var body = document.getElementById("displayBrand");
+   console.log(body);
    var existingList = document.getElementById("items");
-   if (existingList != null) {
-     clearList(existingList);
+   if (existingList) {
+    console.log('in if statement');
+     existingList.parentNode.removeChild(existingList);
    }
-   var ul = document.createElement("ul");
-   ul.id = "items";
-   for (var i = 0; i < itemList.length; i++) {
-     var addCart = document.createElement("div");
-     var li = document.createElement("li");
-     addCart.innerHTML= ">add to cart<";
-     addCart.id=itemList[i].id;
-     li.innerHTML = itemList[i].name + " $" + itemList[i].price;
-     li.appendChild(addCart);
-     ul.appendChild(li);
+   var div = document.createElement('table');
+   div.setAttribute('id', 'items');
+   var trh = document.createElement('tr');
+   for(var key in itemList[0]){
+      if(key == 'id'){
+        continue;
+      }
+      if(key == 'description'){
+        continue;
+      }
+      var th = document.createElement('th');
+      th.innerHTML = key;
+      trh.appendChild(th);
    }
-   body.appendChild(ul);
+   div.appendChild(trh);
+
+  for (var i = 0; i < itemList.length; i++) {
+    var tr = document.createElement('tr');
+    for(var key in itemList[i]){
+      if(key == 'id'){
+        continue;
+      }
+      if(key == 'description'){
+        continue;
+      }
+      var td = document.createElement('td');
+      td.innerHTML = itemList[i][key];
+      tr.appendChild(td);
+    }
+    var addCart = document.createElement("div");
+    addCart.innerHTML= "Add To Cart";
+    addCart.setAttribute('class', 'btn btn-info');
+    addCart.setAttribute('role', 'button');
+    addCart.id=itemList[i].id;
+    tr.appendChild(addCart);
+    div.appendChild(tr);
+   }
+   body.appendChild(div);
  }
 
- function clearList(List) {
-   list.parentNode.removeChild(list);
- }
