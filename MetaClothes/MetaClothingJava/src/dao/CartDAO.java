@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import entity.Cart;
 import entity.CartItem;
 import entity.Item;
+import entity.Sale;
+import entity.SaleItem;
 import entity.User;
 @Transactional
 public class CartDAO {
@@ -96,5 +98,7 @@ public class CartDAO {
 		}
 		return "cartItem added";
 	}
+
+	
 	
 }

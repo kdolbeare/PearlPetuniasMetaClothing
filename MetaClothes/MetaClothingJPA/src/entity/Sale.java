@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "sale")
-
+@NamedQuery(name = "sale.getSalesByUser", query = "SELECT s FROM Sale s WHERE s.user = :user")
 public class Sale {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
