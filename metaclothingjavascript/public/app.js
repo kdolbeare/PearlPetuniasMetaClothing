@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-//var numItemsInCart = cookie.cart.length;
-=======
 
-
-
->>>>>>> c2fc5f23c38151e39cf4b8226349bb36c4a3bc0a
 
 function getData(url, callback, validation) {
   var xhr = new XMLHttpRequest();
