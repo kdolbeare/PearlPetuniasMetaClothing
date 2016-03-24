@@ -91,4 +91,8 @@ function emailValidation(){
   email.innerHTML = "this email already has an account";
   form.insertBefore(email, document.getElementById("password"));
 
+  // var name = document.signupForm.name;
+  // if(nameValidation(name)){
+  //   console.log("name validation working");
+  // }
 }
