@@ -85,7 +85,9 @@ public class UserController
 		ObjectMapper mapper = new ObjectMapper();
 		User user = null;
 		try {
+		System.out.println(u);
 		user = mapper.readValue(u, User.class);
+		System.out.println(user);
 		user = userDAO.editAddresses(user);
 		System.out.println(user);
 		}catch (Exception e) {

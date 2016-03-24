@@ -89,6 +89,7 @@ function editAddress(user) {
   submit.addEventListener("click", function(e) {
     e.preventDefault();
     var address0 = {
+      id: user.addresses[0].id,
       streetAddress: document.editForm.newStreet0.value,
       city: document.editForm.newCity0.value,
       stateAbbrev: document.editForm.newState0.value,
@@ -98,6 +99,7 @@ function editAddress(user) {
     };
     if(user.addresses.length == 2) {
       address0 = {
+        id: user.addresses[0].id,
         streetAddress: document.editForm.newStreet0.value,
         city: document.editForm.newCity0.value,
         stateAbbrev: document.editForm.newState0.value,
@@ -106,6 +108,7 @@ function editAddress(user) {
         isShipping: false
       };
     var address1 = {
+      id: user.addresses[1].id,
         streetAddress: document.editForm.newStreet1.value,
         city: document.editForm.newCity1.value,
         stateAbbrev: document.editForm.newState1.value,
@@ -130,7 +133,6 @@ function editAddress(user) {
     user.addresses = [address0];
     console.log(user.addresses[0]);
   }
-    
     verbData('POST','http://localhost:8080/MetaClothingJava/rest/address', displayUser, user);
   });
 };
