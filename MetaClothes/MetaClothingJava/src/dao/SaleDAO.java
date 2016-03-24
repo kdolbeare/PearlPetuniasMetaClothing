@@ -13,6 +13,7 @@ import entity.CartItem;
 import entity.Item;
 import entity.Sale;
 import entity.SaleItem;
+import entity.User;
 
 @Transactional
 public class SaleDAO
@@ -37,5 +38,25 @@ public class SaleDAO
 		em.persist(test);
 		return test;
 	}
+	
+	public Cart getCartByUserId(int id)
+	{
+		User user = em.find(User.class, id);
+		Cart carttofind = em.find(Cart.class, user);
+		return carttofind;
+	}
 
+	public void addSales(int userId, CartItem cartItem) {
+		Sale newSale = new Sale();
+		Item toAdd = (Item)em.createNamedQuery("item.getItemById").setParameter("id", cartItem.getItemId()).getSingleResult();
+		SaleItem checkedout = new SaleItem(toAdd, newSale, cartItem.getQuantity());
+		newSale.addItems(checkedout);
+	}
+
+	public List<Sale> getSalesByUser(int userId) {
+		User user = (User) em.createNamedQuery("user.getUserById").setParameter("id", userId).getSingleResult();
+		List<Sale> allsales = new ArrayList<>();
+		allsales = em.createNamedQuery("sale.getSalesByUser").setParameter("user", user).getResultList();
+		return allsales;
+	}
 }
