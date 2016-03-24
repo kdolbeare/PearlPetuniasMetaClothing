@@ -1,4 +1,4 @@
-var numItemsInCart = cookie.cart.length;
+//var numItemsInCart = cookie.cart.length;
 
 function getData(url, callback, validation) {
   var xhr = new XMLHttpRequest();
@@ -61,7 +61,9 @@ function listUsers(data) {
   console.log(data + "in listUsers");
 
 }
-
+function getSession(data){
+  return data;
+}
 function createSession(data) {
   console.log(data + " in CreateSession");
   loginData('POST', '/userLogin', data);

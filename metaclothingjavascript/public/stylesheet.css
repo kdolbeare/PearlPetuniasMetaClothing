@@ -198,7 +198,9 @@ footer{
 #cart{
     height: 16px;
 }
-
+#cookieCart{
+    margin: -0.5;
+}
 
 
 
