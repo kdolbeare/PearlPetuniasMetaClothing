@@ -26,6 +26,11 @@ public class ShopController
 //		return selectedItems;
 //	}
 	@ResponseBody
+	@RequestMapping(path="allItems")
+	public List<Item> getAllItems(){
+		return shopDAO.getAllItems();
+	}
+	@ResponseBody
 	@RequestMapping(path="itemCat/{category}")
 	public List<Item> getItemByCat(@PathVariable("category") String category){
 		return shopDAO.getItemByCat(category);
