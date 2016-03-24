@@ -41,7 +41,7 @@ public class User {
 	private List<Address> addresses;
 
 	@Column(name = "isemployee")
-	private Boolean isEmployee;
+	private Boolean employee;
 	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
 	@JsonManagedReference (value="usercart")
 	private Cart cart;
@@ -55,13 +55,13 @@ public class User {
 		sales = new ArrayList<Sale>();
 		cart = new Cart();
 	}
-	public User(String name, String email, String password, Boolean isEmployee)
+	public User(String name, String email, String password, Boolean employee)
 	{
 		super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.isEmployee = isEmployee;
+		this.employee = employee;
 		addresses = new ArrayList<Address>();
 		sales = new ArrayList<Sale>();
 		cart = new Cart();
@@ -104,12 +104,12 @@ public class User {
 
 	public Boolean isEmployee()
 	{
-		return isEmployee;
+		return employee;
 	}
 
-	public void setIsEmployee(Boolean isEmployee)
+	public void setIsEmployee(Boolean employee)
 	{
-		this.isEmployee = isEmployee;
+		this.employee = employee;
 	}
 
 	public List<Address> getAddresses()
@@ -146,7 +146,7 @@ public class User {
 	public String toString()
 	{
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", addresses="
-				+ addresses + ", isEmployee=" + isEmployee + "]";
+				+ addresses + ", isEmployee=" + employee + "]";
 	}
 
 }

@@ -4,7 +4,6 @@ function getData(url, callback, validation) {
   xhr.open('GET', url);
 
   xhr.onreadystatechange = function() {
-    console.log(JSON.parse(xhr.responseText));
     if (xhr.status < 400 && xhr.readyState == 4) {
       if(xhr.responseText){
       callback(JSON.parse(xhr.responseText));

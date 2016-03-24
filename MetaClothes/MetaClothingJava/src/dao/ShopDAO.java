@@ -5,11 +5,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.transaction.annotation.Transactional;
 
 import entity.Item;
-import entity.User;
 
 @Transactional
 public class ShopDAO {
@@ -68,6 +68,12 @@ public class ShopDAO {
 		}
 		System.out.println(temp);
 		return temp;
+	}
+
+	public List<Item> getAllItems()
+	{
+		TypedQuery<Item> tq = em.createQuery("SELECT i from Item i", Item.class);
+		return tq.getResultList();
 	}
 
 }

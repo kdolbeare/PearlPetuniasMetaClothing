@@ -27,7 +27,7 @@ onload = function() {
           name: document.signupForm.name.value,
           email: document.signupForm.email.value,
           password: document.signupForm.password.value,
-          isEmployee: isEmployee,
+          employee: isEmployee,
 
         };
 
