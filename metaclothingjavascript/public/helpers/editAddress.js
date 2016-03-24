@@ -130,6 +130,7 @@ function editAddress(user) {
     user.addresses = [address0];
     console.log(user.addresses[0]);
   }
+    
     verbData('POST','http://localhost:8080/MetaClothingJava/rest/address', displayUser, user);
   });
 };
