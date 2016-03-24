@@ -30,10 +30,45 @@ var loginLib = require('./lib/login.js');
 var storeLib = require('./lib/store.js');
 var signupLib = require('./lib/signup.js');
 var logoutLib = require('./lib/logout.js');
-var editAddressLib = require('./lib/editAddress.js')
-
+var editAddressLib = require('./lib/editAddress.js');
+var contactLib = require('./lib/contact.js');
 
 var cookieParser = require('cookie-parser');
+
+var mailer = require('express-mailer');
+mailer.extend(app, {
+  from:'no-reply@example.com',
+  host:'smtp.gmail.com',
+  secureConnection:true,
+  port:465,
+  transportMethod:'SMTP',
+  auth:{
+    user:'meta.clothes@gmail.com',
+    pass:'strongbad'
+  }
+
+});
+
+app.post('/sendEmail',function(req,res,next){
+  
+  app.mailer.send('email',{
+    to: 'meta.clothes@gmail.com',
+    from:req.body.name,
+    subject:req.body.subject,
+    body:req.body.message
+  },function(err) {
+    if(err){
+      console.log("ERROR: ");
+      console.log(err);
+      res.send(true);
+      return;
+    }
+    res.send(true);
+  
+  });
+});
+
+
 app.use(cookieParser(credentials.cookieSecret));
 
 app.get('/setCookie',function(req,res){
@@ -85,6 +120,11 @@ app.get('/', function(req,res) {
 	console.log("index");
 	console.log(req.session.user);
 	res.render('index', {session: req.session.user, cart: req.signedCookies.cart.length});
+});
+
+app.get('/contact', function(req,res) {
+  console.log("contact");
+  res.render('contact', {page : contactLib.getContact(), session: req.session.user});
 });
 
 app.get('/about', function(req,res) {
