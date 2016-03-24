@@ -42,6 +42,7 @@ public class User {
 
 	@Column(name = "isemployee")
 	private boolean employee;
+	
 	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
 	@JsonManagedReference (value="usercart")
 	private Cart cart;
@@ -108,6 +109,7 @@ public class User {
 	}
 
 	public void setEmployee(boolean employee)
+
 	{
 		this.employee = employee;
 	}

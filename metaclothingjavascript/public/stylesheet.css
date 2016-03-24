@@ -107,7 +107,7 @@ div{
     color: grey;
  }
  .storenavbar ul{
-    /*background-color: #5bc0de;*/
+    background-color: #5bc0de;
     color: grey;
     width: 100%;
 
@@ -132,6 +132,9 @@ div{
     background: url(img/category.jpg) no-repeat center center;
     background-size: cover;
     border-radius: 5px;
+}
+.navbar{
+    background-color: #5bc0de;
 }
 .category h1{
     font-family: cursive;
@@ -159,7 +162,8 @@ footer{
  }
  #bioPic{
    border:1px solid black;  
-    max-height: 100px;
+    max-height: 70px;
+    clear: both;
  }
  #aboutUl{
     list-style: none;
