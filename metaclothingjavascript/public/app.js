@@ -1,3 +1,7 @@
+
+
+
+
 function getData(url, callback, validation) {
   var xhr = new XMLHttpRequest();
 
@@ -12,7 +16,7 @@ function getData(url, callback, validation) {
       if(validation){
         validation();
       }
-      
+
     }
   };
 
@@ -40,7 +44,7 @@ function verbData(method, url, callback, obj, validation) {
         if(validation){
           validation();
         }
-        
+
       }
      }
   };

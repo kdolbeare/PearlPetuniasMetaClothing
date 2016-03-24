@@ -11,9 +11,11 @@ onload = function() {
     console.log(obj);
     var url = 'http://localhost:8080/MetaClothingJava/rest/user/' + obj.email +'/' + obj.password;
     getData(url, createSession, loginValidation);
-    for (var i = 0; i < cookie.cart.length; i++) {
-      verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + cookie.cart[i] + '/' + session)
+    for (var i = 0; i < cart.length; i++) {
+      verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + cart[i] + '/' + session)
     }
+    cart = [];
+    numItemsInCart = verbData('GET', 'http://localhost:8080/MetaClothingJava/rest/cartItems/' + session)
   });
 }
 
