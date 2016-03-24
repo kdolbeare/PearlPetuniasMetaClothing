@@ -1,14 +1,11 @@
 package dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import entity.Address;
 import entity.User;
 
 @Transactional
@@ -94,7 +91,7 @@ public class UserDAO {
 				System.out.println("in if block");
 				user = null;
 			}
-		}catch(Exception e){
+		}catch(NoResultException e){
 			System.out.println("caught an exception " + e);
 			user.getCart().setUser(user);
 			em.persist(user);
