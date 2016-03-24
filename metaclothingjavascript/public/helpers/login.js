@@ -11,6 +11,9 @@ onload = function() {
     console.log(obj);
     var url = 'http://localhost:8080/MetaClothingJava/rest/user/' + obj.email +'/' + obj.password;
     getData(url, createSession, loginValidation);
+    for (int i = 0; i < cookie.cart.length(); i++) {
+      verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + cookie.cart[i] + '/' + session)
+    }
   });
 }
 

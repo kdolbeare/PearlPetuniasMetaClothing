@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import entity.Cart;
 import entity.CartItem;
 import entity.Item;
+import entity.User;
 @Transactional
 public class CartDAO {
 
@@ -59,6 +60,41 @@ public class CartDAO {
 	public Cart getCartById(int id)
 	{
 		return em.find(Cart.class, id);
+	}
+	
+	public Cart getCartByUserId(int id)
+	{
+		User user = em.find(User.class, id);
+		Cart carttofind = em.find(Cart.class, user);
+		return carttofind;
+	}
+
+	public String addItemToCart(Cart cart, int itemId) {
+		List<CartItem> cartItems = cart.getItems();
+		int num = -1;
+		for (CartItem cartItem : cartItems) {
+			Item i = cartItem.getItem();
+			if(i.getId() == itemId){
+				num = cartItems.indexOf(cartItem);
+				break;
+			}
+		}
+		if(num != -1){
+			CartItem cItem = cartItems.get(num);
+			cItem = em.merge(cItem);
+			cItem.addQuantity(1);
+			em.persist(cItem);
+			return "added quantity";
+		}
+		else{
+			Item toAdd = em.find(Item.class, itemId);
+			CartItem toPersist = new CartItem(toAdd, cart, 1);
+			cart.addItems(toPersist);
+			cart = em.merge(cart);
+			em.persist(cart);
+			em.persist(toPersist);
+		}
+		return "cartItem added";
 	}
 	
 }
