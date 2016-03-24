@@ -4,16 +4,34 @@
 </div>  
 
 <form id="signupForm" name = "signupForm">
-  <input type="text" name="name" placeholder="Name"/><br/>
-  <input type="email" name="email" placeholder="Email/Username"/><br/>
-  <input type="password" name="password" placeholder="Password" id="password"/><br/>
-  <!-- add later?<input type="password" name="confirm" placeholder="Confirm Password"/> -->
-  <input type="text" name="streetAddress" placeholder="Street Address"/><br/>
-  <input type="text" name="city" placeholder="City"/><br/>
-  <input type="text" name="stateAbbrev" placeholder="State"/><br/>
-  <input type="text" name="zipcode" placeholder="Zipcode"/><br/>
+ <div class="form-group">
+  <input type="text" class="form-control form"  name="name" placeholder="Name"/>
+  </div>
+   <div class="form-group">
+  <input type="email" class="form-control"  name="email" placeholder="Email/Username"/>
+  </div>
+   <div class="form-group">
+  <input type="password" class="form-control"  name="password" placeholder="Password" id="password"/>
+  </div>
+  <!-- add later?<input type="password" class="form-control"  name="confirm" placeholder="Confirm Password"/> -->
+   <div class="form-group">
+  <input type="text" class="form-control"  name="streetAddress" placeholder="Street Address"/>
+  </div>
+  <div class="form-group">
+  <input type="text" class="form-control"  name="city" placeholder="City"/>
+  </div>
+   <div class="form-group">
+  <input type="text" class="form-control" name="stateAbbrev" placeholder="State"/>
+  </div>
+   <div class="form-group">
+  <input type="text" class="form-control"  name="zipcode" placeholder="Zipcode"/>
+  </div>
+   <div class="checkbox">
   <input type="checkbox" name="isEmployee" id="isEmployee"/>Check if you are an employee
+  </div>
+  <div class="checkbox">
   <input type="checkbox" name="isBilling" id="isBilling" checked/>Same as billing?
-  <input id="submit" type="button" value="Create Account"/>
+  </div>
+  <input class="btn btn-info" id="submit" type="button" value="Create Account"/>
 </form>
 {{{page.script}}}

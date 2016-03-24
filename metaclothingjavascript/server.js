@@ -94,7 +94,7 @@ app.get('/about', function(req,res) {
 
 app.get('/login', function(req,res) {
 	console.log("login in server.js");
-	res.render('login', {page : loginLib.getLogin(), cart: req.signedCookies.cart.length});
+	res.render('login', {page : loginLib.getLogin(), cart: req.signedCookies.cart, session: req.session.user});  
 });
 
 app.get('/logout', function(req,res) {
