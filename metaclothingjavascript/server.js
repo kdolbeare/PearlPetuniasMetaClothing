@@ -124,7 +124,7 @@ app.get('/', function(req,res) {
 
 app.get('/contact', function(req,res) {
   console.log("contact");
-  res.render('contact', {page : contactLib.getContact(), session: req.session.user});
+  res.render('contact', {page : contactLib.getContact(), session: req.session.user, cart: req.signedCookies.cart.length});
 });
 
 app.get('/about', function(req,res) {
@@ -134,7 +134,7 @@ app.get('/about', function(req,res) {
 
 app.get('/login', function(req,res) {
 	console.log("login in server.js");
-	res.render('login', {page : loginLib.getLogin(), cart: req.signedCookies.cart, session: req.session.user});  
+	res.render('login', {page : loginLib.getLogin(), cart: req.signedCookies.cart, session: req.session.user, cart: req.signedCookies.cart.length});  
 });
 
 app.get('/logout', function(req,res) {
@@ -150,7 +150,7 @@ app.get('/signup', function(req,res) {
 
 app.get('/editAddress', function(req,res) {
 	console.log("editAddress in server.js");
-	res.render('editAddress', {page : editAddressLib.getEditAddress(), session: req.session.user});
+	res.render('editAddress', {page : editAddressLib.getEditAddress(), session: req.session.user, cart: req.signedCookies.cart.length});
 });
 
 app.get('/getSessionId', function(req, res) {
@@ -161,6 +161,10 @@ app.get('/getSessionId', function(req, res) {
 app.get('/getCookie', function(req,res){
 	console.log("getCookie in server.js");
 	res.send(req.signedCookies.cart);
+});
+
+app.get('/contact', function(req, res){
+  res.render('contact', {page : contactLib.getContact(), session: req.session.user, cart: req.signedCookies.cart.length})
 });
 
 app.post('/userLogin', function(req,res) {

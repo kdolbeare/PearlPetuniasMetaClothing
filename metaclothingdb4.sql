@@ -1,3 +1,4 @@
+DROP SCHEMA IF EXISTS metaclothingdb;
 CREATE SCHEMA metaclothingdb;
 
 CREATE TABLE metaclothingdb.item ( 

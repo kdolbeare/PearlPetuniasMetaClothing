@@ -16,9 +16,9 @@ onload = function() {
 
     for (var i = 0; i < shoppingCart.length; i++) {
       verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + shoppingCart[i] + '/' + userInSession);
-    }
     // cart = [];
     numItemsInCart = verbData('GET', 'http://localhost:8080/MetaClothingJava/rest/cartItems/' + userInSession);
+
   });
 }
 function getSessionId() {
