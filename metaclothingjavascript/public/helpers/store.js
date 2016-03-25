@@ -7,18 +7,18 @@ onload = function() {
   } else if (document.getElementById('Adult Female')) {
     addCategoryEventListeners();
   }
-
+  // getSessionId();
   getCookie();
 }
 
-function getSessionId() {
-  getData('getSessionId', num);
-};
-
-function getUserId(data) {
-  console.log("Session id: " + data);
-  return data;
-};
+// function getSessionId() {
+//   getData('getSessionId', displayItems);
+// };
+//
+// function getUserId(data) {
+//   console.log("Session id: " + data);
+//   return data;
+// };
 
 function getCookie() {
   console.log("in getCookie");
@@ -108,6 +108,10 @@ function addCategoryEventListeners() {
 
 function displayItems(itemList) {
   console.log("in displayItems");
+  getData('getSessionId', function(num){
+    console.log("got sessionid: " +num);
+
+
   var body = document.getElementById("display");
   //  console.log(body);
   var existingList = document.getElementById("items");
@@ -152,13 +156,13 @@ function displayItems(itemList) {
     addCart.setAttribute('role', 'button');
     addCart.id = itemList[i].id;
     addCart.addEventListener('click', function(e) {
-      var num = getUserId();
+
       console.log(num + " in eventlistener");
         if (num) {
           console.log(addCart.id);
           console.log(num);
           console.log(e.target.id);
-          // verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + e.target.id + '/' + num)
+          verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + e.target.id + '/' + num)
         } else {
           shoppingCart.push(e.target.id);
           console.log("In else. shoppingCart.length: " + shoppingCart.length);
@@ -167,10 +171,10 @@ function displayItems(itemList) {
           console.log(e.target.id);
         }
 
-
   });
     tr.appendChild(addCart);
     div.appendChild(tr);
   }
   body.appendChild(div);
+  });
 }
