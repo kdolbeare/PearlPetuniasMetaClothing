@@ -161,7 +161,6 @@ function displayItems(itemList) {
           console.log(num);
           console.log(e.target.id);
           getData('http://localhost:8080/MetaClothingJava/rest/addCart/' + e.target.id + '/' + num);
-          getCart(num);
         } else {
           shoppingCart.push(e.target.id);
           console.log("In else. shoppingCart.length: " + shoppingCart.length);
@@ -176,14 +175,4 @@ function displayItems(itemList) {
   }
   body.appendChild(div);
   });
-}
-
-function getCart(num) {
-  console.log(num);
-  var url = 'http://localhost:8080/MetaClothingJava/rest/cart/' + num;
-  getData(url, displayCart);
-};
-
-function displayCart(cart) {
- console.log(cart);
 }
