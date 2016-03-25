@@ -11,10 +11,14 @@ onload = function() {
   getCookie();
 }
 
-function getUserId(data) {
-  console.log("Session id: " + data);
-  return data;
+function getSessionId() {
+  getData('getSessionId', displayItems);
 };
+
+// function getUserId(data) {
+//   console.log("Session id: " + data);
+//   return data;
+// };
 
 function getCookie() {
   console.log("in getCookie");
@@ -102,8 +106,9 @@ function addCategoryEventListeners() {
 }
 
 
-function displayItems(itemList) {
+function displayItems(itemList, session) {
   console.log("in displayItems");
+  console.log(session);
   var body = document.getElementById("display");
   //  console.log(body);
   var existingList = document.getElementById("items");
@@ -148,7 +153,7 @@ function displayItems(itemList) {
     addCart.setAttribute('role', 'button');
     addCart.id = itemList[i].id;
     addCart.addEventListener('click', function(e) {
-      var num = getData('getSessionId');
+      var num = session;
       console.log(num + "in eventlistener");
       //   if (num) {
       //     console.log(addCart.id);

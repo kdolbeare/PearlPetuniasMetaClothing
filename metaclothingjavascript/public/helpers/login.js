@@ -12,7 +12,7 @@ onload = function() {
     var url = 'http://localhost:8080/MetaClothingJava/rest/user/' + obj.email +'/' + obj.password;
     getData(url, createSession, loginValidation);
     getSessionId();
-    getData();
+    getCookie();
 
     for (var i = 0; i < shoppingCart.length; i++) {
       verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + shoppingCart[i] + '/' + userInSession);
