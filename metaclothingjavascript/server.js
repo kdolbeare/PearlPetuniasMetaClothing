@@ -109,7 +109,8 @@ app.post('/addToCart',function(req,res){
   console.log("cart: ");
   console.log(req.signedCookies.cart);
   res.cookie("cart", req.signedCookies.cart, {signed : true});
-  res.send(req.cookie.cart.length);
+  //console.log(req.cook)
+  res.send(req.signedCookies.cart.length);
 });
 
 app.get('/', function(req,res) {

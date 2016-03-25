@@ -7,18 +7,18 @@ onload = function() {
   } else if (document.getElementById('Adult Female')) {
     addCategoryEventListeners();
   }
-
+  // getSessionId();
   getCookie();
 }
 
-function getSessionId() {
-  getData('getSessionId', getUserId);
-};
-
-function getUserId(data) {
-  console.log("Session id: " + data);
-  return data;
-};
+// function getSessionId() {
+//   getData('getSessionId', displayItems);
+// };
+//
+// function getUserId(data) {
+//   console.log("Session id: " + data);
+//   return data;
+// };
 
 function getCookie() {
   console.log("in getCookie");
@@ -29,7 +29,6 @@ function getCart(data) {
   var shoppingCart = data;
   console.log(data.length);
 }
-
 function setCookie(data) {
   console.log("This is in setCookie route, after the readystatechange, Master: " + data);
 
@@ -108,6 +107,10 @@ function addCategoryEventListeners() {
 
 function displayItems(itemList) {
   console.log("in displayItems");
+  getData('getSessionId', function(num){
+    console.log("got sessionid: " +num);
+  }); 
+
   var body = document.getElementById("display");
   //  console.log(body);
   var existingList = document.getElementById("items");
@@ -152,22 +155,15 @@ function displayItems(itemList) {
     addCart.setAttribute('role', 'button');
     addCart.id = itemList[i].id;
     addCart.addEventListener('click', function(e) {
-      var num = getUserId();
-      console.log(num + " in eventlistener");
-        if (num) {
-          console.log(addCart.id);
-          console.log(num);
-          console.log(e.target.id);
-          // verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + e.target.id + '/' + num)
-        } else {
+
+      //console.log(num + " in eventlistener");
           shoppingCart.push(e.target.id);
-          verbData('POST','/addToCart', addToCart, {id: e.target.id, quantity: 1});
+          var cart = {id: e.target.id, quantity: 1};
+          verbData('POST','/addToCart', toCart, cart);
           console.log("In else. shoppingCart.length: " + shoppingCart.length);
           console.log(addCart.id);
-          console.log(num);
+          //console.log(num);
           console.log(e.target.id);
-        }
-
 
   });
     tr.appendChild(addCart);
@@ -176,9 +172,8 @@ function displayItems(itemList) {
   body.appendChild(div);
 }
 
-function addToCart(data){
-  var cartNum = document.getElementById('cookieCart');
-  cartNum.innerHTML = data;
+function toCart(data){
+  getData('/store', displayItems);
 }
 
 
