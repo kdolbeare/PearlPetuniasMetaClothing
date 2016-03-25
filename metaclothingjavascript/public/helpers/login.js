@@ -24,7 +24,7 @@ function loginValidation(){
   var form = document.getElementById("loginForm");
   var login = document.createElement("p");
   login.setAttribute("class", "invalid");
-  login.innerHTML = "invalid username or password try again";
+  login.innerHTML = "Invalid username or password try again";
   form.insertBefore(login, document.getElementById("submit"));
 
 }
