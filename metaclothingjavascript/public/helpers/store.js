@@ -1,6 +1,6 @@
 var shoppingCart = [];
 onload = function() {
-  //getData('/setCookie', setCookie);
+  getData('/setCookie', setCookie);
   getData('http://localhost:8080/MetaClothingJava/rest/allItems', displayItems);
   if (document.getElementById('tyke')) {
     addBrandEventListeners();
@@ -29,6 +29,7 @@ function getCart(data) {
   var shoppingCart = data;
   console.log(data.length);
 }
+
 function setCookie(data) {
   console.log("This is in setCookie route, after the readystatechange, Master: " + data);
 
@@ -160,6 +161,7 @@ function displayItems(itemList) {
           console.log(num);
           console.log(e.target.id);
           getData('http://localhost:8080/MetaClothingJava/rest/addCart/' + e.target.id + '/' + num);
+          getCart(num);
         } else {
           shoppingCart.push(e.target.id);
           console.log("In else. shoppingCart.length: " + shoppingCart.length);
@@ -176,8 +178,12 @@ function displayItems(itemList) {
   });
 }
 
-function toCart(data){
-  getData('/store', displayItems);
+function getCart(num) {
+  console.log(num);
+  var url = 'http://localhost:8080/MetaClothingJava/rest/cart/' + num;
+  getData(url, displayCart);
+};
+
+function displayCart(cart) {
+ console.log(cart);
 }
-
-
