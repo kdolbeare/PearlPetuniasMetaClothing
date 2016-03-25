@@ -12,13 +12,13 @@ onload = function() {
 }
 
 function getSessionId() {
-  getData('getSessionId', displayItems);
+  getData('getSessionId', num);
 };
 
-// function getUserId(data) {
-//   console.log("Session id: " + data);
-//   return data;
-// };
+function getUserId(data) {
+  console.log("Session id: " + data);
+  return data;
+};
 
 function getCookie() {
   console.log("in getCookie");
@@ -106,9 +106,8 @@ function addCategoryEventListeners() {
 }
 
 
-function displayItems(itemList, session) {
+function displayItems(itemList) {
   console.log("in displayItems");
-  console.log(session);
   var body = document.getElementById("display");
   //  console.log(body);
   var existingList = document.getElementById("items");
@@ -153,22 +152,23 @@ function displayItems(itemList, session) {
     addCart.setAttribute('role', 'button');
     addCart.id = itemList[i].id;
     addCart.addEventListener('click', function(e) {
-      var num = session;
-      console.log(num + "in eventlistener");
-      //   if (num) {
-      //     console.log(addCart.id);
-      //     console.log(num);
-      //     console.log(e.target.id);
-      //     // verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + e.target.id + '/' + num)
-      //   } else {
-      //     shoppingCart.push(e.target.id);
-      //     console.log("In else. shoppingCart.length: " + shoppingCart.length);
-      //     console.log(addCart.id);
-      //     console.log(num);
-      //     console.log(e.target.id);
-      //   }
+      var num = getUserId();
+      console.log(num + " in eventlistener");
+        if (num) {
+          console.log(addCart.id);
+          console.log(num);
+          console.log(e.target.id);
+          // verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + e.target.id + '/' + num)
+        } else {
+          shoppingCart.push(e.target.id);
+          console.log("In else. shoppingCart.length: " + shoppingCart.length);
+          console.log(addCart.id);
+          console.log(num);
+          console.log(e.target.id);
+        }
 
-    });
+
+  });
     tr.appendChild(addCart);
     div.appendChild(tr);
   }
