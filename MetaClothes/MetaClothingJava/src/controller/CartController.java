@@ -31,8 +31,10 @@ public class CartController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(path="addCart/{itemid}/{userid}")
+	@RequestMapping(path="addCart/{itemid}/{userid}", method=RequestMethod.GET)
+
 	public String addCartItem(@PathVariable("itemid") int itemId, @PathVariable("userid") int userId){
+		System.out.println(itemId + "in addCart");
 		Cart cart = cartDao.getCartByUserId(userId);
 		return cartDao.addItemToCart(cart, itemId);
 	}

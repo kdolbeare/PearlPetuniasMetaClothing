@@ -110,8 +110,6 @@ function displayItems(itemList) {
   console.log("in displayItems");
   getData('getSessionId', function(num){
     console.log("got sessionid: " +num);
-
-
   var body = document.getElementById("display");
   //  console.log(body);
   var existingList = document.getElementById("items");
@@ -162,7 +160,7 @@ function displayItems(itemList) {
           console.log(addCart.id);
           console.log(num);
           console.log(e.target.id);
-          verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + e.target.id + '/' + num)
+          getData('http://localhost:8080/MetaClothingJava/rest/addCart/' + e.target.id + '/' + num);
         } else {
           shoppingCart.push(e.target.id);
           console.log("In else. shoppingCart.length: " + shoppingCart.length);
