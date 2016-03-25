@@ -30,10 +30,45 @@ var loginLib = require('./lib/login.js');
 var storeLib = require('./lib/store.js');
 var signupLib = require('./lib/signup.js');
 var logoutLib = require('./lib/logout.js');
-var editAddressLib = require('./lib/editAddress.js')
-
+var editAddressLib = require('./lib/editAddress.js');
+var contactLib = require('./lib/contact.js');
 
 var cookieParser = require('cookie-parser');
+
+var mailer = require('express-mailer');
+mailer.extend(app, {
+  from:'no-reply@example.com',
+  host:'smtp.gmail.com',
+  secureConnection:true,
+  port:465,
+  transportMethod:'SMTP',
+  auth:{
+    user:'meta.clothes@gmail.com',
+    pass:'strongbad'
+  }
+
+});
+
+app.post('/sendEmail',function(req,res,next){
+  
+  app.mailer.send('email',{
+    to: 'meta.clothes@gmail.com',
+    from:req.body.name,
+    subject:req.body.subject,
+    body:req.body.message
+  },function(err) {
+    if(err){
+      console.log("ERROR: ");
+      console.log(err);
+      res.send(true);
+      return;
+    }
+    res.send(true);
+  
+  });
+});
+
+
 app.use(cookieParser(credentials.cookieSecret));
 
 app.get('/setCookie',function(req,res){
@@ -78,34 +113,39 @@ app.post('/addToCart',function(req,res){
   console.log("cart: ");
   console.log(req.signedCookies.cart);
   res.cookie("cart", req.signedCookies.cart, {signed : true});
-  res.send(true);
+  res.send(res.cookie.cart.length);
 });
 
 app.get('/', function(req,res) {
 	console.log("index");
 	console.log(req.session.user);
-	res.render('index', {session: req.session.user});
+	res.render('index', {session: req.session.user, cart: req.signedCookies.cart.length});
+});
+
+app.get('/contact', function(req,res) {
+  console.log("contact");
+  res.render('contact', {page : contactLib.getContact(), session: req.session.user});
 });
 
 app.get('/about', function(req,res) {
 	console.log("about");
-	res.render('about', {page : aboutLib.getAbout(), session: req.session.user});
+	res.render('about', {page : aboutLib.getAbout(), session: req.session.user, cart: req.signedCookies.cart.length});
 });
 
 app.get('/login', function(req,res) {
 	console.log("login in server.js");
-	res.render('login', {page : loginLib.getLogin(), cart: req.signedCookies.cart, session: req.session.user});
+	res.render('login', {page : loginLib.getLogin(), cart: req.signedCookies.cart, session: req.session.user});  
 });
 
 app.get('/logout', function(req,res) {
 	console.log("logout in server.js");
 	req.session.user=null;
-	res.render('index', {session: req.session.user});
+	res.render('index', {session: req.session.user, cart: req.signedCookies.cart.length});
 });
 
 app.get('/signup', function(req,res) {
 	console.log("signup in server.js");
-	res.render('signup', {page : signupLib.getSignup()});
+	res.render('signup', {page : signupLib.getSignup(), cart: req.signedCookies.cart.length});
 });
 
 app.get('/editAddress', function(req,res) {
@@ -136,11 +176,13 @@ app.get('/hello', function(req, res){
 
 app.get('/store', function(req,res) {
 	console.log("store");
-	res.render('store', {page : storeLib.getStore(), session: req.session.user});
+  console.log(req.signedCookies.cart.length.toString());
+	res.render('store', {page : storeLib.getStore(), session: req.session.user, cart: req.signedCookies.cart.length});
 });
+
 app.get('/brand', function(req,res){
   console.log("/brand");
-  res.render('brand', {page : storeLib.getStore(), session: req.session.user});
+  res.render('brand', {page : storeLib.getStore(), session: req.session.user, cart: req.signedCookies.cart.length});
 });
 
 

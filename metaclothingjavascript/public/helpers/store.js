@@ -162,6 +162,7 @@ function displayItems(itemList) {
       //     console.log(num);
       //     console.log(e.target.id);
       //   }
+
     });
     tr.appendChild(addCart);
     div.appendChild(tr);
