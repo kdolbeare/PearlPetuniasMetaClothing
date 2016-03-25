@@ -12,7 +12,7 @@ onload = function() {
 }
 
 function getSessionId() {
-  getData('getSessionId', num);
+  getData('getSessionId', getUserId);
 };
 
 function getUserId(data) {
@@ -161,6 +161,7 @@ function displayItems(itemList) {
           // verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + e.target.id + '/' + num)
         } else {
           shoppingCart.push(e.target.id);
+          verbData('POST','/addToCart', addToCart, {id: e.target.id, quantity: 1});
           console.log("In else. shoppingCart.length: " + shoppingCart.length);
           console.log(addCart.id);
           console.log(num);
@@ -174,3 +175,10 @@ function displayItems(itemList) {
   }
   body.appendChild(div);
 }
+
+function addToCart(data){
+  var cartNum = document.getElementById('cookieCart');
+  cartNum.innerHTML = data;
+}
+
+
