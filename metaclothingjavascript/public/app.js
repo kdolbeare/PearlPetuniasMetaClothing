@@ -61,7 +61,7 @@ function getSession(data){
   return data;
 }
 function createSession(data) {
-  console.log(data + " in CreateSession");
+  console.log(data.id + " in CreateSession");
   loginData('POST', '/userLogin', data);
 }
 

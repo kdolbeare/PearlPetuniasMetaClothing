@@ -156,7 +156,12 @@ app.get('/editAddress', function(req,res) {
 app.get('/getSessionId', function(req, res) {
 	console.log("getSessionId in server.js");
 	res.sendStatus(req.session.user);
-})
+});
+
+app.get('/getCookie', function(req,res){
+	console.log("getCookie in server.js");
+	res.send(req.signedCookies.cart);
+});
 
 app.get('/contact', function(req, res){
   res.render('contact', {page : contactLib.getContact(), session: req.session.user, cart: req.signedCookies.cart.length})
