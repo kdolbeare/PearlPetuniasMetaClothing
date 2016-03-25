@@ -160,9 +160,8 @@ function displayItems(itemList) {
           console.log(addCart.id);
           console.log(num);
           console.log(e.target.id);
-          getCart(num);
           getData('http://localhost:8080/MetaClothingJava/rest/addCart/' + e.target.id + '/' + num);
-
+          getCart(num);
         } else {
           shoppingCart.push(e.target.id);
           console.log("In else. shoppingCart.length: " + shoppingCart.length);

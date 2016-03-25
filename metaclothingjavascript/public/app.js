@@ -6,14 +6,16 @@ function getData(url, callback, validation) {
   xhr.onreadystatechange = function() {
     if (xhr.status < 400 && xhr.readyState == 4) {
       if(xhr.responseText){
-      callback(JSON.parse(xhr.responseText));
-      }
-    }else{
+        callback(JSON.parse(xhr.responseText));
+      }else{
       if(validation){
         validation();
       }
-
     }
+
+    }else if(xhr.status == 500){
+        window.location.href = '/login';
+     }
   };
 
   xhr.send(null);
@@ -35,13 +37,13 @@ function verbData(method, url, callback, obj, validation) {
         if (callback) {
           callback(JSON.parse(xhr.responseText));
         }
-      }
-      else{
-        if(validation){
-          validation();
+      }else{
+          if(validation){
+             validation();
+          }
         }
-
-      }
+     }else if(xhr.status > 400){
+        window.location.href = '/login';
      }
   };
 

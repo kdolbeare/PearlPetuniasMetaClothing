@@ -84,11 +84,8 @@ app.get('/setCookie',function(req,res){
 
 app.post('/addToCart',function(req,res){
 
-  var item = req.body.item;
-  var price = Number(req.body.price);
-  var quant = Number(req.body.quant);
-  var total = function(quant,price){return quant*price;};
-  console.log("start \n");
+  var item = req.body.id;
+  var quant = req.body.quantity;
   /*check the cart length, if there is nothing just push in the new item.
     if there is something, compare new item til we find a match, increment the quant of the match
   */
@@ -102,18 +99,18 @@ app.post('/addToCart',function(req,res){
     }
     if(int!==-1){
       req.signedCookies.cart[int].quant = req.signedCookies.cart[int].quant+quant;
-      req.signedCookies.cart[int].total = total(req.signedCookies.cart[int].quant,req.signedCookies.cart[int].price);
-    }else{
-      req.signedCookies.cart.push({item:item,price:price,quant:quant,total:total(quant,price)});
+       }else{
+      req.signedCookies.cart.push({item:item,quant:quant});
     }
   }else{
     console.log("cart was empty, pushing in...");
-    req.signedCookies.cart.push({item:item,price:price,quant:quant,total:total(quant,price)});
+    req.signedCookies.cart.push({id:item,quant:quant});
   }
   console.log("cart: ");
   console.log(req.signedCookies.cart);
   res.cookie("cart", req.signedCookies.cart, {signed : true});
-  res.send(res.cookie.cart.length);
+  //console.log(req.cook)
+  res.send(req.signedCookies.cart.length);
 });
 
 app.get('/', function(req,res) {
