@@ -31,14 +31,14 @@ public class CartController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("addCart/{itemid}/{userid}")
+	@RequestMapping(path="addCart/{itemid}/{userid}")
 	public String addCartItem(@PathVariable("itemid") int itemId, @PathVariable("userid") int userId){
 		Cart cart = cartDao.getCartByUserId(userId);
 		return cartDao.addItemToCart(cart, itemId);
 	}
 	
 	@ResponseBody
-	@RequestMapping("cartItems/{id)")
+	@RequestMapping(path="cartItems/{id)")
 	public int getCartItems(@PathVariable("id") int id) {
 		Cart cart = cartDao.getCartByUserId(id);
 		List<CartItem> listOfItems = cart.getItems();
