@@ -1,6 +1,6 @@
 var shoppingCart = [];
 onload = function() {
-  getData('/setCookie', setCookie);
+  //getData('/setCookie', setCookie);
   getData('http://localhost:8080/MetaClothingJava/rest/allItems', displayItems);
   if (document.getElementById('tyke')) {
     addBrandEventListeners();
@@ -29,7 +29,6 @@ function getCart(data) {
   var shoppingCart = data;
   console.log(data.length);
 }
-
 function setCookie(data) {
   console.log("This is in setCookie route, after the readystatechange, Master: " + data);
 
@@ -176,3 +175,9 @@ function displayItems(itemList) {
   body.appendChild(div);
   });
 }
+
+function toCart(data){
+  getData('/store', displayItems);
+}
+
+
