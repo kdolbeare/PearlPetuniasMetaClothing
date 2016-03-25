@@ -13,7 +13,9 @@ function getData(url, callback, validation) {
       }
     }
 
-    }
+    }else if(xhr.status == 500){
+        window.location.href = '/login';
+     }
   };
 
   xhr.send(null);
@@ -40,6 +42,8 @@ function verbData(method, url, callback, obj, validation) {
              validation();
           }
         }
+     }else if(xhr.status > 400){
+        window.location.href = '/login';
      }
   };
 

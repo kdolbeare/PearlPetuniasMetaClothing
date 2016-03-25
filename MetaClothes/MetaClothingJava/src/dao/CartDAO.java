@@ -67,7 +67,7 @@ public class CartDAO {
 	public Cart getCartByUserId(int id)
 	{
 		User user = em.find(User.class, id);
-		Cart carttofind = em.find(Cart.class, user.getCart().getId());
+		Cart carttofind = user.getCart();
 		return carttofind;
 	}
 
