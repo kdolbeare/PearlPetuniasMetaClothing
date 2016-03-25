@@ -32,6 +32,8 @@ var signupLib = require('./lib/signup.js');
 var logoutLib = require('./lib/logout.js');
 var editAddressLib = require('./lib/editAddress.js');
 var contactLib = require('./lib/contact.js');
+var loginLib = require('./lib/login.js');
+var checkoutLib = require('./lib/checkout.js');
 
 var cookieParser = require('cookie-parser');
 
@@ -184,6 +186,9 @@ app.get('/store', function(req,res) {
 app.get('/brand', function(req,res){
   console.log("/brand");
   res.render('brand', {page : storeLib.getStore(), session: req.session.user, cart: req.signedCookies.cart.length});
+});
+app.get('/checkout', function(req, res){
+  res.render('checkout',  {page : checkoutLib.getCheckout(), session: req.session.user, cart: req.signedCookies.cart.length});
 });
 
 
