@@ -32,6 +32,7 @@ public class CartController {
 	
 	@ResponseBody
 	@RequestMapping(path="addCart/{itemid}/{userid}", method=RequestMethod.GET)
+
 	public String addCartItem(@PathVariable("itemid") int itemId, @PathVariable("userid") int userId){
 		System.out.println(itemId + "in addCart");
 		Cart cart = cartDao.getCartByUserId(userId);
@@ -39,7 +40,7 @@ public class CartController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("cartItems/{id}")
+	@RequestMapping(path="cartItems/{id)")
 	public int getCartItems(@PathVariable("id") int id) {
 		Cart cart = cartDao.getCartByUserId(id);
 		List<CartItem> listOfItems = cart.getItems();

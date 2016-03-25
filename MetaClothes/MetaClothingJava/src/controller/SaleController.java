@@ -29,7 +29,7 @@ public class SaleController
 		
 	}
 	@ResponseBody
-	@RequestMapping("checkout/{id}")
+	@RequestMapping(path="checkout/{id}")
 	public String checkoutItems(@PathVariable("userid") int userId) {
 		Cart cart = saleDao.getCartByUserId(userId);
 		List<CartItem> allItems = cart.getItems();
@@ -41,7 +41,7 @@ public class SaleController
 	}
 	
 	@ResponseBody
-	@RequestMapping("findSales/{id}")
+	@RequestMapping(path="findSales/{id}")
 	public List<Sale> getInvoice(@PathVariable("userid") int userId) {
 		List<Sale> allsales = new ArrayList<>();
 		allsales = saleDao.getSalesByUser(userId);

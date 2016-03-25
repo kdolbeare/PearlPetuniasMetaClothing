@@ -42,7 +42,7 @@ public class ShopController
 	}
 	
 	@ResponseBody
-	@RequestMapping("itemBrand")
+	@RequestMapping(path="itemBrand")
 	public List<Item> getItemByBrand()
 	{
 		List<Item> selectedItems  = shopDAO.getItemByBrand("Tyke");
@@ -51,7 +51,7 @@ public class ShopController
 	}
 	
 	@ResponseBody
-	@RequestMapping("itemBrandPrice")
+	@RequestMapping(path="itemBrandPrice")
 	public List<Item> showItemByBrandAndPrice()
 	{
 		List<Item> selectedItems  = shopDAO.sortItemByPriceAndBrand("Tyke");
@@ -66,7 +66,7 @@ public class ShopController
 	}
 	
 	@ResponseBody
-	@RequestMapping("itemCatPrice")
+	@RequestMapping(path="itemCatPrice")
 	public List<Item> showItemByCatAndPrice()
 	{
 		List<Item> selectedItems  = shopDAO.sortItemByPriceAndCat("Child Male");
