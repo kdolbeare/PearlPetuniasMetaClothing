@@ -18,12 +18,16 @@ function editAddress(user) {
   console.log(user.addresses[0]);
 
   var form = document.getElementById("editForm");
+  var div = document.createElement("div");
+  div.setAttribute("class", "form-group");
   var streetAddress = document.createElement("input");
+  streetAddress.setAttribute("class", "form-control form")
   streetAddress.type = "text";
   streetAddress.name = "newStreet0"
   streetAddress.value = user.addresses[0].streetAddress;
   streetAddress.placeholder = "Street Address";
-  form.appendChild(streetAddress);
+  div.appendChild(streetAddress)
+  form.appendChild(div);
 
   var city = document.createElement("input");
   city.type = "text";
