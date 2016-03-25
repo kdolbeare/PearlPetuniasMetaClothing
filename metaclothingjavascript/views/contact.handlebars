@@ -1,12 +1,16 @@
-<div class="contact-header">
+<div class="contact">
  <h1>{{page.header}}</h1>
+ <p>We would like to hear from you</p>
 </div>	
-
-<div>{{page.name}}<br>{{page.location.street}}<br>{{page.location.city}}&nbsp;{{page.location.zip}}<br>
-	{{page.phone}}</div>
-
+<div class="row">
+<div id="mailContact">
+<div ><h2 id="metaClothing">{{page.name}}</h2><address>
+{{page.location.street}}<br>{{page.location.city}}&nbsp; {{page.location.state}} {{page.location.zip}}<br>{{page.phone}}</address>
+	</div>
 <div id='mailDiv'>
-<input type="button" value="mail us" id="mailUsButton"/>
+<input class="btn btn-info btn-lg" type="button" value="Mail Us" id="mailUsButton"/>
+</div>
 </div>
 <div id="mapDiv">{{{page.mapEmbedLink}}}</div>
+</div>
 {{{page.script}}}

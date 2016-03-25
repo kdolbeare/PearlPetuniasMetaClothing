@@ -40,17 +40,25 @@ var about = {
               position:'Director of Sales',
               imgPath:'img/Michael_James.jpg'
               }, 
-
-            {name:'Cole Frock',
-              bio:'A one liner goes here.',
-              fullBio:'Lorem ipsum dolor sit amet, nam te nostrud impedit, nam at harum molestiae, vix ei nobis percipit philosophia. Sit assum facilisi ex. Sit nulla putant forensibus ex, vix nulla mnesarchum dissentiunt ei, no eum lucilius praesent partiendo. Delenit dolorum legendos id est. Est ne ridens propriae, est te discere veritus tacimates.',
-              position:'CEO',
-              imgPath:'img/cole.jpeg'},
               
             {name:'Kris Kane',
               bio:'',
               fullBio:'Lorem ipsum dolor sit amet, nam te nostrud impedit, nam at harum molestiae, vix ei nobis percipit philosophia. Sit assum facilisi ex. Sit nulla putant forensibus ex, vix nulla mnesarchum dissentiunt ei, no eum lucilius praesent partiendo. Delenit dolorum legendos id est. Est ne ridens propriae, est te discere veritus tacimates.',
-              position:'CTO'}]
+              position:'Brand Manager'},
+              {name: "Andrew Conlin",
+              bio:'',
+              fullBio:'Lorem ipsum dolor sit amet, nam te nostrud impedit, nam at harum molestiae, vix ei nobis percipit philosophia. Sit assum facilisi ex. Sit nulla putant forensibus ex, vix nulla mnesarchum dissentiunt ei, no eum lucilius praesent partiendo. Delenit dolorum legendos id est. Est ne ridens propriae, est te discere veritus tacimates.',
+              position: 'Public Relations Director'},
+              {name: "Aaron Aguil",
+              bio:'',
+              fullBio:'Lorem ipsum dolor sit amet, nam te nostrud impedit, nam at harum molestiae, vix ei nobis percipit philosophia. Sit assum facilisi ex. Sit nulla putant forensibus ex, vix nulla mnesarchum dissentiunt ei, no eum lucilius praesent partiendo. Delenit dolorum legendos id est. Est ne ridens propriae, est te discere veritus tacimates.',
+              position: 'Head Custodian'},
+              {name:'Cole Frock',
+              bio:'A one liner goes here.',
+              fullBio:'Lorem ipsum dolor sit amet, nam te nostrud impedit, nam at harum molestiae, vix ei nobis percipit philosophia. Sit assum facilisi ex. Sit nulla putant forensibus ex, vix nulla mnesarchum dissentiunt ei, no eum lucilius praesent partiendo. Delenit dolorum legendos id est. Est ne ridens propriae, est te discere veritus tacimates.',
+              position:'Assistant to the Custodian',
+              imgPath:'img/cole.jpeg'}
+              ]
 };
 
 

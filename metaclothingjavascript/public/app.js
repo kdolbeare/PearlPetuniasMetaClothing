@@ -1,5 +1,3 @@
-
-
 function getData(url, callback, validation) {
   var xhr = new XMLHttpRequest();
 

@@ -14,8 +14,8 @@ onload = function() {
     for (var i = 0; i < cart.length; i++) {
       verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + cart[i] + '/' + session)
     }
-    cart = [];
-    numItemsInCart = verbData('GET', 'http://localhost:8080/MetaClothingJava/rest/cartItems/' + session)
+    //
+    //numItemsInCart = verbData('GET', 'http://localhost:8080/MetaClothingJava/rest/cartItems/' + session)
   });
 }
 
