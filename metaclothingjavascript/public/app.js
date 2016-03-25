@@ -84,7 +84,7 @@ function loginData(method, url, object) {
           console.log(user);
 
         if(user){
-          // window.location.href = '/';
+          window.location.href = '/';
         }
     }
   };
