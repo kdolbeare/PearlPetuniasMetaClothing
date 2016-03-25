@@ -116,7 +116,12 @@ app.get('/editAddress', function(req,res) {
 app.get('/getSessionId', function(req, res) {
 	console.log("getSessionId in server.js");
 	res.sendStatus(req.session.user);
-})
+});
+
+app.get('/getCookie', function(req,res){
+	console.log("getCookie in server.js");
+	res.send(req.signedCookies.cart);
+});
 
 app.post('/userLogin', function(req,res) {
 	req.session.user = req.body.id;

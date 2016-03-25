@@ -11,13 +11,34 @@ onload = function() {
     console.log(obj);
     var url = 'http://localhost:8080/MetaClothingJava/rest/user/' + obj.email +'/' + obj.password;
     getData(url, createSession, loginValidation);
-    for (var i = 0; i < cart.length; i++) {
-      verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + cart[i] + '/' + session)
+    getSessionId();
+    getData();
+
+    for (var i = 0; i < shoppingCart.length; i++) {
+      verbData('POST', 'http://localhost:8080/MetaClothingJava/rest/addCart/' + shoppingCart[i] + '/' + userInSession);
     }
-    cart = [];
-    numItemsInCart = verbData('GET', 'http://localhost:8080/MetaClothingJava/rest/cartItems/' + session)
+    // cart = [];
+    numItemsInCart = verbData('GET', 'http://localhost:8080/MetaClothingJava/rest/cartItems/' + userInSession);
   });
 }
+function getSessionId() {
+  getData('getSessionId', getUserId);
+};
+
+function getCookie() {
+  console.log("in getCookie");
+  getData('getCookie', getCart);
+};
+var userInSession;
+function getUserId(data) {
+  var userInSession = data;
+  console.log("In login.js session id: "+data);
+};
+var shoppingCart = [];
+function getCart(data){
+  var shoppingCart = data;
+  console.log("in getCart login.js data.length: " +data.length);
+};
 
 function loginValidation(){
   console.log("in login validation");
@@ -26,5 +47,4 @@ function loginValidation(){
   login.setAttribute("class", "invalid");
   login.innerHTML = "invalid username or password try again";
   form.insertBefore(login, document.getElementById("submit"));
-
 }
