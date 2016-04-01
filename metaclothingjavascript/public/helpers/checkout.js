@@ -13,6 +13,7 @@ function getCart(num) {
 };
 
 function displayCart(cart) {
+	console.log(cart);
  	var display = document.getElementById('display');
  	var existingList = document.getElementById('items');
  	if (existingList) {

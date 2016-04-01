@@ -34,6 +34,7 @@ var editAddressLib = require('./lib/editAddress.js');
 var contactLib = require('./lib/contact.js');
 var loginLib = require('./lib/login.js');
 var checkoutLib = require('./lib/checkout.js');
+// var indexLib = require('./lib/index.js');
 
 var cookieParser = require('cookie-parser');
 
@@ -52,7 +53,7 @@ mailer.extend(app, {
 });
 
 app.post('/sendEmail',function(req,res,next){
-  
+
   app.mailer.send('email',{
     to: 'meta.clothes@gmail.com',
     from:req.body.name,
@@ -66,7 +67,7 @@ app.post('/sendEmail',function(req,res,next){
       return;
     }
     res.send(true);
-  
+
   });
 });
 
@@ -118,7 +119,14 @@ app.post('/addToCart',function(req,res){
 app.get('/', function(req,res) {
 	console.log("index");
 	console.log(req.session.user);
-	res.render('index', {session: req.session.user, cart: req.signedCookies.cart.length});
+	if(req.signedCookies.cart){
+    res.render('index', {session: req.session.user, cart: req.signedCookies.cart.length});
+
+  }else{
+		res.cookie('cart',[], {signed : true});
+		res.render('index', {session: req.session.user, cart: 0});
+  }
+
 });
 
 app.get('/contact', function(req,res) {
@@ -133,7 +141,7 @@ app.get('/about', function(req,res) {
 
 app.get('/login', function(req,res) {
 	console.log("login in server.js");
-	res.render('login', {page : loginLib.getLogin(), cart: req.signedCookies.cart, session: req.session.user, cart: req.signedCookies.cart.length});  
+	res.render('login', {page : loginLib.getLogin(), cart: req.signedCookies.cart, session: req.session.user, cart: req.signedCookies.cart.length});
 });
 
 app.get('/logout', function(req,res) {

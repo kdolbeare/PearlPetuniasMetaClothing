@@ -14,14 +14,14 @@ public class UserDAO {
 	@PersistenceContext
 	private EntityManager em;
 	
-	public User getUserByEmail(String email) {
+	public User getUserByEmail(String email) throws Exception {
 		User temp;
-		try {
+//		try {
 			temp = (User)em.createNamedQuery("user.getUserByEmail").setParameter("email", email).getSingleResult();
-		}catch (Exception e) {
-			System.out.println("error in getUserByEmail" + e);
-			temp = null;
-		}
+//		}catch (Exception e) {
+//			System.out.println("error in getUserByEmail" + e);
+//			temp = null;
+//		}
 		System.out.println(temp);
 		return temp;
 	}
@@ -84,18 +84,21 @@ public class UserDAO {
 		try{
 			System.out.println("in try block");
 			temp = getUserByEmail(user.getEmail());
-			System.out.println(temp.getEmail());
-			System.out.println(user.getEmail());
+//			System.out.println(temp.getEmail());
+//			System.out.println(user.getEmail());
 			
 			if(temp.getEmail().equals(user.getEmail())){
 				System.out.println("in if block");
 				user = null;
 			}
 		}catch(NoResultException e){
-			System.out.println("caught an exception " + e);
+			System.out.println("no user found, creating user " + e);
 			user.getCart().setUser(user);
 			em.persist(user);
 			
+		}catch(Exception e) {
+			System.out.println("in other exception" + e);
+			user = null;
 		}
 		System.out.println(user);
 		return user;

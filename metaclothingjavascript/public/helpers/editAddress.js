@@ -28,7 +28,7 @@ function editAddress(user) {
   streetAddress.placeholder = "Street Address";
   div.appendChild(streetAddress)
   form.appendChild(div);
-  
+
   var div2 = document.createElement('div');
   div2.setAttribute('class', 'form-group');
   var city = document.createElement("input");
@@ -83,7 +83,7 @@ function editAddress(user) {
     isBilling.checked = true;
     check.innerHTML = "Same as Billing?";
     check.appendChild(isBilling);
-    
+
 
     isBilling.addEventListener('click', function(e){
         billingDom();
@@ -133,7 +133,7 @@ function editAddress(user) {
     zip.value = user.addresses[1].zipcode;
     div04.appendChild(zip);
     editDiv.appendChild(div04);
-    form.insertBefore(editDiv, document.getElementById("submit"));
+    // form.insertBefore(editDiv, document.getElementById("submit"));
   }
 
   submit.addEventListener("click", function(e) {
@@ -211,7 +211,7 @@ function billingDom() {
   streetAddress.placeholder = "Billing Address";
   div1.appendChild(streetAddress);
   editDiv.appendChild(div1);
-  
+
   var div2 = document.createElement('div');
   div2.setAttribute('class', 'form-group');
   var city = document.createElement("input");
@@ -239,7 +239,7 @@ function billingDom() {
   zip.name = "billingZipcode";
   zip.placeholder = "Billing Zipcode";
   editDiv.appendChild(zip);
-  form.insertBefore(editDiv, document.getElementById("submit"));
+  // form.insertBefore(editDiv, document.getElementById("submit"));
 }
 
 function displayUser(data) {
