@@ -40,7 +40,7 @@ public class CartController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(path="cartItems/{id)")
+	@RequestMapping(path="cartItems/{id}")
 	public int getCartItems(@PathVariable("id") int id) {
 		Cart cart = cartDao.getCartByUserId(id);
 		List<CartItem> listOfItems = cart.getItems();
