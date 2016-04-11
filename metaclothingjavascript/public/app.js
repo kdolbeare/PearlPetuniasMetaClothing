@@ -7,6 +7,7 @@ function getData(url, callback, validation) {
     if (xhr.status < 400 && xhr.readyState == 4) {
       if(xhr.responseText){
         callback(JSON.parse(xhr.responseText));
+        console.log(JSON.parse(xhr.responseText));
       }else{
       if(validation){
         validation();
@@ -32,7 +33,6 @@ function verbData(method, url, callback, obj, validation) {
   }
   xhr.onreadystatechange = function() {
     if (xhr.status < 400 && xhr.readyState == 4) {
-      console.log(xhr.responseText);
       if(xhr.responseText){
         if (callback) {
           callback(JSON.parse(xhr.responseText));
@@ -65,7 +65,7 @@ function getSession(data){
   return data;
 }
 function createSession(data) {
-  console.log(data.id + " in CreateSession");
+  console.log(data.id + " in CreateSession" + data);
   loginData('POST', '/userLogin', data);
 }
 
@@ -81,7 +81,7 @@ function loginData(method, url, object) {
     console.log(object + "line 81 user object");
     if (xhr.readyState == 4 && xhr.status < 400) {
          var user = JSON.parse(xhr.responseText);
-          console.log(user + "line 84 printing json.parse");
+          console.log(user.id + "line 84 printing json.parse");
 
         if(user){
           window.location.href = '/';

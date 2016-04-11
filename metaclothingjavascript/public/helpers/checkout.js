@@ -25,13 +25,15 @@ function displayCart(cart) {
   var trh = document.createElement('tr');
   var itemList = cart.items;
   for (var key in itemList[0]) {
+			console.log(key);
     if (key == 'id') {
       continue;
     }
-    if (key == 'description') {
+    if (key == 'itemId') {
       continue;
     }
     var th = document.createElement('th');
+		console.log(key);
     th.innerHTML = key;
     trh.appendChild(th);
   }
@@ -42,11 +44,13 @@ for (var i = 0; i < itemList.length; i++) {
       if (key == 'id') {
         continue;
       }
-
+			if (key == 'itemId') {
+	      continue;
+	    }
       var td = document.createElement('td');
       td.innerHTML = itemList[i][key];
        if(key == "item"){
-       	console.log(itemList[i][key]);
+       	console.log(itemList[i][key].name);
       	td.innerHTML = itemList[i][key].name;
       }
       tr.appendChild(td);

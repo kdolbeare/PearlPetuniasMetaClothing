@@ -47,7 +47,7 @@ public class UserController
 	@ResponseBody
 	@RequestMapping(path="user/{username}/{password}")
 	public User getUser(@PathVariable("username") String username, @PathVariable("password") String password){
-		System.out.println("in java rest api");
+		System.out.println("in java rest api" + username + password);
 		return userDAO.getUser(username, password);
 	}
 	

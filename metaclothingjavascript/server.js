@@ -161,7 +161,7 @@ app.get('/editAddress', function(req,res) {
 });
 
 app.get('/getSessionId', function(req, res) {
-	console.log("getSessionId in server.js");
+	console.log("in getSessionId in server.js" + req.session.user);
 	res.sendStatus(req.session.user);
 });
 

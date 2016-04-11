@@ -11,7 +11,8 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-//@JsonIgnoreProperties(ignoreUnknown=true)
+//when updating address of user with cart items, the 'itemId' field is unrecognized
+@JsonIgnoreProperties(ignoreUnknown=true)
 @Entity
 @Table(name="cartitem")
 public class CartItem {
