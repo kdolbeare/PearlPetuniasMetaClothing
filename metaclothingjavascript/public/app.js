@@ -78,10 +78,10 @@ function loginData(method, url, object) {
   }
 
   xhr.onreadystatechange = function() {
-    console.log(object);
+    console.log(object + "line 81 user object");
     if (xhr.readyState == 4 && xhr.status < 400) {
          var user = JSON.parse(xhr.responseText);
-          console.log(user);
+          console.log(user + "line 84 printing json.parse");
 
         if(user){
           window.location.href = '/';

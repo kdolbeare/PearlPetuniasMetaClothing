@@ -11,14 +11,14 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown=true)
+//@JsonIgnoreProperties(ignoreUnknown=true)
 @Entity
 @Table(name="cartitem")
 public class CartItem {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	@JsonBackReference
+//	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="itemid")
 	private Item item;
