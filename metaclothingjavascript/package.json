@@ -17,6 +17,7 @@
     "express-handlebars": "^3.0.0",
     "express-mailer": "^0.3.0",
     "express-session": "^1.13.0",
+    "forever": "^0.15.1",
     "handlebars": "^4.0.5",
     "session": "^0.1.0"
   }
