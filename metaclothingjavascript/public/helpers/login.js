@@ -9,7 +9,7 @@ onload = function() {
         password: document.loginForm.password.value
       };
       console.log(obj);
-      var url = 'http://localhost:8080/MetaClothingJava/rest/user/' + obj.email + '/' + obj.password;
+      var url = 'http://localhost:8080/rest/user/' + obj.email + '/' + obj.password;
       getData(url, createSession, loginValidation);
 
       getCookie();
