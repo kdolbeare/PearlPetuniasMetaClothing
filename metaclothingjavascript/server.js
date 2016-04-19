@@ -180,6 +180,43 @@ app.post('/userLogin', function(req,res) {
 	res.send(req.body);
 });
 
+
+
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+function getData(url, callback, validation) {
+  var xhr = new XMLHttpRequest();
+console.log('in getData ' + url);
+  xhr.open('GET', url);
+
+
+  xhr.onreadystatechange = function() {
+    if (xhr.status < 400 && xhr.readyState == 4) {
+      if(xhr.responseText){
+        callback(JSON.parse(xhr.responseText));
+        console.log('line 193' + JSON.parse(xhr.responseText));
+      }else{
+      if(validation){
+        validation();
+      }
+    }
+
+    }else if(xhr.status == 500){
+        window.location.href = '/login';
+     }
+  };
+  xhr.send(null);
+}
+
+app.post('/getLogin', function(req,res) {
+	console.log('in /getLogin');
+	var url = 'http://localhost:8080/MetaClothingJava/rest/user/' + req.body.email + '/' + req.body.password;
+	console.log(req.body.email);
+	getData(url, callback);
+	function callback(data) {
+		res.send(data);
+	}
+});
+
 //test method
 app.get('/hello', function(req, res){
 	res.send('HOLA HELLO META Clothing');
