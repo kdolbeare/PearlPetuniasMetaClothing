@@ -1,7 +1,8 @@
 var shoppingCart = [];
 onload = function() {
   getData('/setCookie', setCookie);
-  getData('http://localhost:8080/MetaClothingJava/rest/allItems', displayItems);
+  getData('allItems', displayItems);
+  // getData('http://localhost:8080/MetaClothingJava/rest/allItems', displayItems);
   if (document.getElementById('tyke')) {
     addBrandEventListeners();
   } else if (document.getElementById('Adult Female')) {

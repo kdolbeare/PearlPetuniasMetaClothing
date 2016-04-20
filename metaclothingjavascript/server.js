@@ -4,6 +4,15 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 var session = require('express-session');
 var credentials = require('./public/credentials.js');
+
+require("jsdom").env("", function(err, window) {
+	if (err) {
+		console.error(err);
+		return;
+	}
+
+	$ = require("jquery")(window);
+});
 app.use(session({
 	resave: false,
 	saveUnitialized: false,
@@ -180,41 +189,92 @@ app.post('/userLogin', function(req,res) {
 	res.send(req.body);
 });
 
-
-
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-function getData(url, callback, validation) {
+function verbData(method, url, callback, obj, validation) {
   var xhr = new XMLHttpRequest();
-console.log('in getData ' + url);
-  xhr.open('GET', url);
 
+  xhr.open(method, url);
+  if (obj) {
+    xhr.setRequestHeader('Content-Type', 'application/json');
 
+    // xhr.setRequestHeader('Accept', 'application/json');
+  }
   xhr.onreadystatechange = function() {
     if (xhr.status < 400 && xhr.readyState == 4) {
       if(xhr.responseText){
-        callback(JSON.parse(xhr.responseText));
-        console.log('line 193' + JSON.parse(xhr.responseText));
+        if (callback) {
+          callback(JSON.parse(xhr.responseText));
+        }
       }else{
-      if(validation){
-        validation();
-      }
-    }
-
-    }else if(xhr.status == 500){
+          if(validation){
+             validation();
+          }
+        }
+     }else if(xhr.status > 400){
         window.location.href = '/login';
      }
   };
-  xhr.send(null);
+
+  if (obj) {
+    console.log(JSON.stringify(obj) + "in verbData");
+    xhr.send(JSON.stringify(obj));
+  } else {
+    xhr.send(null);
+  }
+
 }
+
+
+
+// function getData(url, callback, validation) {
+//   var xhr = new XMLHttpRequest();
+// console.log('in getData ' + url);
+//   xhr.open('GET', url);
+//
+//
+//   xhr.onreadystatechange = function() {
+//     if (xhr.status < 400 && xhr.readyState == 4) {
+//       if(xhr.responseText){
+//         callback(JSON.parse(xhr.responseText));
+//         console.log('line 205' + JSON.parse(xhr.responseText));
+//       }else{
+//       if(validation){
+//         validation();
+//       }
+//     }
+//     }else if(xhr.status == 500){
+//         window.location.href = '/login';
+//      }
+//   };
+//   xhr.send(null);
+// }
 
 app.post('/getLogin', function(req,res) {
 	console.log('in /getLogin');
-	var url = 'http://localhost:8080/MetaClothingJava/rest/user/' + req.body.email + '/' + req.body.password;
-	console.log(req.body.email);
-	getData(url, callback);
-	function callback(data) {
+	$.getJSON('http://localhost:8080/MetaClothingJava/rest/user/' + req.body.email + '/' + req.body.password, function result (callback) {
+		console.log(callback);
+		res.send(callback);
+	})
+});
+
+app.post('/newSignup', function(req,res) {
+	var url = 'http://localhost:8080/MetaClothingJava/rest/createUser';
+	verbData('POST', url,function (data) {
 		res.send(data);
-	}
+	}, req.body);
+	// $.post('http://localhost:8080/MetaClothingJava/rest/createUser', data, function (callback){
+	// 	console.log('Signup ' + callback);
+	// 		res.send(callback);}, "json")
+
+	});
+
+
+app.get('/allItems', function(req,res) {
+	console.log('in /allItems');
+	$.getJSON('http://localhost:8080/MetaClothingJava/rest/allItems', function result (callback) {
+			console.log('allItems: ' + callback);
+			res.send(callback);
+	});
 });
 
 //test method
