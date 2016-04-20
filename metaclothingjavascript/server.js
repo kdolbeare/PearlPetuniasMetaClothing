@@ -263,6 +263,13 @@ app.post('/getUserId', function(req,res) {
 	})
 });
 
+app.post('/getUserCart', function(req,res) {
+	console.log('in /getUserCart: ' + req.body.id);
+	$.getJSON('http://localhost:8080/MetaClothingJava/rest/cart/' + req.body.id, function result (callback) {
+		res.send(callback);
+	})
+});
+
 app.post('/editUserAddress', function(req,res) {
 	var url = 'http://localhost:8080/MetaClothingJava/rest/address';
 	verbData('POST', url,function (data) {
