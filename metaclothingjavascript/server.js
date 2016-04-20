@@ -252,10 +252,23 @@ function verbData(method, url, callback, obj, validation) {
 app.post('/getLogin', function(req,res) {
 	console.log('in /getLogin');
 	$.getJSON('http://localhost:8080/MetaClothingJava/rest/user/' + req.body.email + '/' + req.body.password, function result (callback) {
-		console.log(callback);
 		res.send(callback);
 	})
 });
+
+app.post('/getUserId', function(req,res) {
+	console.log('in /getUserId: ' + req.body.id);
+	$.getJSON('http://localhost:8080/MetaClothingJava/rest/userId/' + req.body.id, function result (callback) {
+		res.send(callback);
+	})
+});
+
+app.post('/editUserAddress', function(req,res) {
+	var url = 'http://localhost:8080/MetaClothingJava/rest/address';
+	verbData('POST', url,function (data) {
+		res.send(data);
+	}, req.body);
+	});
 
 app.post('/newSignup', function(req,res) {
 	var url = 'http://localhost:8080/MetaClothingJava/rest/createUser';
